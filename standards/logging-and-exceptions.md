@@ -1,0 +1,187 @@
+# Logging
+Secure and robust code requires careful management of log statements and exception handlers. In order to get the best use from these tools, adhere to the following conventions.
+
+## Python Logging
+
+### Rules of Thumb
+
+* Use Python logging module.
+* Always use a per-app logger.
+* Use per-module loggers as necessary.
+* One logger per file, named "logger"
+* Leave logging statements in place
+* Use built-in string interpolation
+* Scrub out all PII/PHI whenever possible, particular in loglevels > debug.
+* 500 errors on the site should always generate a log message
+* Production servers should never run with debug logging enabled.
+
+### Example
+	import logging
+	logger = logging.getLogger(__name__)
+	logger.debug('initialized %s', __name__)
+
+### Log Levels
+By default, logging directives should fall into one of the following categories when they are not specifically called out as being a part of another class of logs.
+
+#### debug	
+Information that is only useful while coding or debugging. Debug information should always be information dense and represent normal operation.
+
+##### Examples:
+* progress through a state machine
+* progress through a linear computation
+* state information relevant to debugging control flow (http request contents, etc)
+
+#### info	
+Information that is useful to track ongoing operation of the system. Info logs should always represent normal operation.
+
+##### Examples:
+* counter progress through a bulk operation
+* user activities
+* administrative activities
+* instantiation of background tasks
+
+#### warning	
+Information that is useful to track exceptional conditions. Warnings should always represent normal operation in response to errors.
+
+##### Examples:
+* handled exceptions
+* unexpected validation failures
+* unexpected (but handled) task termination
+
+#### error	
+Information representing recoverable error conditions. Error logs should be reserved for unhandled application exceptions that should be recoverable by creating a new request or a simple restart of the application. Calls to logger.exception() will be logged with at the "error" level.
+
+##### Examples:
+
+* failed assertions
+* loss of application state
+* other unrecoverable errors
+
+#### critical	
+Information representing critical failure conditions. Critical logs should be reserved for errors that represent an unrecoverable error condition, such as the i or connect to a required database resource.
+
+##### Examples:
+
+* inability to bind to an ip address
+* unavailable database resources
+* missing filesystem access permissions or mountpoints
+
+### Access Logging
+User accesses should be logged using the via the access_logger in the profile. The benefit of wrapping everything with a function is we have centralized control of the message formatting and send messages to alternate locations if necessary.
+
+#### Access Logger Example Implementation
+	import logging
+	from services_profile.constants import ACCESS_LOG_PROFILE_UPDATED, ACCESS_LOG_CREATED
+	_access_logger = logging.getLogger('access')
+	 
+	def created(user, req, details):
+	    _access_logger.info('%s: %s', ACCESS_LOG_CREATED, user)
+	 
+	def updated(user, req, details):
+	    _access_logger.info('%s: %s', ACCESS_LOG_PROFILE_UPDATED, user)
+
+#### Access Logger Usage
+	from services_profile import access_log
+	access_log.created(user, None, attributes)
+
+#### Admin Audit Logging
+Administrative actions should be logged following the same pattern as access logs.
+
+### Logging Configuration
+The logging system is configured via the "LOGGING" parameter in each project's setting.py. The default settings are meant to be conservative, but ideal for production performance, and should be adjusted to stay that way. For the profile service, they look like this:
+
+	LOGGING = {
+	    'version': 1,
+	    'disable_existing_loggers': True,
+	    'formatters': {
+	        'verbose': {
+	            'format': '%(levelname)s %(asctime)s %(process)d %(thread)d %(name)s.%(module)s:%(lineno)d %(message)s'
+	        },
+	    },
+	    'handlers': {
+	        'null': {
+	            'level': 'DEBUG',
+	            'class': 'django.utils.log.NullHandler',
+	        },
+	        'console': {
+	            'level': 'ERROR',
+	            'class': 'logging.StreamHandler',
+	            'formatter': 'verbose'
+	        },
+	        'logfile': {  # define and name a handler
+	            'level': 'INFO',
+	            'class': 'logging.FileHandler',  # set the logging class to log to a file
+	            'formatter': 'verbose',  # define the formatter to associate
+	            'filename': os.path.join(PROJECT_ROOT, 'var', 'log', 'profile.log')  # log file
+	        },
+	        'access_log': {
+	            'level': 'INFO',
+	            'class': 'logging.FileHandler',  # set the logging class to log to a file
+	            'formatter': 'verbose',          # define the formatter to associate
+	            'filename': os.path.join(PROJECT_ROOT, 'var', 'log', 'profile-access.log')  # log file
+	        }
+	    },
+	    # when not otherwise defined, send logs to the console and the logfile and include INFO and above.
+	    'root': {
+	        'handlers': ['console', 'logfile'],
+	        'propagate': True,
+	        'level': 'INFO',
+	    },
+	     
+	    'loggers': {
+	 
+	        # send access logs only to the access_log, only including info and above.
+	        'access': {
+	            'level': 'INFO',
+	            'handlers': ['access_log',],
+	        },
+	 
+	        # only include django logs of warning and above
+	        'django': {'level': 'WARNING'},
+	 
+	        # only include south logs of warning and above
+	        'south.generic': {'level': 'WARNING'},
+	    }
+	}
+	
+For development use, you will likely want more detailed logging. Conveniently, you can override these settings via local_settings.py if needed. Some examples are contained in the local_settings.py.example, such as these:
+
+	# include all services_profile, djangosaml2 and access logs of DEBUG and above
+	LOGGING['loggers']['services_profile'] = { 'level': 'DEBUG' }
+	LOGGING['loggers']['djangosaml2'] = { 'level': 'DEBUG' }
+	LOGGING['loggers']['access'] = { 'level': 'DEBUG' }
+	
+	# only send critical logs to the console
+	LOGGING['handlers']['console']['level'] = 'CRITICAL'
+	
+	# send all logs DEBUG and above to the logfile
+	LOGGING['handlers']['logfile']['level'] = 'DEBUG'
+ 
+## Python Exception Handling
+
+### Rules of Thumb:
+* Never catch raw "Exception".
+* Never catch an exception you can't handle – allow them to bubble up.
+* Log messages for exceptions you can handle.
+
+### Custom Exceptions
+Create custom exceptions where appropriate and use them in tests:
+
+	class MyCustomException(Exception):
+	    pass
+	 
+	class MyClass(object):
+	    def has_errors(self):
+	        raise MyCustomException('much fail')
+	     
+	 
+	class MyTestCase(TestCase):
+	    def test_it(self):
+	        my_class = MyClass()
+	        with self.assertRaises(MyCustomException):
+	            my_class.has_errors()
+ 
+
+## Javascript Logging
+
+Javascript logging should be as organized and effective as python logging.
