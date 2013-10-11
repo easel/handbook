@@ -1,0 +1,11 @@
+[[principles-of-operations]]
+Principles of Operations
+------------------------
+
+[[rolling-deployments]]
+Rolling Deployments
+-------------------
+
+Backend updates should be able to be rolled out in stages.
+
+strict control of migrations

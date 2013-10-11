@@ -1,0 +1,59 @@
+[[commit-messages]]
+Commit Messages
+---------------
+
+In order to ensure maintainability, code commits must include quality
+commit messages. Quality commit messages are concise, detailed,
+accurate, and consistent.
+
+[[template]]
+Template
+~~~~~~~~
+
+-------------------------------------------------------------------------
+Name of change #234                                       |<-- trunc here
+ 
+Patch Set 1:
+    - List of items
+    - Changed in the first patch
+ 
+Patch Set 2:
+    - List of items
+        - Important notes for the above item
+    - Second item in patch 2
+ 
+Change-Id: O8c9e--PASTE--CHANGE-ID--HERE--FOR--GERRIT--3edd
+Jira-Issue: PT-XXX
+-------------------------------------------------------------------------
+
+* You will notice that the first line is very short. Git prefers line
+lengths below 68 characters, and the first line should summarize in
+plain english what the commit represents. It may or may not relate
+directly to the ticket subject. This is the most important part of the
+message so make it clear. Including the ticket id is optional, but in
+many cases makes the commit easier to refer to.
+* You will notice there is a blank line between the first line and the
+additional details. This line enables git to be smart about displaying
+change history, so please include it. I like to bullet out all the
+changes, but it's mostly a matter of taste. You should include any
+details necessary to understand or execute this change, including
+necessary settings change, the fact that the change requires a database
+migration, etc.
+
+[[gerrit-specific-notes]]
+Gerrit Specific Notes
+^^^^^^^^^^^^^^^^^^^^^
+
+* You will notice I've separated out resubmitted changes into multiple
+patches. This is only necessary for a patch that you have to resubmit,
+but it helps the reviewer to understand what you've changed since the
+previous change.
+* You will notice the Change-Id: line. This line is automatically
+generated via a gerrit commit hook[2]. Please download and install this
+hook. This line is now required by gerrit and allows you to easily
+resubmit a change to gerrit and have it update the existing change
+request, causing reviewers to be notified. You will notice the
+Jira-Issue: line at the bottom. This isn't strictly necessary, but makes
+it possible to search gerrit by jira ticket ID, so if theres a jira
+ticket included in the change you may as well include it.
+

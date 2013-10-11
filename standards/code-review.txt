@@ -1,0 +1,97 @@
+[[code-review]]
+Code Review
+-----------
+
+Code Review is a key practice to ensuring software quality. It ensures
+that more than one person is familiar with the code and helps to unify
+coding standards and conventions, ensuring that the codebase is uniform
+and maintainable.
+
+[[code-review-checklist]]
+Code Review Checklist
+~~~~~~~~~~~~~~~~~~~~~
+
+[[required]]
+Required
+^^^^^^^^
+
+* [Automate] Code Merges Cleanly
+* [Automate] Code passes PEP-8 and Pylint
+* [Automate] Unit tests pass
+* [Automate] All servers start without errors and home page loads
+* [Automate] Integration tests pass
+* A detailed commit message is included, and accurately describes the
+full scope of the change
+* Does it smell bad?
+* The code and overall design is compliant with the Secure Development
+Standards and is:
+* Simple
+* Exposing the minimum possible attack surface
+* Secure by default
+* Seperated by concerns
+* Using the least privileges necessary
+* Designed to fail securely
+* Defended in depth
+* Not reliant on obscurity for security
+* Using cryptography in compliance with the Cryptographic Standards
+
+[[optional]]
+Optional
+^^^^^^^^
+
+* Is data from an external source (e.g., user input) cleaned and
+validated before it is used?
+* Are any calls that read or write from a database handled
+appropriately, such as with a try/except block and/or transactions (if
+needed)?
+* Are any calls to an external resource (e.g., a web-based API), handled
+appropriately with try/except blocks, and account account for
+appropriate HTTP status codes?
+* Are errors properly logged, and with the appropriate logging level?
+* We should define what the logging levels mean to us and when/how to
+use them.
+* We should also figure out what constitutes good log content.
+* Are client side errors being properly logged when possible?
+* Are errors handled gracefully?
+** We should define what graceful means to us - appropriate error
+messages displayed to the users, expected application behavior in the
+case of not being able to retrieve information from an external resource
+or write to a data store, etc.
+* Are values repeated throughout the code properly moved into constants
+or settings as appropriate to reduce hardcoded values?
+** Cookie names should always fall under this.
+** Fields names used throughout different pieces of code should also
+fall under this, such as key names in an SSO token and fields names in a
+form, both of which deal with user registration.
+** URLs to hit internal and external APIs should also be handled this
+way.
+** It might be worth discussing a bit to figure out what would make more
+sense for a given value and whether it should be a constant or a
+setting.
+* JS and SASS (CSS) constants.
+* Is the code properly documented and have relevant, useful comments,
+especially in areas of complex logic dealing with multiple business
+rules and requirements?
+* In the cases of areas where help text can be displayed (e.g., the
+Django admin), is that help text clear, concise, and accurate?
+* Is the HTML valid and well-formed, and template logic kept to a bare
+minimum?
+* When overriding event handling in JavaScript, do the overrides
+maintain correct functionality (e.g., not returning false to stop a form
+submit)?
+* If database migrations are necessary, do the migrations properly
+handle updating the database, particularly in the case of significant
+field changes?
+* If a field(s) is being removed, there should be at least 3 migrations,
+in this order:
+
+1.  New field is added (schema migration).
+2.  Data is migrated (data migration).
+3.  Old field is removed (schema migration).
+
+* Are there clear instructions for deployment?
+* Does the commit message for the changeset highlight everything that
+has been done in the changeset?
+* Does the code meet the needs of the requirement it is being built for?
+* Are there useful tests written to support the new development?
+

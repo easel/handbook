@@ -1,0 +1,69 @@
+[[development-culture]]
+Development Culture
+-------------------
+
+[[be-respectful-of-everyone-even-those-who-arent-here-yet]]
+Be Respectful of Everyone, Even Those Who Aren't Here (Yet!)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We will always make sure that our team is courteous and inclusive. It is
+never acceptable to make comments or jokes that you would not make if a
+person of a different gender or race were sitting in the room. Whatever
+you believe or find funny in your private time is fine during off-hours,
+but when we are working we will never tolerate any kind of exclusionary
+humor or messaging. Sometimes this is difficult to keep in mind when we
+work in a homogenous group, but it is important to remember that our
+group will not remain homogenous forever, and we should always act as if
+we have a man and woman from every country and race on the team.
+
+[[be-agile]]
+Be Agile
+~~~~~~~~
+
+We follow the Agile practices and strive to cleave to the Agile
+Manifesto.
+
+[[be-a-craftsman]]
+Be a Craftsman
+~~~~~~~~~~~~~~
+
+In addition to following Agile practices, we strive to be the best
+craftsmen we can be. You should read the Software Craftsmanship
+Manifesto.
+
+[[play-well-with-others]]
+Play Well With Others
+~~~~~~~~~~~~~~~~~~~~~
+
+Keep in mind that it is never sufficient to simply lead the way. It is
+always necessary to help the rest of the team keep up and keep on track.
+Here is a list of things you can do to play nice:
+
+* Be available via group chat every day Video chat with colleagues a lot
+* Write good documentation of features and processes in the shared docs
+environment
+* Write excellent comments in your code
+* Follow coding patterns as described in our development guidelines so
+your code is easy for others to understand
+* Share links to good, informative information you find
+* Pair program to help others learn the way
+* Ask for Help
+* If you are stuck on a development problem, ask your colleagues for
+help. Asking for help is not an admission of defeat; it's a sign of
+strength and trust in your fellow developers.
+
+[[read-the-world]]
+Read the World
+~~~~~~~~~~~~~~
+
+We should all be reading and paying attention to what's happening "out
+there". We need to leverage the ideas and efforts of our open source
+community to make the best applications we can.
+
+Here is a list of recommended reading:
+
+* Hacker News http://news.ycombinator.com
+* Ars Technica http://arstechnica.com
+* The Changelog http://thechangelog.com
+
+more? Add them here please!
