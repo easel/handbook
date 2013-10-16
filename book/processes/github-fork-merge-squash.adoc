@@ -1,11 +1,11 @@
-== GitHub fork - merge-squash 
+=== GitHub PR-merge-squash Workflow
 
 When using GitHub there are a variety of possible workflows. Each has their 
 own merits, but for a large, long-running project with a number of committers
 it is worth considering taking the extra time to follow a fork, merge-squash
 strategy.
 
-The fork, merge-squash strategy works as follows. There are 3 "roles" involved. These
+The PR, merge-squash strategy works as follows. There are 3 "roles" involved. These
 roles may not necessarily filled by different people, but for the sake of clarity each
 step is assigned to one of them.
 
@@ -16,14 +16,16 @@ Product Management::
 Maintainers::
   Maintainers are the technical staff responsible for maintaining the repository. They
   are responsible for approving the code and keeping it moving through the pipeline.
-Contributors::
+Contributor::
   Contributors are the technical staff responsible for implementing features. 
 
-.Steps
+====Steps
+
+.Product Manager
 a. If necessary, the project management team creates Milestones and perhaps Issues
    representing the work to be completed.
 
-.Contributors
+.Contributor
 1. fork the master repository to their own local repositories.
 2. clone their personal fork to their local workstation
 3. create branches for each line of work on their local repository
@@ -39,11 +41,11 @@ a. If necessary, the project management team creates Milestones and perhaps Issu
     * the 3rd and subsequent lines should also contain a detailed description of what the
       code actually "is" and "does".
 
-.Maintainers
+.Maintainer
 1. review the pull request
 2. provide in-line feedback as needed
 
-.Contributors
+.Contributor
 1. respond to the feedback
 2. provide updated commits to their branch as needed.
 
@@ -89,6 +91,4 @@ it will automatically close out all the associated issues.
 Once the Contributor sees their pull request has been closed, they can simply delete their branch with the
 "delete branch" button in the GitHub UI, and pull the updated master branch to their local repository to base
 future work upon.
-
-
 
