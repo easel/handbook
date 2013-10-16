@@ -1,0 +1,94 @@
+== GitHub fork - merge-squash 
+
+When using GitHub there are a variety of possible workflows. Each has their 
+own merits, but for a large, long-running project with a number of committers
+it is worth considering taking the extra time to follow a fork, merge-squash
+strategy.
+
+The fork, merge-squash strategy works as follows. There are 3 "roles" involved. These
+roles may not necessarily filled by different people, but for the sake of clarity each
+step is assigned to one of them.
+
+Product Management::
+  Product Management tasked with understanding the long term goals of the project and 
+  measuring progress towards them. These people are also responsible for outlining the work 
+  to be done and verifying that changes made work as expected.
+Maintainers::
+  Maintainers are the technical staff responsible for maintaining the repository. They
+  are responsible for approving the code and keeping it moving through the pipeline.
+Contributors::
+  Contributors are the technical staff responsible for implementing features. 
+
+.Steps
+a. If necessary, the project management team creates Milestones and perhaps Issues
+   representing the work to be completed.
+
+.Contributors
+1. fork the master repository to their own local repositories.
+2. clone their personal fork to their local workstation
+3. create branches for each line of work on their local repository
+4. write code, committing it to their branch frequently
+5. push their local feature-branch to their personal fork on github
+6. use GitHub's "Compare and Pull Request" feature to open a pull request against
+   the master repository
+7. update the pull request's description field with an accurate description of the
+   change, conforming to the commit message guidelines
+    * the first line of the message shoul be 58 char or less and contain the milestone number
+    * the 3rd and subsequent lines should contain the text "fixes #xxx" where xxx is the
+      github issue(s) that are fixed by this pull request
+    * the 3rd and subsequent lines should also contain a detailed description of what the
+      code actually "is" and "does".
+
+.Maintainers
+1. review the pull request
+2. provide in-line feedback as needed
+
+.Contributors
+1. respond to the feedback
+2. provide updated commits to their branch as needed.
+
+Once the pull request meets the feature requirements, code review, and is otherwise
+deemed to be complete, the Maintainer will squash-merge the commit and close the associated
+issues and the pull request itself.
+
+In order to facilitate this, the maintainer should edit their ".git/config" file and add the
+following line to the `[origin]` section: `fetch = +refs/pull/*/head:refs/remotes/origin/pr/*`. 
+Doing  that will allow you to run `git remote update --prune && git fetch` and then `git branch -r`.
+
+Your `git branch -r` output should look like the following, with a new "branch" for each pull request.
+
+----
+
+    * [new ref]         refs/pull/10/head -> origin/pr/10
+    * [new ref]         refs/pull/11/head -> origin/pr/11
+
+----
+
+You can use `git log origin/pr/10` to view the changelog for the PR, `git diff origin/pr/10` to see the changes.
+
+To merge the change, use `git merge --squash origin/pr/10 -m 'COMMIT MESSAGE'`
+
+For the commit messge, copy the description from the pull request. It should look something like this:
+
+----
+
+    M1 - implement new frob-nizz feature
+
+    - lint all the files, fixes #1
+    - add some huge dependencies, fixes #2
+    - implement new frobb-nizz features, fixes #10
+
+----
+
+In particular, you'll need to add the last line, (fixes #10) to mark the pull request as closed.
+
+Once the Maintainer is happy with the commit and commit message, simply push it back to the origin repo 
+with `git push origin master`. When GitHub sees the commit and the fixes #xxx lines in the commit message,
+it will automatically close out all the associated issues.
+
+Once the Contributor sees their pull request has been closed, they can simply delete their branch with the
+"delete branch" button in the GitHub UI, and pull the updated master branch to their local repository to base
+future work upon.
+
+
+
