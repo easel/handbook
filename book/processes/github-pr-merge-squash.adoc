@@ -19,7 +19,7 @@ Maintainers::
 Contributor::
   Contributors are the technical staff responsible for implementing features. 
 
-====Steps
+==== Steps
 
 .Product Manager
 a. If necessary, the project management team creates Milestones and perhaps Issues
@@ -87,6 +87,15 @@ In particular, you'll need to add the last line, (fixes #10) to mark the pull re
 Once the Maintainer is happy with the commit and commit message, simply push it back to the origin repo 
 with `git push origin master`. When GitHub sees the commit and the fixes #xxx lines in the commit message,
 it will automatically close out all the associated issues.
+
+There is also a short script to help with handling this. Copy the following script to someplace on your path,
+for instance `$HOME/bin/git-mergepr` and mark it as executable. Then you can simple execute `git mergepr 10` or
+`git mergepr` to see a list of the available pull requests.
+
+[ruby]
+source~~~~
+include::git-mergepr.rb[]
+source~~~~
 
 Once the Contributor sees their pull request has been closed, they can simply delete their branch with the
 "delete branch" button in the GitHub UI, and pull the updated master branch to their local repository to base
