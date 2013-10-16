@@ -92,10 +92,10 @@ There is also a short script to help with handling this. Copy the following scri
 for instance `$HOME/bin/git-mergepr` and mark it as executable. Then you can simple execute `git mergepr 10` or
 `git mergepr` to see a list of the available pull requests.
 
-[ruby]
-source~~~~
+[source,ruby]
+----
 include::git-mergepr.rb[]
-source~~~~
+----
 
 Once the Contributor sees their pull request has been closed, they can simply delete their branch with the
 "delete branch" button in the GitHub UI, and pull the updated master branch to their local repository to base

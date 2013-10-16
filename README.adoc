@@ -2,9 +2,11 @@
 Developers Handbook
 -------------------
 
-This book is written using using the git-scribe toolchain, which can be found at:
+This book is written using asciidoc.
 
-http://github.com/schacon/git-scribe
+For the optimal rendering, you will want to use asciidoctor, from 
+http://asciidoctor.org
 
-Instructions on how to install the tool and use it for things like editing this book,
-submitting errata and providing translations can be found at that site.
+To install AsciiDoctor, follow the instructions at http://asciidoctor.org/docs/install-toolchain/
+
+To generate the book, execute `asciidoctor -o output/book.html book/book.asc`
