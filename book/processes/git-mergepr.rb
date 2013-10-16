@@ -12,16 +12,16 @@ end
 def shell(command)
   result = %x[#{command}]
   abort("Failed to run command: ".red + "#{command}") unless $?.exitstatus === 0
-  result
+  result.strip
 end
 
-shell("git remote update > /dev/null 2>&1")
+_, org, repo = shell("git config --get remote.origin.url").match(/github\.com(\/|:)([\w\.\-_]+)\/([\w\-_\.]+)\.git/).captures rescue nil
+user = shell("git config --get github.user")
+access_token = shell("git config --get github.token")
 
-_, org, repo = `git config --get remote.origin.url`.match(/github\.com(\/|:)([\w\.\-_]+)\/([\w\-_\.]+)\.git/).captures rescue nil
-
-user = `git config --get github.user`.strip
-
-access_token = `git config --get github.token`.strip
+unless shell("git config --get remote.origin.fetch").match(/origin\/pr\/\*/)
+  shell("git config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pr/*")
+end
 
 abort("Please run 'git config --global --add github.user YOURUSERNAME'".red) if user.empty?
 abort("Please run 'git config --global --add github.token YOURTOKEN' getting a Personal Access Token from https://github.com/settings/applications".red) if access_token.empty?
@@ -29,6 +29,7 @@ abort("Invalid github origin remote".red) unless org && repo
 
 pull_request_id = ARGV[0]
 
+shell("git remote update > /dev/null 2>&1")
 
 $pull_requests = JSON.parse(shell("curl -u '#{user}:#{access_token}' https://api.github.com/repos/#{org}/#{repo}/pulls 2>/dev/null"))
 
