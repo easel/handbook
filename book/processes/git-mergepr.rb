@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 begin
+  require 'rubygems'
   require 'shellwords'
   require 'json'
   require 'colorize'
