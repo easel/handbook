@@ -2,789 +2,580 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="generator" content="AsciiDoc 8.6.7">
+<meta name="generator" content="Asciidoctor 0.1.4">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A Pragmatic Developers Handbook</title>
-<style type="text/css">
-/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
-
-/* Default font. */
-body {
-  font-family: Georgia,serif;
-}
-
-/* Title font. */
-h1, h2, h3, h4, h5, h6,
-div.title, caption.title,
-thead, p.table.header,
-#toctitle,
-#author, #revnumber, #revdate, #revremark,
-#footer {
-  font-family: Arial,Helvetica,sans-serif;
-}
-
-body {
-  margin: 1em 5% 1em 5%;
-}
-
-a {
-  color: blue;
-  text-decoration: underline;
-}
-a:visited {
-  color: fuchsia;
-}
-
-em {
-  font-style: italic;
-  color: navy;
-}
-
-strong {
-  font-weight: bold;
-  color: #083194;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: #527bbd;
-  margin-top: 1.2em;
-  margin-bottom: 0.5em;
-  line-height: 1.3;
-}
-
-h1, h2, h3 {
-  border-bottom: 2px solid silver;
-}
-h2 {
-  padding-top: 0.5em;
-}
-h3 {
-  float: left;
-}
-h3 + * {
-  clear: left;
-}
-h5 {
-  font-size: 1.0em;
-}
-
-div.sectionbody {
-  margin-left: 0;
-}
-
-hr {
-  border: 1px solid silver;
-}
-
-p {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-}
-
-ul, ol, li > p {
-  margin-top: 0;
-}
-ul > li     { color: #aaa; }
-ul > li > * { color: black; }
-
-pre {
-  padding: 0;
-  margin: 0;
-}
-
-#author {
-  color: #527bbd;
-  font-weight: bold;
-  font-size: 1.1em;
-}
-#email {
-}
-#revnumber, #revdate, #revremark {
-}
-
-#footer {
-  font-size: small;
-  border-top: 2px solid silver;
-  padding-top: 0.5em;
-  margin-top: 4.0em;
-}
-#footer-text {
-  float: left;
-  padding-bottom: 0.5em;
-}
-#footer-badges {
-  float: right;
-  padding-bottom: 0.5em;
-}
-
-#preamble {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-}
-div.imageblock, div.exampleblock, div.verseblock,
-div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
-div.admonitionblock {
-  margin-top: 1.0em;
-  margin-bottom: 1.5em;
-}
-div.admonitionblock {
-  margin-top: 2.0em;
-  margin-bottom: 2.0em;
-  margin-right: 10%;
-  color: #606060;
-}
-
-div.content { /* Block element content. */
-  padding: 0;
-}
-
-/* Block element titles. */
-div.title, caption.title {
-  color: #527bbd;
-  font-weight: bold;
-  text-align: left;
-  margin-top: 1.0em;
-  margin-bottom: 0.5em;
-}
-div.title + * {
-  margin-top: 0;
-}
-
-td div.title:first-child {
-  margin-top: 0.0em;
-}
-div.content div.title:first-child {
-  margin-top: 0.0em;
-}
-div.content + div.title {
-  margin-top: 0.0em;
-}
-
-div.sidebarblock > div.content {
-  background: #ffffee;
-  border: 1px solid #dddddd;
-  border-left: 4px solid #f0f0f0;
-  padding: 0.5em;
-}
-
-div.listingblock > div.content {
-  border: 1px solid #dddddd;
-  border-left: 5px solid #f0f0f0;
-  background: #f8f8f8;
-  padding: 0.5em;
-}
-
-div.quoteblock, div.verseblock {
-  padding-left: 1.0em;
-  margin-left: 1.0em;
-  margin-right: 10%;
-  border-left: 5px solid #f0f0f0;
-  color: #888;
-}
-
-div.quoteblock > div.attribution {
-  padding-top: 0.5em;
-  text-align: right;
-}
-
-div.verseblock > pre.content {
-  font-family: inherit;
-  font-size: inherit;
-}
-div.verseblock > div.attribution {
-  padding-top: 0.75em;
-  text-align: left;
-}
-/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
-div.verseblock + div.attribution {
-  text-align: left;
-}
-
-div.admonitionblock .icon {
-  vertical-align: top;
-  font-size: 1.1em;
-  font-weight: bold;
-  text-decoration: underline;
-  color: #527bbd;
-  padding-right: 0.5em;
-}
-div.admonitionblock td.content {
-  padding-left: 0.5em;
-  border-left: 3px solid #dddddd;
-}
-
-div.exampleblock > div.content {
-  border-left: 3px solid #dddddd;
-  padding-left: 0.5em;
-}
-
-div.imageblock div.content { padding-left: 0; }
-span.image img { border-style: none; }
-a.image:visited { color: white; }
-
-dl {
-  margin-top: 0.8em;
-  margin-bottom: 0.8em;
-}
-dt {
-  margin-top: 0.5em;
-  margin-bottom: 0;
-  font-style: normal;
-  color: navy;
-}
-dd > *:first-child {
-  margin-top: 0.1em;
-}
-
-ul, ol {
-    list-style-position: outside;
-}
-ol.arabic {
-  list-style-type: decimal;
-}
-ol.loweralpha {
-  list-style-type: lower-alpha;
-}
-ol.upperalpha {
-  list-style-type: upper-alpha;
-}
-ol.lowerroman {
-  list-style-type: lower-roman;
-}
-ol.upperroman {
-  list-style-type: upper-roman;
-}
-
-div.compact ul, div.compact ol,
-div.compact p, div.compact p,
-div.compact div, div.compact div {
-  margin-top: 0.1em;
-  margin-bottom: 0.1em;
-}
-
-tfoot {
-  font-weight: bold;
-}
-td > div.verse {
-  white-space: pre;
-}
-
-div.hdlist {
-  margin-top: 0.8em;
-  margin-bottom: 0.8em;
-}
-div.hdlist tr {
-  padding-bottom: 15px;
-}
-dt.hdlist1.strong, td.hdlist1.strong {
-  font-weight: bold;
-}
-td.hdlist1 {
-  vertical-align: top;
-  font-style: normal;
-  padding-right: 0.8em;
-  color: navy;
-}
-td.hdlist2 {
-  vertical-align: top;
-}
-div.hdlist.compact tr {
-  margin: 0;
-  padding-bottom: 0;
-}
-
-.comment {
-  background: yellow;
-}
-
-.footnote, .footnoteref {
-  font-size: 0.8em;
-}
-
-span.footnote, span.footnoteref {
-  vertical-align: super;
-}
-
-#footnotes {
-  margin: 20px 0 20px 0;
-  padding: 7px 0 0 0;
-}
-
-#footnotes div.footnote {
-  margin: 0 0 5px 0;
-}
-
-#footnotes hr {
-  border: none;
-  border-top: 1px solid silver;
-  height: 1px;
-  text-align: left;
-  margin-left: 0;
-  width: 20%;
-  min-width: 100px;
-}
-
-div.colist td {
-  padding-right: 0.5em;
-  padding-bottom: 0.3em;
-  vertical-align: top;
-}
-div.colist td img {
-  margin-top: 0.3em;
-}
-
-@media print {
-  #footer-badges { display: none; }
-}
-
-#toc {
-  margin-bottom: 2.5em;
-}
-
-#toctitle {
-  color: #527bbd;
-  font-size: 1.1em;
-  font-weight: bold;
-  margin-top: 1.0em;
-  margin-bottom: 0.1em;
-}
-
-div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-div.toclevel2 {
-  margin-left: 2em;
-  font-size: 0.9em;
-}
-div.toclevel3 {
-  margin-left: 4em;
-  font-size: 0.9em;
-}
-div.toclevel4 {
-  margin-left: 6em;
-  font-size: 0.9em;
-}
-
-span.aqua { color: aqua; }
-span.black { color: black; }
-span.blue { color: blue; }
-span.fuchsia { color: fuchsia; }
-span.gray { color: gray; }
-span.green { color: green; }
-span.lime { color: lime; }
-span.maroon { color: maroon; }
-span.navy { color: navy; }
-span.olive { color: olive; }
-span.purple { color: purple; }
-span.red { color: red; }
-span.silver { color: silver; }
-span.teal { color: teal; }
-span.white { color: white; }
-span.yellow { color: yellow; }
-
-span.aqua-background { background: aqua; }
-span.black-background { background: black; }
-span.blue-background { background: blue; }
-span.fuchsia-background { background: fuchsia; }
-span.gray-background { background: gray; }
-span.green-background { background: green; }
-span.lime-background { background: lime; }
-span.maroon-background { background: maroon; }
-span.navy-background { background: navy; }
-span.olive-background { background: olive; }
-span.purple-background { background: purple; }
-span.red-background { background: red; }
-span.silver-background { background: silver; }
-span.teal-background { background: teal; }
-span.white-background { background: white; }
-span.yellow-background { background: yellow; }
-
-span.big { font-size: 2em; }
-span.small { font-size: 0.6em; }
-
-span.underline { text-decoration: underline; }
-span.overline { text-decoration: overline; }
-span.line-through { text-decoration: line-through; }
-
+<style>
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary { display: block; }
+audio, canvas, video { display: inline-block; }
+audio:not([controls]) { display: none; height: 0; }
+[hidden] { display: none; }
+html { background: #fff; color: #000; font-family: sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+body { margin: 0; }
+a:focus { outline: thin dotted; }
+a:active, a:hover { outline: 0; }
+h1 { font-size: 2em; margin: 0.67em 0; }
+abbr[title] { border-bottom: 1px dotted; }
+b, strong { font-weight: bold; }
+dfn { font-style: italic; }
+hr { -moz-box-sizing: content-box; box-sizing: content-box; height: 0; }
+mark { background: #ff0; color: #000; }
+code, kbd, pre, samp { font-family: monospace, serif; font-size: 1em; }
+pre { white-space: pre-wrap; }
+q { quotes: "\201C" "\201D" "\2018" "\2019"; }
+small { font-size: 80%; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+img { border: 0; }
+svg:not(:root) { overflow: hidden; }
+figure { margin: 0; }
+fieldset { border: 1px solid #c0c0c0; margin: 0 2px; padding: 0.35em 0.625em 0.75em; }
+legend { border: 0; padding: 0; }
+button, input, select, textarea { font-family: inherit; font-size: 100%; margin: 0; }
+button, input { line-height: normal; }
+button, select { text-transform: none; }
+button, html input[type="button"], input[type="reset"], input[type="submit"] { -webkit-appearance: button; cursor: pointer; }
+button[disabled], html input[disabled] { cursor: default; }
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; }
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+textarea { overflow: auto; vertical-align: top; }
+table { border-collapse: collapse; border-spacing: 0; }
+*, *:before, *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+html, body { font-size: 100%; }
+body { background: white; color: #222222; padding: 0; margin: 0; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-weight: normal; font-style: normal; line-height: 1; position: relative; cursor: auto; }
+a:hover { cursor: pointer; }
+a:focus { outline: none; }
+img, object, embed { max-width: 100%; height: auto; }
+object, embed { height: 100%; }
+img { -ms-interpolation-mode: bicubic; }
+#map_canvas img, #map_canvas embed, #map_canvas object, .map_canvas img, .map_canvas embed, .map_canvas object { max-width: none !important; }
+.left { float: left !important; }
+.right { float: right !important; }
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
+.text-center { text-align: center !important; }
+.text-justify { text-align: justify !important; }
+.hide { display: none; }
+.antialiased, body { -webkit-font-smoothing: antialiased; }
+img { display: inline-block; vertical-align: middle; }
+textarea { height: auto; min-height: 50px; }
+select { width: 100%; }
+p.lead, .paragraph.lead > p, #preamble > .sectionbody > .paragraph:first-of-type p { font-size: 1.21875em; line-height: 1.6; }
+.subheader, #content #toctitle, .admonitionblock td.content > .title, .exampleblock > .title, .imageblock > .title, .videoblock > .title, .listingblock > .title, .literalblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, .sidebarblock > .title, .tableblock > .title, .verseblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title, .tableblock > caption { line-height: 1.4; color: #7a2518; font-weight: 300; margin-top: 0.2em; margin-bottom: 0.5em; }
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, #toctitle, .sidebarblock > .content > .title, h4, h5, h6, pre, form, p, blockquote, th, td { margin: 0; padding: 0; direction: ltr; }
+a { color: #005498; text-decoration: underline; line-height: inherit; }
+a:hover, a:focus { color: #00467f; }
+a img { border: none; }
+p { font-family: inherit; font-weight: normal; font-size: 1em; line-height: 1.6; margin-bottom: 1.25em; text-rendering: optimizeLegibility; }
+p aside { font-size: 0.875em; line-height: 1.35; font-style: italic; }
+h1, h2, h3, #toctitle, .sidebarblock > .content > .title, h4, h5, h6 { font-family: Georgia, "URW Bookman L", Helvetica, Arial, sans-serif; font-weight: normal; font-style: normal; color: #ba3925; text-rendering: optimizeLegibility; margin-top: 1em; margin-bottom: 0.5em; line-height: 1.2125em; }
+h1 small, h2 small, h3 small, #toctitle small, .sidebarblock > .content > .title small, h4 small, h5 small, h6 small { font-size: 60%; color: #e99b8f; line-height: 0; }
+h1 { font-size: 2.125em; }
+h2 { font-size: 1.6875em; }
+h3, #toctitle, .sidebarblock > .content > .title { font-size: 1.375em; }
+h4 { font-size: 1.125em; }
+h5 { font-size: 1.125em; }
+h6 { font-size: 1em; }
+hr { border: solid #dddddd; border-width: 1px 0 0; clear: both; margin: 1.25em 0 1.1875em; height: 0; }
+em, i { font-style: italic; line-height: inherit; }
+strong, b { font-weight: bold; line-height: inherit; }
+small { font-size: 60%; line-height: inherit; }
+code { font-family: Consolas, "Liberation Mono", Courier, monospace; font-weight: normal; color: #6d180b; }
+ul, ol, dl { font-size: 1em; line-height: 1.6; margin-bottom: 1.25em; list-style-position: outside; font-family: inherit; }
+ul, ol { margin-left: 1.5em; }
+ul li ul, ul li ol { margin-left: 1.25em; margin-bottom: 0; font-size: 1em; }
+ul.square li ul, ul.circle li ul, ul.disc li ul { list-style: inherit; }
+ul.square { list-style-type: square; }
+ul.circle { list-style-type: circle; }
+ul.disc { list-style-type: disc; }
+ul.no-bullet { list-style: none; }
+ol li ul, ol li ol { margin-left: 1.25em; margin-bottom: 0; }
+dl dt { margin-bottom: 0.3125em; font-weight: bold; }
+dl dd { margin-bottom: 1.25em; }
+abbr, acronym { text-transform: uppercase; font-size: 90%; color: #222222; border-bottom: 1px dotted #dddddd; cursor: help; }
+abbr { text-transform: none; }
+blockquote { margin: 0 0 1.25em; padding: 0.5625em 1.25em 0 1.1875em; border-left: 1px solid #dddddd; }
+blockquote cite { display: block; font-size: inherit; color: #555555; }
+blockquote cite:before { content: "\2014 \0020"; }
+blockquote cite a, blockquote cite a:visited { color: #555555; }
+blockquote, blockquote p { line-height: 1.6; color: #6f6f6f; }
+.vcard { display: inline-block; margin: 0 0 1.25em 0; border: 1px solid #dddddd; padding: 0.625em 0.75em; }
+.vcard li { margin: 0; display: block; }
+.vcard .fn { font-weight: bold; font-size: 0.9375em; }
+.vevent .summary { font-weight: bold; }
+.vevent abbr { cursor: auto; text-decoration: none; font-weight: bold; border: none; padding: 0 0.0625em; }
+@media only screen and (min-width: 768px) { h1, h2, h3, #toctitle, .sidebarblock > .content > .title, h4, h5, h6 { line-height: 1.4; }
+  h1 { font-size: 2.75em; }
+  h2 { font-size: 2.3125em; }
+  h3, #toctitle, .sidebarblock > .content > .title { font-size: 1.6875em; }
+  h4 { font-size: 1.4375em; } }
+.print-only { display: none !important; }
+@media print { * { background: transparent !important; color: #000 !important; box-shadow: none !important; text-shadow: none !important; }
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3, #toctitle, .sidebarblock > .content > .title { orphans: 3; widows: 3; }
+  h2, h3, #toctitle, .sidebarblock > .content > .title { page-break-after: avoid; }
+  .hide-on-print { display: none !important; }
+  .print-only { display: block !important; }
+  .hide-for-print { display: none !important; }
+  .show-for-print { display: inherit !important; } }
+table { background: white; margin-bottom: 1.25em; border: solid 1px #dddddd; }
+table thead, table tfoot { background: whitesmoke; font-weight: bold; }
+table thead tr th, table thead tr td, table tfoot tr th, table tfoot tr td { padding: 0.5em 0.625em 0.625em; font-size: inherit; color: #222222; text-align: left; }
+table tr th, table tr td { padding: 0.5625em 0.625em; font-size: inherit; color: #222222; }
+table tr.even, table tr.alt, table tr:nth-of-type(even) { background: #f9f9f9; }
+table thead tr th, table tfoot tr th, table tbody tr td, table tr td, table tfoot tr td { display: table-cell; line-height: 1.6; }
+.clearfix:before, .clearfix:after, .float-group:before, .float-group:after { content: " "; display: table; }
+.clearfix:after, .float-group:after { clear: both; }
+*:not(pre) > code { font-size: 0.9375em; padding: 1px 3px 0; white-space: nowrap; background-color: #f2f2f2; border: 1px solid #cccccc; -webkit-border-radius: 4px; border-radius: 4px; text-shadow: none; }
+pre, pre > code { line-height: 1.4; color: inherit; font-family: Consolas, "Liberation Mono", Courier, monospace; font-weight: normal; }
+kbd.keyseq { color: #555555; }
+kbd:not(.keyseq) { display: inline-block; color: #222222; font-size: 0.75em; line-height: 1.4; background-color: #F7F7F7; border: 1px solid #ccc; -webkit-border-radius: 3px; border-radius: 3px; -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px white inset; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px white inset; margin: -0.15em 0.15em 0 0.15em; padding: 0.2em 0.6em 0.2em 0.5em; vertical-align: middle; white-space: nowrap; }
+kbd kbd:first-child { margin-left: 0; }
+kbd kbd:last-child { margin-right: 0; }
+.menuseq, .menu { color: #090909; }
+p a > code:hover { color: #561309; }
+#header, #content, #footnotes, #footer { width: 100%; margin-left: auto; margin-right: auto; margin-top: 0; margin-bottom: 0; max-width: 62.5em; *zoom: 1; position: relative; padding-left: 0.9375em; padding-right: 0.9375em; }
+#header:before, #header:after, #content:before, #content:after, #footnotes:before, #footnotes:after, #footer:before, #footer:after { content: " "; display: table; }
+#header:after, #content:after, #footnotes:after, #footer:after { clear: both; }
+#header { margin-bottom: 2.5em; }
+#header > h1 { color: black; font-weight: normal; border-bottom: 1px solid #dddddd; margin-bottom: -28px; padding-bottom: 32px; }
+#header span { color: #6f6f6f; }
+#header #revnumber { text-transform: capitalize; }
+#header br { display: none; }
+#header br + span { padding-left: 3px; }
+#header br + span:before { content: "\2013 \0020"; }
+#header br + span.author { padding-left: 0; }
+#header br + span.author:before { content: ", "; }
+#toc { border-bottom: 3px double #ebebeb; padding-bottom: 1.25em; }
+#toc > ul { margin-left: 0.25em; }
+#toc ul.sectlevel0 > li > a { font-style: italic; }
+#toc ul.sectlevel0 ul.sectlevel1 { margin-left: 0; margin-top: 0.5em; margin-bottom: 0.5em; }
+#toc ul { list-style-type: none; }
+#toctitle { color: #7a2518; }
+@media only screen and (min-width: 1280px) { body.toc2 { padding-left: 20em; }
+  #toc.toc2 { position: fixed; width: 20em; left: 0; top: 0; border-right: 1px solid #ebebeb; border-bottom: 0; z-index: 1000; padding: 1em; height: 100%; overflow: auto; }
+  #toc.toc2 #toctitle { margin-top: 0; }
+  #toc.toc2 > ul { font-size: .95em; }
+  #toc.toc2 ul ul { margin-left: 0; padding-left: 1.25em; }
+  #toc.toc2 ul.sectlevel0 ul.sectlevel1 { padding-left: 0; margin-top: 0.5em; margin-bottom: 0.5em; }
+  body.toc2.toc-right { padding-left: 0; padding-right: 20em; }
+  body.toc2.toc-right #toc.toc2 { border-right: 0; border-left: 1px solid #ebebeb; left: auto; right: 0; } }
+#content #toc { border-style: solid; border-width: 1px; border-color: #d9d9d9; margin-bottom: 1.25em; padding: 1.25em; background: #f2f2f2; border-width: 0; -webkit-border-radius: 4px; border-radius: 4px; }
+#content #toc > :first-child { margin-top: 0; }
+#content #toc > :last-child { margin-bottom: 0; }
+#content #toc a { text-decoration: none; }
+#content #toctitle { font-weight: bold; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-size: 1em; padding-left: 0.125em; }
+#footer { max-width: 100%; background-color: #222222; padding: 1.25em; }
+#footer-text { color: #dddddd; line-height: 1.44; }
+.sect1 { padding-bottom: 1.25em; }
+.sect1 + .sect1 { border-top: 3px double #ebebeb; }
+#content h1 > a.anchor, h2 > a.anchor, h3 > a.anchor, #toctitle > a.anchor, .sidebarblock > .content > .title > a.anchor, h4 > a.anchor, h5 > a.anchor, h6 > a.anchor { position: absolute; width: 1em; margin-left: -1em; display: block; text-decoration: none; visibility: hidden; text-align: center; font-weight: normal; }
+#content h1 > a.anchor:before, h2 > a.anchor:before, h3 > a.anchor:before, #toctitle > a.anchor:before, .sidebarblock > .content > .title > a.anchor:before, h4 > a.anchor:before, h5 > a.anchor:before, h6 > a.anchor:before { content: '\00A7'; font-size: .85em; vertical-align: text-top; display: block; margin-top: 0.05em; }
+#content h1:hover > a.anchor, #content h1 > a.anchor:hover, h2:hover > a.anchor, h2 > a.anchor:hover, h3:hover > a.anchor, #toctitle:hover > a.anchor, .sidebarblock > .content > .title:hover > a.anchor, h3 > a.anchor:hover, #toctitle > a.anchor:hover, .sidebarblock > .content > .title > a.anchor:hover, h4:hover > a.anchor, h4 > a.anchor:hover, h5:hover > a.anchor, h5 > a.anchor:hover, h6:hover > a.anchor, h6 > a.anchor:hover { visibility: visible; }
+#content h1 > a.link, h2 > a.link, h3 > a.link, #toctitle > a.link, .sidebarblock > .content > .title > a.link, h4 > a.link, h5 > a.link, h6 > a.link { color: #ba3925; text-decoration: none; }
+#content h1 > a.link:hover, h2 > a.link:hover, h3 > a.link:hover, #toctitle > a.link:hover, .sidebarblock > .content > .title > a.link:hover, h4 > a.link:hover, h5 > a.link:hover, h6 > a.link:hover { color: #a53221; }
+.imageblock, .literalblock, .listingblock, .verseblock, .videoblock { margin-bottom: 1.25em; }
+.admonitionblock td.content > .title, .exampleblock > .title, .imageblock > .title, .videoblock > .title, .listingblock > .title, .literalblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, .sidebarblock > .title, .tableblock > .title, .verseblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title { text-align: left; font-weight: bold; }
+.tableblock > caption { text-align: left; font-weight: bold; white-space: nowrap; overflow: visible; max-width: 0; }
+table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p { font-size: inherit; }
+.admonitionblock > table { border: 0; background: none; width: 100%; }
+.admonitionblock > table td.icon { text-align: center; width: 80px; }
+.admonitionblock > table td.icon img { max-width: none; }
+.admonitionblock > table td.icon .title { font-weight: bold; text-transform: uppercase; }
+.admonitionblock > table td.content { padding-left: 1.125em; padding-right: 1.25em; border-left: 1px solid #dddddd; color: #6f6f6f; }
+.admonitionblock > table td.content > :last-child > :last-child { margin-bottom: 0; }
+.exampleblock > .content { border-style: solid; border-width: 1px; border-color: #e6e6e6; margin-bottom: 1.25em; padding: 1.25em; background: white; -webkit-border-radius: 4px; border-radius: 4px; }
+.exampleblock > .content > :first-child { margin-top: 0; }
+.exampleblock > .content > :last-child { margin-bottom: 0; }
+.exampleblock > .content h1, .exampleblock > .content h2, .exampleblock > .content h3, .exampleblock > .content #toctitle, .sidebarblock.exampleblock > .content > .title, .exampleblock > .content h4, .exampleblock > .content h5, .exampleblock > .content h6, .exampleblock > .content p { color: #333333; }
+.exampleblock > .content h1, .exampleblock > .content h2, .exampleblock > .content h3, .exampleblock > .content #toctitle, .sidebarblock.exampleblock > .content > .title, .exampleblock > .content h4, .exampleblock > .content h5, .exampleblock > .content h6 { line-height: 1; margin-bottom: 0.625em; }
+.exampleblock > .content h1.subheader, .exampleblock > .content h2.subheader, .exampleblock > .content h3.subheader, .exampleblock > .content .subheader#toctitle, .sidebarblock.exampleblock > .content > .subheader.title, .exampleblock > .content h4.subheader, .exampleblock > .content h5.subheader, .exampleblock > .content h6.subheader { line-height: 1.4; }
+.exampleblock.result > .content { -webkit-box-shadow: 0 1px 8px #d9d9d9; box-shadow: 0 1px 8px #d9d9d9; }
+.sidebarblock { border-style: solid; border-width: 1px; border-color: #d9d9d9; margin-bottom: 1.25em; padding: 1.25em; background: #f2f2f2; -webkit-border-radius: 4px; border-radius: 4px; }
+.sidebarblock > :first-child { margin-top: 0; }
+.sidebarblock > :last-child { margin-bottom: 0; }
+.sidebarblock h1, .sidebarblock h2, .sidebarblock h3, .sidebarblock #toctitle, .sidebarblock > .content > .title, .sidebarblock h4, .sidebarblock h5, .sidebarblock h6, .sidebarblock p { color: #333333; }
+.sidebarblock h1, .sidebarblock h2, .sidebarblock h3, .sidebarblock #toctitle, .sidebarblock > .content > .title, .sidebarblock h4, .sidebarblock h5, .sidebarblock h6 { line-height: 1; margin-bottom: 0.625em; }
+.sidebarblock h1.subheader, .sidebarblock h2.subheader, .sidebarblock h3.subheader, .sidebarblock .subheader#toctitle, .sidebarblock > .content > .subheader.title, .sidebarblock h4.subheader, .sidebarblock h5.subheader, .sidebarblock h6.subheader { line-height: 1.4; }
+.sidebarblock > .content > .title { color: #7a2518; margin-top: 0; line-height: 1.6; }
+.exampleblock > .content > :last-child > :last-child, .exampleblock > .content .olist > ol > li:last-child > :last-child, .exampleblock > .content .ulist > ul > li:last-child > :last-child, .exampleblock > .content .qlist > ol > li:last-child > :last-child, .sidebarblock > .content > :last-child > :last-child, .sidebarblock > .content .olist > ol > li:last-child > :last-child, .sidebarblock > .content .ulist > ul > li:last-child > :last-child, .sidebarblock > .content .qlist > ol > li:last-child > :last-child { margin-bottom: 0; }
+.literalblock > .content pre, .listingblock > .content pre { background: none; border-width: 1px 0; border-style: dotted; border-color: #bfbfbf; -webkit-border-radius: 4px; border-radius: 4px; padding: 0.75em 0.75em 0.5em 0.75em; word-wrap: break-word; }
+.literalblock > .content pre.nowrap, .listingblock > .content pre.nowrap { overflow-x: auto; white-space: pre; word-wrap: normal; }
+.literalblock > .content pre > code, .listingblock > .content pre > code { display: block; }
+@media only screen { .literalblock > .content pre, .listingblock > .content pre { font-size: 0.8em; } }
+@media only screen and (min-width: 768px) { .literalblock > .content pre, .listingblock > .content pre { font-size: 0.9em; } }
+@media only screen and (min-width: 1280px) { .literalblock > .content pre, .listingblock > .content pre { font-size: 1em; } }
+.listingblock > .content { position: relative; }
+.listingblock:hover code[class*=" language-"]:before { text-transform: uppercase; font-size: 0.9em; color: #999; position: absolute; top: 0.375em; right: 0.375em; }
+.listingblock:hover code.asciidoc:before { content: "asciidoc"; }
+.listingblock:hover code.clojure:before { content: "clojure"; }
+.listingblock:hover code.css:before { content: "css"; }
+.listingblock:hover code.groovy:before { content: "groovy"; }
+.listingblock:hover code.html:before { content: "html"; }
+.listingblock:hover code.java:before { content: "java"; }
+.listingblock:hover code.javascript:before { content: "javascript"; }
+.listingblock:hover code.python:before { content: "python"; }
+.listingblock:hover code.ruby:before { content: "ruby"; }
+.listingblock:hover code.scss:before { content: "scss"; }
+.listingblock:hover code.xml:before { content: "xml"; }
+.listingblock:hover code.yaml:before { content: "yaml"; }
+.listingblock.terminal pre .command:before { content: attr(data-prompt); padding-right: 0.5em; color: #999; }
+.listingblock.terminal pre .command:not([data-prompt]):before { content: '$'; }
+table.pyhltable { border: 0; margin-bottom: 0; }
+table.pyhltable td { vertical-align: top; padding-top: 0; padding-bottom: 0; }
+table.pyhltable td.code { padding-left: .75em; padding-right: 0; }
+.highlight.pygments .lineno, table.pyhltable td:not(.code) { color: #999; padding-left: 0; padding-right: .5em; border-right: 1px solid #dddddd; }
+.highlight.pygments .lineno { display: inline-block; margin-right: .25em; }
+table.pyhltable .linenodiv { background-color: transparent !important; padding-right: 0 !important; }
+.quoteblock { margin: 0 0 1.25em; padding: 0.5625em 1.25em 0 1.1875em; border-left: 1px solid #dddddd; }
+.quoteblock blockquote { margin: 0 0 1.25em 0; padding: 0 0 0.5625em 0; border: 0; }
+.quoteblock blockquote > .paragraph:last-child p { margin-bottom: 0; }
+.quoteblock .attribution { margin-top: -.25em; padding-bottom: 0.5625em; font-size: inherit; color: #555555; }
+.quoteblock .attribution br { display: none; }
+.quoteblock .attribution cite { display: block; margin-bottom: 0.625em; }
+table thead th, table tfoot th { font-weight: bold; }
+table.tableblock.grid-all { border-collapse: separate; border-spacing: 1px; -webkit-border-radius: 4px; border-radius: 4px; border-top: 1px solid #dddddd; border-bottom: 1px solid #dddddd; }
+table.tableblock.frame-topbot, table.tableblock.frame-none { border-left: 0; border-right: 0; }
+table.tableblock.frame-sides, table.tableblock.frame-none { border-top: 0; border-bottom: 0; }
+table.tableblock td .paragraph:last-child p, table.tableblock td > p:last-child { margin-bottom: 0; }
+th.tableblock.halign-left, td.tableblock.halign-left { text-align: left; }
+th.tableblock.halign-right, td.tableblock.halign-right { text-align: right; }
+th.tableblock.halign-center, td.tableblock.halign-center { text-align: center; }
+th.tableblock.valign-top, td.tableblock.valign-top { vertical-align: top; }
+th.tableblock.valign-bottom, td.tableblock.valign-bottom { vertical-align: bottom; }
+th.tableblock.valign-middle, td.tableblock.valign-middle { vertical-align: middle; }
+p.tableblock.header { color: #222222; font-weight: bold; }
+td > div.verse { white-space: pre; }
+ol { margin-left: 1.75em; }
+ul li ol { margin-left: 1.5em; }
+dl dd { margin-left: 1.125em; }
+dl dd:last-child, dl dd:last-child > :last-child { margin-bottom: 0; }
+ol > li p, ul > li p, ul dd, ol dd, .olist .olist, .ulist .ulist, .ulist .olist, .olist .ulist { margin-bottom: 0.625em; }
+ul.unstyled, ol.unnumbered, ul.checklist, ul.none { list-style-type: none; }
+ul.unstyled, ol.unnumbered, ul.checklist { margin-left: 0.625em; }
+ul.checklist li > p:first-child > i[class^="icon-check"]:first-child, ul.checklist li > p:first-child > input[type="checkbox"]:first-child { margin-right: 0.25em; }
+ul.checklist li > p:first-child > input[type="checkbox"]:first-child { position: relative; top: 1px; }
+ul.inline { margin: 0 auto 0.625em auto; margin-left: -1.375em; margin-right: 0; padding: 0; list-style: none; overflow: hidden; }
+ul.inline > li { list-style: none; float: left; margin-left: 1.375em; display: block; }
+ul.inline > li > * { display: block; }
+.unstyled dl dt { font-weight: normal; font-style: normal; }
+ol.arabic { list-style-type: decimal; }
+ol.decimal { list-style-type: decimal-leading-zero; }
+ol.loweralpha { list-style-type: lower-alpha; }
+ol.upperalpha { list-style-type: upper-alpha; }
+ol.lowerroman { list-style-type: lower-roman; }
+ol.upperroman { list-style-type: upper-roman; }
+ol.lowergreek { list-style-type: lower-greek; }
+.hdlist > table, .colist > table { border: 0; background: none; }
+.hdlist > table > tbody > tr, .colist > table > tbody > tr { background: none; }
+td.hdlist1 { padding-right: .8em; font-weight: bold; }
+td.hdlist1, td.hdlist2 { vertical-align: top; }
+.literalblock + .colist, .listingblock + .colist { margin-top: -0.5em; }
+.colist > table tr > td:first-of-type { padding: 0 .8em; line-height: 1; }
+.colist > table tr > td:last-of-type { padding: 0.25em 0; }
+.qanda > ol > li > p > em:only-child { color: #00467f; }
+.thumb, .th { line-height: 0; display: inline-block; border: solid 4px white; -webkit-box-shadow: 0 0 0 1px #dddddd; box-shadow: 0 0 0 1px #dddddd; }
+.imageblock.left, .imageblock[style*="float: left"] { margin: 0.25em 0.625em 1.25em 0; }
+.imageblock.right, .imageblock[style*="float: right"] { margin: 0.25em 0 1.25em 0.625em; }
+.imageblock > .title { margin-bottom: 0; }
+.imageblock.thumb, .imageblock.th { border-width: 6px; }
+.imageblock.thumb > .title, .imageblock.th > .title { padding: 0 0.125em; }
+.image.left, .image.right { margin-top: 0.25em; margin-bottom: 0.25em; display: inline-block; line-height: 0; }
+.image.left { margin-right: 0.625em; }
+.image.right { margin-left: 0.625em; }
+a.image { text-decoration: none; }
+span.footnote, span.footnoteref { vertical-align: super; font-size: 0.875em; }
+span.footnote a, span.footnoteref a { text-decoration: none; }
+#footnotes { padding-top: 0.75em; padding-bottom: 0.75em; margin-bottom: 0.625em; }
+#footnotes hr { width: 20%; min-width: 6.25em; margin: -.25em 0 .75em 0; border-width: 1px 0 0 0; }
+#footnotes .footnote { padding: 0 0.375em; line-height: 1.3; font-size: 0.875em; margin-left: 1.2em; text-indent: -1.2em; margin-bottom: .2em; }
+#footnotes .footnote a:first-of-type { font-weight: bold; text-decoration: none; }
+#footnotes .footnote:last-of-type { margin-bottom: 0; }
+#content #footnotes { margin-top: -0.625em; margin-bottom: 0; padding: 0.75em 0; }
+.gist .file-data > table { border: none; background: #fff; width: 100%; margin-bottom: 0; }
+.gist .file-data > table td.line-data { width: 99%; }
 div.unbreakable { page-break-inside: avoid; }
+.big { font-size: larger; }
+.small { font-size: smaller; }
+.underline { text-decoration: underline; }
+.overline { text-decoration: overline; }
+.line-through { text-decoration: line-through; }
+.aqua { color: #00bfbf; }
+.aqua-background { background-color: #00fafa; }
+.black { color: black; }
+.black-background { background-color: black; }
+.blue { color: #0000bf; }
+.blue-background { background-color: #0000fa; }
+.fuchsia { color: #bf00bf; }
+.fuchsia-background { background-color: #fa00fa; }
+.gray { color: #606060; }
+.gray-background { background-color: #7d7d7d; }
+.green { color: #006000; }
+.green-background { background-color: #007d00; }
+.lime { color: #00bf00; }
+.lime-background { background-color: #00fa00; }
+.maroon { color: #600000; }
+.maroon-background { background-color: #7d0000; }
+.navy { color: #000060; }
+.navy-background { background-color: #00007d; }
+.olive { color: #606000; }
+.olive-background { background-color: #7d7d00; }
+.purple { color: #600060; }
+.purple-background { background-color: #7d007d; }
+.red { color: #bf0000; }
+.red-background { background-color: #fa0000; }
+.silver { color: #909090; }
+.silver-background { background-color: #bcbcbc; }
+.teal { color: #006060; }
+.teal-background { background-color: #007d7d; }
+.white { color: #bfbfbf; }
+.white-background { background-color: #fafafa; }
+.yellow { color: #bfbf00; }
+.yellow-background { background-color: #fafa00; }
+span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
+.admonitionblock td.icon [class^="icon-"]:before { font-size: 2.5em; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); cursor: default; }
+.admonitionblock td.icon .icon-note:before { content: "\f05a"; color: #005498; color: #003f72; }
+.admonitionblock td.icon .icon-tip:before { content: "\f0eb"; text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8); color: #111; }
+.admonitionblock td.icon .icon-warning:before { content: "\f071"; color: #bf6900; }
+.admonitionblock td.icon .icon-caution:before { content: "\f06d"; color: #bf3400; }
+.admonitionblock td.icon .icon-important:before { content: "\f06a"; color: #bf0000; }
+.conum { display: inline-block; color: white !important; background-color: #222222; -webkit-border-radius: 100px; border-radius: 100px; text-align: center; width: 20px; height: 20px; font-size: 12px; font-weight: bold; line-height: 20px; font-family: Arial, sans-serif; font-style: normal; position: relative; top: -2px; letter-spacing: -1px; }
+.conum * { color: white !important; }
+.conum + b { display: none; }
+.conum:after { content: attr(data-value); }
+.conum:not([data-value]):empty { display: none; }
+.literalblock > .content > pre, .listingblock > .content > pre { -webkit-border-radius: 0; border-radius: 0; }
 
-
-/*
- * xhtml11 specific
- *
- * */
-
-tt {
-  font-family: "Courier New", Courier, monospace;
-  font-size: inherit;
-  color: navy;
-}
-
-div.tableblock {
-  margin-top: 1.0em;
-  margin-bottom: 1.5em;
-}
-div.tableblock > table {
-  border: 3px solid #527bbd;
-}
-thead, p.table.header {
-  font-weight: bold;
-  color: #527bbd;
-}
-p.table {
-  margin-top: 0;
-}
-/* Because the table frame attribute is overriden by CSS in most browsers. */
-div.tableblock > table[frame="void"] {
-  border-style: none;
-}
-div.tableblock > table[frame="hsides"] {
-  border-left-style: none;
-  border-right-style: none;
-}
-div.tableblock > table[frame="vsides"] {
-  border-top-style: none;
-  border-bottom-style: none;
-}
-
-
-/*
- * html5 specific
- *
- * */
-
-.monospaced {
-  font-family: "Courier New", Courier, monospace;
-  font-size: inherit;
-  color: navy;
-}
-
-table.tableblock {
-  margin-top: 1.0em;
-  margin-bottom: 1.5em;
-}
-thead, p.tableblock.header {
-  font-weight: bold;
-  color: #527bbd;
-}
-p.tableblock {
-  margin-top: 0;
-}
-table.tableblock {
-  border-width: 3px;
-  border-spacing: 0px;
-  border-style: solid;
-  border-color: #527bbd;
-  border-collapse: collapse;
-}
-th.tableblock, td.tableblock {
-  border-width: 1px;
-  padding: 4px;
-  border-style: solid;
-  border-color: #527bbd;
-}
-
-table.tableblock.frame-topbot {
-  border-left-style: hidden;
-  border-right-style: hidden;
-}
-table.tableblock.frame-sides {
-  border-top-style: hidden;
-  border-bottom-style: hidden;
-}
-table.tableblock.frame-none {
-  border-style: hidden;
-}
-
-th.tableblock.halign-left, td.tableblock.halign-left {
-  text-align: left;
-}
-th.tableblock.halign-center, td.tableblock.halign-center {
-  text-align: center;
-}
-th.tableblock.halign-right, td.tableblock.halign-right {
-  text-align: right;
-}
-
-th.tableblock.valign-top, td.tableblock.valign-top {
-  vertical-align: top;
-}
-th.tableblock.valign-middle, td.tableblock.valign-middle {
-  vertical-align: middle;
-}
-th.tableblock.valign-bottom, td.tableblock.valign-bottom {
-  vertical-align: bottom;
-}
-
-
-/*
- * manpage specific
- *
- * */
-
-body.manpage h1 {
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  border-top: 2px solid silver;
-  border-bottom: 2px solid silver;
-}
-body.manpage h2 {
-  border-style: none;
-}
-body.manpage div.sectionbody {
-  margin-left: 3em;
-}
-
-@media print {
-  body.manpage div#toc { display: none; }
-}
-@media screen {
-  body {
-    max-width: 50em; /* approximately 80 characters wide */
-    margin-left: 16em;
-  }
-
-  #toc {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 13em;
-    padding: 0.5em;
-    padding-bottom: 1.5em;
-    margin: 0;
-    overflow: auto;
-    border-right: 3px solid #f8f8f8;
-    background-color: white;
-  }
-
-  #toc .toclevel1 {
-    margin-top: 0.5em;
-  }
-
-  #toc .toclevel2 {
-    margin-top: 0.25em;
-    display: list-item;
-    color: #aaaaaa;
-  }
-
-  #toctitle {
-    margin-top: 0.5em;
-  }
-}
 </style>
-<script type="text/javascript">
-/*<![CDATA[*/
-var asciidoc = {  // Namespace.
-
-/////////////////////////////////////////////////////////////////////
-// Table Of Contents generator
-/////////////////////////////////////////////////////////////////////
-
-/* Author: Mihai Bazon, September 2002
- * http://students.infoiasi.ro/~mishoo
- *
- * Table Of Content generator
- * Version: 0.4
- *
- * Feel free to use this script under the terms of the GNU General Public
- * License, as long as you do not remove or alter this notice.
- */
-
- /* modified by Troy D. Hanson, September 2006. License: GPL */
- /* modified by Stuart Rackham, 2006, 2009. License: GPL */
-
-// toclevels = 1..4.
-toc: function (toclevels) {
-
-  function getText(el) {
-    var text = "";
-    for (var i = el.firstChild; i != null; i = i.nextSibling) {
-      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
-        text += i.data;
-      else if (i.firstChild != null)
-        text += getText(i);
-    }
-    return text;
-  }
-
-  function TocEntry(el, text, toclevel) {
-    this.element = el;
-    this.text = text;
-    this.toclevel = toclevel;
-  }
-
-  function tocEntries(el, toclevels) {
-    var result = new Array;
-    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
-    // Function that scans the DOM tree for header elements (the DOM2
-    // nodeIterator API would be a better technique but not supported by all
-    // browsers).
-    var iterate = function (el) {
-      for (var i = el.firstChild; i != null; i = i.nextSibling) {
-        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
-          var mo = re.exec(i.tagName);
-          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
-            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
-          }
-          iterate(i);
-        }
-      }
-    }
-    iterate(el);
-    return result;
-  }
-
-  var toc = document.getElementById("toc");
-  if (!toc) {
-    return;
-  }
-
-  // Delete existing TOC entries in case we're reloading the TOC.
-  var tocEntriesToRemove = [];
-  var i;
-  for (i = 0; i < toc.childNodes.length; i++) {
-    var entry = toc.childNodes[i];
-    if (entry.nodeName.toLowerCase() == 'div'
-     && entry.getAttribute("class")
-     && entry.getAttribute("class").match(/^toclevel/))
-      tocEntriesToRemove.push(entry);
-  }
-  for (i = 0; i < tocEntriesToRemove.length; i++) {
-    toc.removeChild(tocEntriesToRemove[i]);
-  }
-
-  // Rebuild TOC entries.
-  var entries = tocEntries(document.getElementById("content"), toclevels);
-  for (var i = 0; i < entries.length; ++i) {
-    var entry = entries[i];
-    if (entry.element.id == "")
-      entry.element.id = "_toc_" + i;
-    var a = document.createElement("a");
-    a.href = "#" + entry.element.id;
-    a.appendChild(document.createTextNode(entry.text));
-    var div = document.createElement("div");
-    div.appendChild(a);
-    div.className = "toclevel" + entry.toclevel;
-    toc.appendChild(div);
-  }
-  if (entries.length == 0)
-    toc.parentNode.removeChild(toc);
-},
-
-
-/////////////////////////////////////////////////////////////////////
-// Footnotes generator
-/////////////////////////////////////////////////////////////////////
-
-/* Based on footnote generation code from:
- * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
- */
-
-footnotes: function () {
-  // Delete existing footnote entries in case we're reloading the footnodes.
-  var i;
-  var noteholder = document.getElementById("footnotes");
-  if (!noteholder) {
-    return;
-  }
-  var entriesToRemove = [];
-  for (i = 0; i < noteholder.childNodes.length; i++) {
-    var entry = noteholder.childNodes[i];
-    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
-      entriesToRemove.push(entry);
-  }
-  for (i = 0; i < entriesToRemove.length; i++) {
-    noteholder.removeChild(entriesToRemove[i]);
-  }
-
-  // Rebuild footnote entries.
-  var cont = document.getElementById("content");
-  var spans = cont.getElementsByTagName("span");
-  var refs = {};
-  var n = 0;
-  for (i=0; i<spans.length; i++) {
-    if (spans[i].className == "footnote") {
-      n++;
-      var note = spans[i].getAttribute("data-note");
-      if (!note) {
-        // Use [\s\S] in place of . so multi-line matches work.
-        // Because JavaScript has no s (dotall) regex flag.
-        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
-        spans[i].innerHTML =
-          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
-          "' title='View footnote' class='footnote'>" + n + "</a>]";
-        spans[i].setAttribute("data-note", note);
-      }
-      noteholder.innerHTML +=
-        "<div class='footnote' id='_footnote_" + n + "'>" +
-        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
-        n + "</a>. " + note + "</div>";
-      var id =spans[i].getAttribute("id");
-      if (id != null) refs["#"+id] = n;
-    }
-  }
-  if (n == 0)
-    noteholder.parentNode.removeChild(noteholder);
-  else {
-    // Process footnoterefs.
-    for (i=0; i<spans.length; i++) {
-      if (spans[i].className == "footnoteref") {
-        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
-        href = href.match(/#.*/)[0];  // Because IE return full URL.
-        n = refs[href];
-        spans[i].innerHTML =
-          "[<a href='#_footnote_" + n +
-          "' title='View footnote' class='footnote'>" + n + "</a>]";
-      }
-    }
-  }
-},
-
-install: function(toclevels) {
-  var timerId;
-
-  function reinstall() {
-    asciidoc.footnotes();
-    if (toclevels) {
-      asciidoc.toc(toclevels);
-    }
-  }
-
-  function reinstallAndRemoveTimer() {
-    clearInterval(timerId);
-    reinstall();
-  }
-
-  timerId = setInterval(reinstall, 500);
-  if (document.addEventListener)
-    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
-  else
-    window.onload = reinstallAndRemoveTimer;
-}
-
-}
-asciidoc.install(2);
-/*]]>*/
-</script>
+<style>
+.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #ffffff; }
+.highlight .tok-c { color: #888888 } /* Comment */
+.highlight .tok-err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight .tok-k { color: #008800; font-weight: bold } /* Keyword */
+.highlight .tok-cm { color: #888888 } /* Comment.Multiline */
+.highlight .tok-cp { color: #cc0000; font-weight: bold } /* Comment.Preproc */
+.highlight .tok-c1 { color: #888888 } /* Comment.Single */
+.highlight .tok-cs { color: #cc0000; font-weight: bold; background-color: #fff0f0 } /* Comment.Special */
+.highlight .tok-gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+.highlight .tok-ge { font-style: italic } /* Generic.Emph */
+.highlight .tok-gr { color: #aa0000 } /* Generic.Error */
+.highlight .tok-gh { color: #333333 } /* Generic.Heading */
+.highlight .tok-gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+.highlight .tok-go { color: #888888 } /* Generic.Output */
+.highlight .tok-gp { color: #555555 } /* Generic.Prompt */
+.highlight .tok-gs { font-weight: bold } /* Generic.Strong */
+.highlight .tok-gu { color: #666666 } /* Generic.Subheading */
+.highlight .tok-gt { color: #aa0000 } /* Generic.Traceback */
+.highlight .tok-kc { color: #008800; font-weight: bold } /* Keyword.Constant */
+.highlight .tok-kd { color: #008800; font-weight: bold } /* Keyword.Declaration */
+.highlight .tok-kn { color: #008800; font-weight: bold } /* Keyword.Namespace */
+.highlight .tok-kp { color: #008800 } /* Keyword.Pseudo */
+.highlight .tok-kr { color: #008800; font-weight: bold } /* Keyword.Reserved */
+.highlight .tok-kt { color: #888888; font-weight: bold } /* Keyword.Type */
+.highlight .tok-m { color: #0000DD; font-weight: bold } /* Literal.Number */
+.highlight .tok-s { color: #dd2200; background-color: #fff0f0 } /* Literal.String */
+.highlight .tok-na { color: #336699 } /* Name.Attribute */
+.highlight .tok-nb { color: #003388 } /* Name.Builtin */
+.highlight .tok-nc { color: #bb0066; font-weight: bold } /* Name.Class */
+.highlight .tok-no { color: #003366; font-weight: bold } /* Name.Constant */
+.highlight .tok-nd { color: #555555 } /* Name.Decorator */
+.highlight .tok-ne { color: #bb0066; font-weight: bold } /* Name.Exception */
+.highlight .tok-nf { color: #0066bb; font-weight: bold } /* Name.Function */
+.highlight .tok-nl { color: #336699; font-style: italic } /* Name.Label */
+.highlight .tok-nn { color: #bb0066; font-weight: bold } /* Name.Namespace */
+.highlight .tok-py { color: #336699; font-weight: bold } /* Name.Property */
+.highlight .tok-nt { color: #bb0066; font-weight: bold } /* Name.Tag */
+.highlight .tok-nv { color: #336699 } /* Name.Variable */
+.highlight .tok-ow { color: #008800 } /* Operator.Word */
+.highlight .tok-w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .tok-mf { color: #0000DD; font-weight: bold } /* Literal.Number.Float */
+.highlight .tok-mh { color: #0000DD; font-weight: bold } /* Literal.Number.Hex */
+.highlight .tok-mi { color: #0000DD; font-weight: bold } /* Literal.Number.Integer */
+.highlight .tok-mo { color: #0000DD; font-weight: bold } /* Literal.Number.Oct */
+.highlight .tok-sb { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Backtick */
+.highlight .tok-sc { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Char */
+.highlight .tok-sd { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Doc */
+.highlight .tok-s2 { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Double */
+.highlight .tok-se { color: #0044dd; background-color: #fff0f0 } /* Literal.String.Escape */
+.highlight .tok-sh { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Heredoc */
+.highlight .tok-si { color: #3333bb; background-color: #fff0f0 } /* Literal.String.Interpol */
+.highlight .tok-sx { color: #22bb22; background-color: #f0fff0 } /* Literal.String.Other */
+.highlight .tok-sr { color: #008800; background-color: #fff0ff } /* Literal.String.Regex */
+.highlight .tok-s1 { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Single */
+.highlight .tok-ss { color: #aa6600; background-color: #fff0f0 } /* Literal.String.Symbol */
+.highlight .tok-bp { color: #003388 } /* Name.Builtin.Pseudo */
+.highlight .tok-vc { color: #336699 } /* Name.Variable.Class */
+.highlight .tok-vg { color: #dd7700 } /* Name.Variable.Global */
+.highlight .tok-vi { color: #3333bb } /* Name.Variable.Instance */
+.highlight .tok-il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */
+</style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
 <h1>A Pragmatic Developers Handbook</h1>
-<span id="author">Erik LaBianca</span><br>
-<span id="email" class="monospaced">&lt;<a href="mailto:&lt;erik.labianca@gmail.com&gt;">&lt;erik.labianca@gmail.com&gt;</a>&gt;</span><br>
-<div id="toc">
-  <div id="toctitle">Table of Contents</div>
-  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+<span id="author" class="author">Erik LaBianca</span><br>
+<span id="email" class="email">&lt;<a href="mailto:erik.labianca@gmail.com">erik.labianca@gmail.com</a>&gt;</span><br>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">Introduction</a></li>
+<li><a href="#_processes_and_workflows">Processes and Workflows</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#_github_pr_merge_squash_workflow">GitHub PR-merge-squash Workflow</a></li>
+</ul>
+</li>
+<li><a href="#_standards">Standards</a></li>
+<li><a href="#code-review">Code Review</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#code-review-checklist">Code Review Checklist</a></li>
+</ul>
+</li>
+<li><a href="#commit-messages">Commit Messages</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#template">Template</a></li>
+</ul>
+</li>
+<li><a href="#cqrs-pattern">CQRS Pattern</a></li>
+<li><a href="#data-protection">Data Protection</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#minimization-of-data-retrieval">Minimization of Data Retrieval</a></li>
+<li><a href="#minimizing-data-exposure">Minimizing Data Exposure</a></li>
+</ul>
+</li>
+<li><a href="#development-culture">Development Culture</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#be-respectful-of-everyone-even-those-who-arent-here-yet">Be Respectful of Everyone, Even Those Who Aren&#8217;t Here (Yet!)</a></li>
+<li><a href="#be-agile">Be Agile</a></li>
+<li><a href="#be-a-craftsman">Be a Craftsman</a></li>
+<li><a href="#play-well-with-others">Play Well With Others</a></li>
+<li><a href="#read-the-world">Read the World</a></li>
+</ul>
+</li>
+<li><a href="#javascript-standards">Javascript Standards</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#coding-style">Coding Style</a></li>
+<li><a href="#libraries">Libraries</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+</ul>
+</li>
+<li><a href="#karma-test-runner">Karma Test Runner</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#running-javascript-tests">Running Javascript Tests</a></li>
+</ul>
+</li>
+<li><a href="#writing-javascript-tests">Writing Javascript Tests</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#test-loader-file-template">Test Loader File Template</a></li>
+<li><a href="#test-suite-file-template">Test Suite File Template</a></li>
+</ul>
+</li>
+<li><a href="#less-style-guide">LESS Style Guide</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#naming-patterns">Naming Patterns</a></li>
+<li><a href="#keep-in-mind">Keep in mind:</a></li>
+<li><a href="#mixins">Mixins</a></li>
+</ul>
+</li>
+<li><a href="#logging">Logging</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#python-logging">Python Logging</a></li>
+<li><a href="#python-exception-handling">Python Exception Handling</a></li>
+<li><a href="#javascript-logging">Javascript Logging</a></li>
+</ul>
+</li>
+<li><a href="#principles-of-operations">Principles of Operations</a></li>
+<li><a href="#rolling-deployments">Rolling Deployments</a></li>
+<li><a href="#pii-and-phi">PII and PHI</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#hipaa">HIPAA</a></li>
+<li><a href="#general-requirements-for-safe-handling-of-phi-and-pii">General Requirements for Safe Handling of PHI and PII</a></li>
+<li><a href="#phi-for-developers">PHI for Developers</a></li>
+<li><a href="#sanitized-scrubbed-anonymized-data-sets">Sanitized / Scrubbed / Anonymized Data Sets</a></li>
+</ul>
+</li>
+<li><a href="#python-coding-standards">Python Coding Standards</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#know-and-love-pep-8">Know and Love PEP-8</a></li>
+<li><a href="#tabs-vs.-spaces">Tabs vs. Spaces</a></li>
+<li><a href="#line-length">Line Length</a></li>
+<li><a href="#naming-conventions">Naming Conventions</a></li>
+<li><a href="#encapsulation-and-modularity">Encapsulation and Modularity</a></li>
+<li><a href="#project-structure">Project Structure</a></li>
+<li><a href="#import-statements">Import Statements</a></li>
+</ul>
+</li>
+<li><a href="#rest-api-conventions">REST API Conventions</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#assumptions">Assumptions</a></li>
+<li><a href="#query-string-parameters">Query String Parameters</a></li>
+<li><a href="#data-envelope-formatting">Data Envelope Formatting</a></li>
+</ul>
+</li>
+<li><a href="#scalability-principles">Scalability Principles</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#cache-management">Cache Management</a></li>
+<li><a href="#stateless-services">Stateless Services</a></li>
+<li><a href="#shared-storage">Shared Storage</a></li>
+<li><a href="#asyncronous-processing">Asyncronous Processing</a></li>
+</ul>
+</li>
+<li><a href="#principles-of-secure-development">Principles of Secure Development</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#confidentiality">Confidentiality</a></li>
+<li><a href="#simplicity">Simplicity</a></li>
+<li><a href="#minimized-attack-surface">Minimized Attack Surface</a></li>
+<li><a href="#separation-of-concerns">Separation of Concerns</a></li>
+<li><a href="#least-privilege">Least Privilege</a></li>
+<li><a href="#fail-securely">Fail Securely</a></li>
+<li><a href="#defense-in-depth">Defense in Depth</a></li>
+<li><a href="#obscurity-is-not-security">Obscurity is not Security</a></li>
+<li><a href="#fix-correctness">Fix Correctness</a></li>
+<li><a href="#other-resources">Other Resources</a></li>
+</ul>
+</li>
+<li><a href="#services-oriented-architecture">Services Oriented Architecture</a></li>
+</ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
 <h2 id="_introduction">Introduction</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>Software development is hard. Computing is evolving faster than anyone can keep up.
+<div class="paragraph">
+<p>Software development is hard. Computing is evolving faster than anyone can keep up.
 In order for a team to work efficiently, they must have processes to guide their
-interactions and standards to ensure their work product is reusable.</p></div>
+interactions and standards to ensure their work product is reusable.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -792,169 +583,241 @@ interactions and standards to ensure their work product is reusable.</p></div>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_github_pr_merge_squash_workflow">GitHub PR-merge-squash Workflow</h3>
-<div class="paragraph"><p>When using GitHub there are a variety of possible workflows. Each has their
+<div class="paragraph">
+<p>When using GitHub there are a variety of possible workflows. Each has their
 own merits, but for a large, long-running project with a number of committers
 it is worth considering taking the extra time to follow a fork, merge-squash
-strategy.</p></div>
-<div class="paragraph"><p>The PR, merge-squash strategy works as follows. There are 3 "roles" involved. These
+strategy.</p>
+</div>
+<div class="paragraph">
+<p>The PR, merge-squash strategy works as follows. There are 3 "roles" involved. These
 roles may not necessarily filled by different people, but for the sake of clarity each
-step is assigned to one of them.</p></div>
-<div class="dlist"><dl>
-<dt class="hdlist1">
-Product Management
-</dt>
+step is assigned to one of them.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Product Management</dt>
 <dd>
-<p>
-  Product Management tasked with understanding the long term goals of the project and
-  measuring progress towards them. These people are also responsible for outlining the work
-  to be done and verifying that changes made work as expected.
-</p>
+<p>Product Management tasked with understanding the long term goals of the project and
+measuring progress towards them. These people are also responsible for outlining the work
+to be done and verifying that changes made work as expected.</p>
 </dd>
-<dt class="hdlist1">
-Maintainers
-</dt>
+<dt class="hdlist1">Maintainers</dt>
 <dd>
-<p>
-  Maintainers are the technical staff responsible for maintaining the repository. They
-  are responsible for approving the code and keeping it moving through the pipeline.
-</p>
+<p>Maintainers are the technical staff responsible for maintaining the repository. They
+are responsible for approving the code and keeping it moving through the pipeline.</p>
 </dd>
-<dt class="hdlist1">
-Contributor
-</dt>
+<dt class="hdlist1">Contributor</dt>
 <dd>
-<p>
-  Contributors are the technical staff responsible for implementing features.
-</p>
+<p>Contributors are the technical staff responsible for implementing features.</p>
 </dd>
-</dl></div>
+</dl>
+</div>
 <div class="sect3">
 <h4 id="_steps">Steps</h4>
-<div class="olist loweralpha"><div class="title">Product Manager</div><ol class="loweralpha">
+<div class="olist loweralpha">
+<div class="title">Product Manager</div>
+<ol class="loweralpha" type="a">
 <li>
-<p>
-If necessary, the project management team creates Milestones and perhaps Issues
-   representing the work to be completed.
-</p>
+<p>If necessary, the project management team creates Milestones and perhaps Issues
+representing the work to be completed.</p>
 </li>
-</ol></div>
-<div class="olist arabic"><div class="title">Contributor</div><ol class="arabic">
+</ol>
+</div>
+<div class="olist arabic">
+<div class="title">Contributor</div>
+<ol class="arabic">
 <li>
-<p>
-fork the master repository to their own local repositories.
-</p>
-</li>
-<li>
-<p>
-clone their personal fork to their local workstation
-</p>
+<p>fork the master repository to their own local repositories.</p>
 </li>
 <li>
-<p>
-create branches for each line of work on their local repository
-</p>
+<p>clone their personal fork to their local workstation</p>
 </li>
 <li>
-<p>
-write code, committing it to their branch frequently
-</p>
+<p>create branches for each line of work on their local repository</p>
 </li>
 <li>
-<p>
-push their local feature-branch to their personal fork on github
-</p>
+<p>write code, committing it to their branch frequently</p>
 </li>
 <li>
-<p>
-use GitHub&#8217;s "Compare and Pull Request" feature to open a pull request against
-   the master repository
-</p>
+<p>push their local feature-branch to their personal fork on github</p>
 </li>
 <li>
-<p>
-update the pull request&#8217;s description field with an accurate description of the
-   change, conforming to the commit message guidelines
-</p>
-<div class="ulist"><ul>
-<li>
-<p>
-the first line of the message shoul be 58 char or less and contain the milestone number
-</p>
+<p>use GitHub&#8217;s "Compare and Pull Request" feature to open a pull request against
+the master repository</p>
 </li>
 <li>
-<p>
-the 3rd and subsequent lines should contain the text "fixes #xxx" where xxx is the
-      github issue(s) that are fixed by this pull request
-</p>
+<p>update the pull request&#8217;s description field with an accurate description of the
+change, conforming to the commit message guidelines</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the first line of the message shoul be 58 char or less and contain the milestone number</p>
 </li>
 <li>
-<p>
-the 3rd and subsequent lines should also contain a detailed description of what the
-      code actually "is" and "does".
-</p>
-</li>
-</ul></div>
-</li>
-</ol></div>
-<div class="olist arabic"><div class="title">Maintainer</div><ol class="arabic">
-<li>
-<p>
-review the pull request
-</p>
+<p>the 3rd and subsequent lines should contain the text "fixes #xxx" where xxx is the
+github issue(s) that are fixed by this pull request</p>
 </li>
 <li>
-<p>
-provide in-line feedback as needed
-</p>
+<p>the 3rd and subsequent lines should also contain a detailed description of what the
+code actually "is" and "does".</p>
 </li>
-</ol></div>
-<div class="olist arabic"><div class="title">Contributor</div><ol class="arabic">
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="olist arabic">
+<div class="title">Maintainer</div>
+<ol class="arabic">
 <li>
-<p>
-respond to the feedback
-</p>
+<p>review the pull request</p>
 </li>
 <li>
-<p>
-provide updated commits to their branch as needed.
-</p>
+<p>provide in-line feedback as needed</p>
 </li>
-</ol></div>
-<div class="paragraph"><p>Once the pull request meets the feature requirements, code review, and is otherwise
+</ol>
+</div>
+<div class="olist arabic">
+<div class="title">Contributor</div>
+<ol class="arabic">
+<li>
+<p>respond to the feedback</p>
+</li>
+<li>
+<p>provide updated commits to their branch as needed.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Once the pull request meets the feature requirements, code review, and is otherwise
 deemed to be complete, the Maintainer will squash-merge the commit and close the associated
-issues and the pull request itself.</p></div>
-<div class="paragraph"><p>In order to facilitate this, the maintainer should edit their ".git/config" file and add the
-following line to the <span class="monospaced">[origin]</span> section: <span class="monospaced">fetch = +refs/pull/*/head:refs/remotes/origin/pr/*</span>.
-Doing  that will allow you to run <span class="monospaced">git remote update --prune &amp;&amp; git fetch</span> and then <span class="monospaced">git branch -r</span>.</p></div>
-<div class="paragraph"><p>Your <span class="monospaced">git branch -r</span> output should look like the following, with a new "branch" for each pull request.</p></div>
+issues and the pull request itself.</p>
+</div>
+<div class="paragraph">
+<p>In order to facilitate this, the maintainer should edit their ".git/config" file and add the
+following line to the <code>[origin]</code> section: <code>fetch = +refs/pull/*/head:refs/remotes/origin/pr/*</code>.
+Doing  that will allow you to run <code>git remote update --prune &amp;&amp; git fetch</code> and then <code>git branch -r</code>.</p>
+</div>
+<div class="paragraph">
+<p>Your <code>git branch -r</code> output should look like the following, with a new "branch" for each pull request.</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre>    * [new ref]         refs/pull/10/head -&gt; origin/pr/10
-    * [new ref]         refs/pull/11/head -&gt; origin/pr/11</pre>
-</div></div>
-<div class="paragraph"><p>You can use <span class="monospaced">git log origin/pr/10</span> to view the changelog for the PR, <span class="monospaced">git diff origin/pr/10</span> to see the changes.</p></div>
-<div class="paragraph"><p>To merge the change, use <span class="monospaced">git merge --squash origin/pr/10 -m 'COMMIT MESSAGE'</span></p></div>
-<div class="paragraph"><p>For the commit messge, copy the description from the pull request. It should look something like this:</p></div>
+<div class="content">
+<pre>
+    * [new ref]         refs/pull/10/head -&gt; origin/pr/10
+    * [new ref]         refs/pull/11/head -&gt; origin/pr/11
+</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use <code>git log origin/pr/10</code> to view the changelog for the PR, <code>git diff origin/pr/10</code> to see the changes.</p>
+</div>
+<div class="paragraph">
+<p>To merge the change, use <code>git merge --squash origin/pr/10 -m 'COMMIT MESSAGE'</code></p>
+</div>
+<div class="paragraph">
+<p>For the commit messge, copy the description from the pull request. It should look something like this:</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre>    M1 - implement new frob-nizz feature
+<div class="content">
+<pre>
+    M1 - implement new frob-nizz feature
 
     - lint all the files, fixes #1
     - add some huge dependencies, fixes #2
-    - implement new frobb-nizz features, fixes #10</pre>
-</div></div>
-<div class="paragraph"><p>In particular, you&#8217;ll need to add the last line, (fixes #10) to mark the pull request as closed.</p></div>
-<div class="paragraph"><p>Once the Maintainer is happy with the commit and commit message, simply push it back to the origin repo
-with <span class="monospaced">git push origin master</span>. When GitHub sees the commit and the fixes #xxx lines in the commit message,
-it will automatically close out all the associated issues.</p></div>
-<div class="paragraph"><p>There is also a short script to help with handling this. Copy the following script to someplace on your path,
-for instance <span class="monospaced">$HOME/bin/git-mergepr</span> and mark it as executable. Then you can simple execute <span class="monospaced">git mergepr 10</span> or
-<span class="monospaced">git mergepr</span> to see a list of the available pull requests.</p></div>
+    - implement new frobb-nizz features, fixes #10
+</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In particular, you&#8217;ll need to add the last line, (fixes #10) to mark the pull request as closed.</p>
+</div>
+<div class="paragraph">
+<p>Once the Maintainer is happy with the commit and commit message, simply push it back to the origin repo
+with <code>git push origin master</code>. When GitHub sees the commit and the fixes #xxx lines in the commit message,
+it will automatically close out all the associated issues.</p>
+</div>
+<div class="paragraph">
+<p>There is also a short script to help with handling this. Copy the following script to someplace on your path,
+for instance <code>$HOME/bin/git-mergepr</code> and mark it as executable. Then you can simple execute <code>git mergepr 10</code> or
+<code>git mergepr</code> to see a list of the available pull requests.</p>
+</div>
 <div class="listingblock">
-<div class="content"></div></div>
-<div class="paragraph"><p>Once the Contributor sees their pull request has been closed, they can simply delete their branch with the
+<div class="content">
+<pre class="pygments highlight"><code class="ruby language-ruby"><span class="tok-c1">#!/usr/bin/env ruby</span>
+
+<span class="tok-k">begin</span>
+  <span class="tok-nb">require</span> <span class="tok-s1">&#39;shellwords&#39;</span>
+  <span class="tok-nb">require</span> <span class="tok-s1">&#39;json&#39;</span>
+  <span class="tok-nb">require</span> <span class="tok-s1">&#39;colorize&#39;</span>
+<span class="tok-k">rescue</span>
+  <span class="tok-nb">abort</span><span class="tok-p">(</span><span class="tok-s2">&quot;Please run &#39;gem install json colorize&#39;&quot;</span><span class="tok-p">)</span>
+<span class="tok-k">end</span>
+
+<span class="tok-k">def</span> <span class="tok-nf">shell</span><span class="tok-p">(</span><span class="tok-n">command</span><span class="tok-p">)</span>
+  <span class="tok-n">result</span> <span class="tok-o">=</span> <span class="tok-sx">%x[</span><span class="tok-si">#{</span><span class="tok-n">command</span><span class="tok-si">}</span><span class="tok-sx">]</span>
+  <span class="tok-nb">abort</span><span class="tok-p">(</span><span class="tok-s2">&quot;Failed to run command: &quot;</span><span class="tok-o">.</span><span class="tok-n">red</span> <span class="tok-o">+</span> <span class="tok-s2">&quot;</span><span class="tok-si">#{</span><span class="tok-n">command</span><span class="tok-si">}</span><span class="tok-s2">&quot;</span><span class="tok-p">)</span> <span class="tok-k">unless</span> <span class="tok-vg">$?</span><span class="tok-o">.</span><span class="tok-n">exitstatus</span> <span class="tok-o">===</span> <span class="tok-mi">0</span>
+  <span class="tok-n">result</span>
+<span class="tok-k">end</span>
+
+<span class="tok-n">shell</span><span class="tok-p">(</span><span class="tok-s2">&quot;git remote update &gt; /dev/null 2&gt;&amp;1&quot;</span><span class="tok-p">)</span>
+
+<span class="tok-n">_</span><span class="tok-p">,</span> <span class="tok-n">org</span><span class="tok-p">,</span> <span class="tok-n">repo</span> <span class="tok-o">=</span> <span class="tok-sb">`git config --get remote.origin.url`</span><span class="tok-o">.</span><span class="tok-n">match</span><span class="tok-p">(</span><span class="tok-sr">/github\.com(\/|:)([\w\.\-_]+)\/([\w\-_\.]+)\.git/</span><span class="tok-p">)</span><span class="tok-o">.</span><span class="tok-n">captures</span> <span class="tok-k">rescue</span> <span class="tok-kp">nil</span>
+
+<span class="tok-n">user</span> <span class="tok-o">=</span> <span class="tok-sb">`git config --get github.user`</span><span class="tok-o">.</span><span class="tok-n">strip</span>
+
+<span class="tok-n">access_token</span> <span class="tok-o">=</span> <span class="tok-sb">`git config --get github.token`</span><span class="tok-o">.</span><span class="tok-n">strip</span>
+
+<span class="tok-nb">abort</span><span class="tok-p">(</span><span class="tok-s2">&quot;Please run &#39;git config --global --add github.user YOURUSERNAME&#39;&quot;</span><span class="tok-o">.</span><span class="tok-n">red</span><span class="tok-p">)</span> <span class="tok-k">if</span> <span class="tok-n">user</span><span class="tok-o">.</span><span class="tok-n">empty?</span>
+<span class="tok-nb">abort</span><span class="tok-p">(</span><span class="tok-s2">&quot;Please run &#39;git config --global --add github.token YOURTOKEN&#39; getting a Personal Access Token from https://github.com/settings/applications&quot;</span><span class="tok-o">.</span><span class="tok-n">red</span><span class="tok-p">)</span> <span class="tok-k">if</span> <span class="tok-n">access_token</span><span class="tok-o">.</span><span class="tok-n">empty?</span>
+<span class="tok-nb">abort</span><span class="tok-p">(</span><span class="tok-s2">&quot;Invalid github origin remote&quot;</span><span class="tok-o">.</span><span class="tok-n">red</span><span class="tok-p">)</span> <span class="tok-k">unless</span> <span class="tok-n">org</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-n">repo</span>
+
+<span class="tok-n">pull_request_id</span> <span class="tok-o">=</span> <span class="tok-no">ARGV</span><span class="tok-o">[</span><span class="tok-mi">0</span><span class="tok-o">]</span>
+
+
+<span class="tok-vg">$pull_requests</span> <span class="tok-o">=</span> <span class="tok-no">JSON</span><span class="tok-o">.</span><span class="tok-n">parse</span><span class="tok-p">(</span><span class="tok-n">shell</span><span class="tok-p">(</span><span class="tok-s2">&quot;curl -u &#39;</span><span class="tok-si">#{</span><span class="tok-n">user</span><span class="tok-si">}</span><span class="tok-s2">:</span><span class="tok-si">#{</span><span class="tok-n">access_token</span><span class="tok-si">}</span><span class="tok-s2">&#39; https://api.github.com/repos/</span><span class="tok-si">#{</span><span class="tok-n">org</span><span class="tok-si">}</span><span class="tok-s2">/</span><span class="tok-si">#{</span><span class="tok-n">repo</span><span class="tok-si">}</span><span class="tok-s2">/pulls 2&gt;/dev/null&quot;</span><span class="tok-p">))</span>
+
+<span class="tok-k">def</span> <span class="tok-nf">merge_pull_request</span><span class="tok-p">(</span><span class="tok-n">pull_request_id</span><span class="tok-p">)</span>
+  <span class="tok-n">pull_request</span> <span class="tok-o">=</span> <span class="tok-vg">$pull_requests</span><span class="tok-o">.</span><span class="tok-n">find</span> <span class="tok-p">{</span> <span class="tok-o">|</span><span class="tok-n">pr</span><span class="tok-o">|</span> <span class="tok-n">pr</span><span class="tok-o">[</span><span class="tok-s1">&#39;number&#39;</span><span class="tok-o">].</span><span class="tok-n">to_s</span> <span class="tok-o">==</span> <span class="tok-n">pull_request_id</span><span class="tok-o">.</span><span class="tok-n">to_s</span> <span class="tok-p">}</span>
+  <span class="tok-nb">abort</span><span class="tok-p">(</span><span class="tok-s2">&quot;Unknown Pull Request: </span><span class="tok-si">#{</span><span class="tok-n">pull_request_id</span><span class="tok-si">}</span><span class="tok-s2">&quot;</span><span class="tok-o">.</span><span class="tok-n">red</span><span class="tok-p">)</span> <span class="tok-k">unless</span> <span class="tok-n">pull_request</span>
+
+  <span class="tok-k">if</span> <span class="tok-n">pull_request</span><span class="tok-o">[</span><span class="tok-s1">&#39;state&#39;</span><span class="tok-o">]</span> <span class="tok-o">==</span> <span class="tok-s1">&#39;open&#39;</span>
+    <span class="tok-n">commit_message</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;</span><span class="tok-si">#{</span><span class="tok-n">pull_request</span><span class="tok-o">[</span><span class="tok-s1">&#39;title&#39;</span><span class="tok-o">]</span><span class="tok-si">}</span><span class="tok-se">\n\n</span><span class="tok-si">#{</span><span class="tok-n">pull_request</span><span class="tok-o">[</span><span class="tok-s1">&#39;body&#39;</span><span class="tok-o">]</span><span class="tok-si">}</span><span class="tok-se">\n\n</span><span class="tok-s2">- Fixes #</span><span class="tok-si">#{</span><span class="tok-n">pull_request</span><span class="tok-o">[</span><span class="tok-s1">&#39;number&#39;</span><span class="tok-o">]</span><span class="tok-si">}</span><span class="tok-s2">&quot;</span>
+    <span class="tok-n">shell</span><span class="tok-p">(</span><span class="tok-sx">%Q[git merge --squash origin/pr/</span><span class="tok-si">#{</span><span class="tok-n">pull_request</span><span class="tok-o">[</span><span class="tok-s1">&#39;number&#39;</span><span class="tok-o">]</span><span class="tok-si">}</span><span class="tok-sx">]</span><span class="tok-p">)</span>
+    <span class="tok-n">shell</span><span class="tok-p">(</span><span class="tok-sx">%Q[git commit -m </span><span class="tok-si">#{</span><span class="tok-n">commit_message</span><span class="tok-o">.</span><span class="tok-n">shellescape</span><span class="tok-si">}</span><span class="tok-sx">]</span><span class="tok-p">)</span>
+
+    <span class="tok-nb">puts</span> <span class="tok-s2">&quot;</span><span class="tok-se">\n</span><span class="tok-s2">Successfully Merged Pull Request: &quot;</span><span class="tok-o">.</span><span class="tok-n">green</span> <span class="tok-o">+</span> <span class="tok-s2">&quot;#</span><span class="tok-si">#{</span><span class="tok-n">pull_request</span><span class="tok-o">[</span><span class="tok-s1">&#39;number&#39;</span><span class="tok-o">]</span><span class="tok-si">}</span><span class="tok-s2"> - </span><span class="tok-si">#{</span><span class="tok-n">pull_request</span><span class="tok-o">[</span><span class="tok-s1">&#39;title&#39;</span><span class="tok-o">]</span><span class="tok-si">}</span><span class="tok-s2">&quot;</span><span class="tok-o">.</span><span class="tok-n">yellow</span>
+    <span class="tok-nb">puts</span> <span class="tok-s2">&quot;  You can now run &quot;</span><span class="tok-o">.</span><span class="tok-n">light_black</span> <span class="tok-o">+</span> <span class="tok-s2">&quot;git push&quot;</span><span class="tok-o">.</span><span class="tok-n">yellow</span>
+  <span class="tok-k">else</span>
+    <span class="tok-nb">abort</span><span class="tok-p">(</span><span class="tok-s2">&quot;Pull request is not open&quot;</span><span class="tok-o">.</span><span class="tok-n">red</span><span class="tok-p">)</span>
+  <span class="tok-k">end</span>
+<span class="tok-k">end</span>
+
+<span class="tok-k">if</span> <span class="tok-n">pull_request_id</span>
+  <span class="tok-n">merge_pull_request</span><span class="tok-p">(</span><span class="tok-n">pull_request_id</span><span class="tok-p">)</span>
+<span class="tok-k">else</span>
+  <span class="tok-nb">puts</span> <span class="tok-s2">&quot;# Available Pull Requests&quot;</span><span class="tok-o">.</span><span class="tok-n">yellow</span>
+  <span class="tok-vg">$pull_requests</span><span class="tok-o">.</span><span class="tok-n">each</span> <span class="tok-k">do</span> <span class="tok-o">|</span><span class="tok-n">pull_request</span><span class="tok-o">|</span>
+    <span class="tok-k">next</span> <span class="tok-k">unless</span> <span class="tok-n">pull_request</span><span class="tok-o">[</span><span class="tok-s1">&#39;state&#39;</span><span class="tok-o">]</span> <span class="tok-o">===</span> <span class="tok-s1">&#39;open&#39;</span>
+
+    <span class="tok-nb">puts</span> <span class="tok-s2">&quot;  </span><span class="tok-si">#{</span><span class="tok-n">pull_request</span><span class="tok-o">[</span><span class="tok-s1">&#39;number&#39;</span><span class="tok-o">]</span><span class="tok-si">}</span><span class="tok-s2">)&quot;</span><span class="tok-o">.</span><span class="tok-n">green</span> <span class="tok-o">+</span> <span class="tok-s2">&quot; </span><span class="tok-si">#{</span><span class="tok-n">pull_request</span><span class="tok-o">[</span><span class="tok-s1">&#39;title&#39;</span><span class="tok-o">]</span><span class="tok-si">}</span><span class="tok-s2">&quot;</span>
+  <span class="tok-k">end</span>
+
+  <span class="tok-nb">puts</span> <span class="tok-s2">&quot;&quot;</span>
+  <span class="tok-nb">print</span> <span class="tok-s2">&quot;Which Pull Request would you like to merge? &quot;</span><span class="tok-o">.</span><span class="tok-n">yellow</span>
+  <span class="tok-n">input</span> <span class="tok-o">=</span> <span class="tok-nb">gets</span><span class="tok-o">.</span><span class="tok-n">strip</span>
+  <span class="tok-nb">puts</span> <span class="tok-s2">&quot;</span><span class="tok-se">\n</span><span class="tok-s2">&quot;</span>
+  <span class="tok-n">merge_pull_request</span><span class="tok-p">(</span><span class="tok-n">input</span><span class="tok-p">)</span>
+<span class="tok-k">end</span>
+</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the Contributor sees their pull request has been closed, they can simply delete their branch with the
 "delete branch" button in the GitHub UI, and pull the updated master branch to their local repository to base
-future work upon.</p></div>
+future work upon.</p>
+</div>
 </div>
 </div>
 </div>
@@ -962,284 +825,207 @@ future work upon.</p></div>
 <div class="sect1">
 <h2 id="_standards">Standards</h2>
 <div class="sectionbody">
+
 </div>
 </div>
 <div class="sect1">
 <h2 id="code-review">Code Review</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>Code Review is a key practice to ensuring software quality. It ensures
+<div class="paragraph">
+<p>Code Review is a key practice to ensuring software quality. It ensures
 that more than one person is familiar with the code and helps to unify
 coding standards and conventions, ensuring that the codebase is uniform
-and maintainable.</p></div>
+and maintainable.</p>
+</div>
 <div class="sect2">
 <h3 id="code-review-checklist">Code Review Checklist</h3>
 <div class="sect3">
 <h4 id="required">Required</h4>
-<div class="ulist"><ul>
+<div class="ulist">
+<ul>
 <li>
-<p>
-[Automate] Code Merges Cleanly
-</p>
+<p>[Automate] Code Merges Cleanly</p>
 </li>
 <li>
-<p>
-[Automate] Code passes PEP-8 and Pylint
-</p>
+<p>[Automate] Code passes PEP-8 and Pylint</p>
 </li>
 <li>
-<p>
-[Automate] Unit tests pass
-</p>
+<p>[Automate] Unit tests pass</p>
 </li>
 <li>
-<p>
-[Automate] All servers start without errors and home page loads
-</p>
+<p>[Automate] All servers start without errors and home page loads</p>
 </li>
 <li>
-<p>
-[Automate] Integration tests pass
-</p>
+<p>[Automate] Integration tests pass</p>
 </li>
 <li>
-<p>
-A detailed commit message is included, and accurately describes the
-full scope of the change
-</p>
+<p>A detailed commit message is included, and accurately describes the
+full scope of the change</p>
 </li>
 <li>
-<p>
-Does it smell bad?
-</p>
+<p>Does it smell bad?</p>
 </li>
 <li>
-<p>
-The code and overall design is compliant with the Secure Development
-Standards and is:
-</p>
+<p>The code and overall design is compliant with the Secure Development
+Standards and is:</p>
 </li>
 <li>
-<p>
-Simple
-</p>
+<p>Simple</p>
 </li>
 <li>
-<p>
-Exposing the minimum possible attack surface
-</p>
+<p>Exposing the minimum possible attack surface</p>
 </li>
 <li>
-<p>
-Secure by default
-</p>
+<p>Secure by default</p>
 </li>
 <li>
-<p>
-Seperated by concerns
-</p>
+<p>Seperated by concerns</p>
 </li>
 <li>
-<p>
-Using the least privileges necessary
-</p>
+<p>Using the least privileges necessary</p>
 </li>
 <li>
-<p>
-Designed to fail securely
-</p>
+<p>Designed to fail securely</p>
 </li>
 <li>
-<p>
-Defended in depth
-</p>
+<p>Defended in depth</p>
 </li>
 <li>
-<p>
-Not reliant on obscurity for security
-</p>
+<p>Not reliant on obscurity for security</p>
 </li>
 <li>
-<p>
-Using cryptography in compliance with the Cryptographic Standards
-</p>
+<p>Using cryptography in compliance with the Cryptographic Standards</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="optional">Optional</h4>
-<div class="ulist"><ul>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Is data from an external source (e.g., user input) cleaned and
-validated before it is used?
-</p>
+<p>Is data from an external source (e.g., user input) cleaned and
+validated before it is used?</p>
 </li>
 <li>
-<p>
-Are any calls that read or write from a database handled
+<p>Are any calls that read or write from a database handled
 appropriately, such as with a try/except block and/or transactions (if
-needed)?
-</p>
+needed)?</p>
 </li>
 <li>
-<p>
-Are any calls to an external resource (e.g., a web-based API), handled
+<p>Are any calls to an external resource (e.g., a web-based API), handled
 appropriately with try/except blocks, and account account for
-appropriate HTTP status codes?
-</p>
+appropriate HTTP status codes?</p>
 </li>
 <li>
-<p>
-Are errors properly logged, and with the appropriate logging level?
-</p>
+<p>Are errors properly logged, and with the appropriate logging level?</p>
 </li>
 <li>
-<p>
-We should define what the logging levels mean to us and when/how to
-use them.
-</p>
+<p>We should define what the logging levels mean to us and when/how to
+use them.</p>
 </li>
 <li>
-<p>
-We should also figure out what constitutes good log content.
-</p>
+<p>We should also figure out what constitutes good log content.</p>
 </li>
 <li>
-<p>
-Are client side errors being properly logged when possible?
-</p>
+<p>Are client side errors being properly logged when possible?</p>
 </li>
 <li>
-<p>
-Are errors handled gracefully?
-</p>
-<div class="ulist"><ul>
+<p>Are errors handled gracefully?</p>
+<div class="ulist">
+<ul>
 <li>
-<p>
-We should define what graceful means to us - appropriate error
+<p>We should define what graceful means to us - appropriate error
 messages displayed to the users, expected application behavior in the
 case of not being able to retrieve information from an external resource
-or write to a data store, etc.
-</p>
+or write to a data store, etc.</p>
 </li>
-</ul></div>
-</li>
-<li>
-<p>
-Are values repeated throughout the code properly moved into constants
-or settings as appropriate to reduce hardcoded values?
-</p>
-<div class="ulist"><ul>
-<li>
-<p>
-Cookie names should always fall under this.
-</p>
+</ul>
+</div>
 </li>
 <li>
-<p>
-Fields names used throughout different pieces of code should also
+<p>Are values repeated throughout the code properly moved into constants
+or settings as appropriate to reduce hardcoded values?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Cookie names should always fall under this.</p>
+</li>
+<li>
+<p>Fields names used throughout different pieces of code should also
 fall under this, such as key names in an SSO token and fields names in a
-form, both of which deal with user registration.
-</p>
+form, both of which deal with user registration.</p>
 </li>
 <li>
-<p>
-URLs to hit internal and external APIs should also be handled this
-way.
-</p>
+<p>URLs to hit internal and external APIs should also be handled this
+way.</p>
 </li>
 <li>
-<p>
-It might be worth discussing a bit to figure out what would make more
+<p>It might be worth discussing a bit to figure out what would make more
 sense for a given value and whether it should be a constant or a
-setting.
-</p>
+setting.</p>
 </li>
-</ul></div>
-</li>
-<li>
-<p>
-JS and SASS (CSS) constants.
-</p>
+</ul>
+</div>
 </li>
 <li>
-<p>
-Is the code properly documented and have relevant, useful comments,
+<p>JS and SASS (CSS) constants.</p>
+</li>
+<li>
+<p>Is the code properly documented and have relevant, useful comments,
 especially in areas of complex logic dealing with multiple business
-rules and requirements?
-</p>
+rules and requirements?</p>
 </li>
 <li>
-<p>
-In the cases of areas where help text can be displayed (e.g., the
-Django admin), is that help text clear, concise, and accurate?
-</p>
+<p>In the cases of areas where help text can be displayed (e.g., the
+Django admin), is that help text clear, concise, and accurate?</p>
 </li>
 <li>
-<p>
-Is the HTML valid and well-formed, and template logic kept to a bare
-minimum?
-</p>
+<p>Is the HTML valid and well-formed, and template logic kept to a bare
+minimum?</p>
 </li>
 <li>
-<p>
-When overriding event handling in JavaScript, do the overrides
+<p>When overriding event handling in JavaScript, do the overrides
 maintain correct functionality (e.g., not returning false to stop a form
-submit)?
-</p>
+submit)?</p>
 </li>
 <li>
-<p>
-If database migrations are necessary, do the migrations properly
+<p>If database migrations are necessary, do the migrations properly
 handle updating the database, particularly in the case of significant
-field changes?
-</p>
+field changes?</p>
 </li>
 <li>
-<p>
-If a field(s) is being removed, there should be at least 3 migrations,
-in this order:
-</p>
-<div class="olist arabic"><ol class="arabic">
+<p>If a field(s) is being removed, there should be at least 3 migrations,
+in this order:</p>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>
-New field is added (schema migration).
-</p>
+<p>New field is added (schema migration).</p>
 </li>
 <li>
-<p>
-Data is migrated (data migration).
-</p>
+<p>Data is migrated (data migration).</p>
 </li>
 <li>
-<p>
-Old field is removed (schema migration).
-</p>
+<p>Old field is removed (schema migration).</p>
 </li>
-</ol></div>
-</li>
-<li>
-<p>
-Are there clear instructions for deployment?
-</p>
+</ol>
+</div>
 </li>
 <li>
-<p>
-Does the commit message for the changeset highlight everything that
-has been done in the changeset?
-</p>
+<p>Are there clear instructions for deployment?</p>
 </li>
 <li>
-<p>
-Does the code meet the needs of the requirement it is being built for?
-</p>
+<p>Does the commit message for the changeset highlight everything that
+has been done in the changeset?</p>
 </li>
 <li>
-<p>
-Are there useful tests written to support the new development?
-</p>
+<p>Does the code meet the needs of the requirement it is being built for?</p>
 </li>
-</ul></div>
+<li>
+<p>Are there useful tests written to support the new development?</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -1247,13 +1033,15 @@ Are there useful tests written to support the new development?
 <div class="sect1">
 <h2 id="commit-messages">Commit Messages</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>In order to ensure maintainability, code commits must include quality
+<div class="paragraph">
+<p>In order to ensure maintainability, code commits must include quality
 commit messages. Quality commit messages are concise, detailed,
-accurate, and consistent.</p></div>
+accurate, and consistent.</p>
+</div>
 <div class="sect2">
 <h3 id="template">Template</h3>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>Name of change #234                                       |&lt;-- trunc here
 
 Patch Set 1:
@@ -1267,54 +1055,51 @@ Patch Set 2:
 
 Change-Id: O8c9e--PASTE--CHANGE-ID--HERE--FOR--GERRIT--3edd
 Jira-Issue: PT-XXX</pre>
-</div></div>
-<div class="ulist"><ul>
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-You will notice that the first line is very short. Git prefers line
+<p>You will notice that the first line is very short. Git prefers line
 lengths below 68 characters, and the first line should summarize in
 plain english what the commit represents. It may or may not relate
 directly to the ticket subject. This is the most important part of the
 message so make it clear. Including the ticket id is optional, but in
-many cases makes the commit easier to refer to.
-</p>
+many cases makes the commit easier to refer to.</p>
 </li>
 <li>
-<p>
-You will notice there is a blank line between the first line and the
+<p>You will notice there is a blank line between the first line and the
 additional details. This line enables git to be smart about displaying
 change history, so please include it. I like to bullet out all the
 changes, but it&#8217;s mostly a matter of taste. You should include any
 details necessary to understand or execute this change, including
 necessary settings change, the fact that the change requires a database
-migration, etc.
-</p>
+migration, etc.</p>
 </li>
-</ul></div>
+</ul>
+</div>
 <div class="sect3">
 <h4 id="gerrit-specific-notes">Gerrit Specific Notes</h4>
-<div class="ulist"><ul>
+<div class="ulist">
+<ul>
 <li>
-<p>
-You will notice I&#8217;ve separated out resubmitted changes into multiple
+<p>You will notice I&#8217;ve separated out resubmitted changes into multiple
 patches. This is only necessary for a patch that you have to resubmit,
 but it helps the reviewer to understand what you&#8217;ve changed since the
-previous change.
-</p>
+previous change.</p>
 </li>
 <li>
-<p>
-You will notice the Change-Id: line. This line is automatically
+<p>You will notice the Change-Id: line. This line is automatically
 generated via a gerrit commit hook[2]. Please download and install this
 hook. This line is now required by gerrit and allows you to easily
 resubmit a change to gerrit and have it update the existing change
 request, causing reviewers to be notified. You will notice the
 Jira-Issue: line at the bottom. This isn&#8217;t strictly necessary, but makes
 it possible to search gerrit by jira ticket ID, so if theres a jira
-ticket included in the change you may as well include it.
-</p>
+ticket included in the change you may as well include it.</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -1322,146 +1107,147 @@ ticket included in the change you may as well include it.
 <div class="sect1">
 <h2 id="cqrs-pattern">CQRS Pattern</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>See <a href="http://martinfowler.com/bliki/CQRS.html">http://martinfowler.com/bliki/CQRS.html</a></p></div>
-<div class="paragraph"><p>This pattern is used by the dataset service. CRUD operations are
+<div class="paragraph">
+<p>See <a href="http://martinfowler.com/bliki/CQRS.html">http://martinfowler.com/bliki/CQRS.html</a></p>
+</div>
+<div class="paragraph">
+<p>This pattern is used by the dataset service. CRUD operations are
 completed against a relational store, and query operations are completed
-against a de-normalized representation stored in SOLR.</p></div>
+against a de-normalized representation stored in SOLR.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="data-protection">Data Protection</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>Quality software is almost always about data. This data is important,
+<div class="paragraph">
+<p>Quality software is almost always about data. This data is important,
 and needs to be protected. Some best practices can help to ensure this
-happens.</p></div>
+happens.</p>
+</div>
 <div class="sect2">
 <h3 id="minimization-of-data-retrieval">Minimization of Data Retrieval</h3>
-<div class="paragraph"><p>In a web development world where frameworks like django do everything
+<div class="paragraph">
+<p>In a web development world where frameworks like django do everything
 for us, it&#8217;s very very easy to ignore how much data we retrieve
-unnecessarily.</p></div>
-<div class="paragraph"><p>Here&#8217;s an example. Imagine we want to generate an HTML report where we
+unnecessarily.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example. Imagine we want to generate an HTML report where we
 list zipcodes for all Acme users. Out of habit we would write something
-like:</p></div>
+like:</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>users = UserProfile.objects.filter(company__name='Acme')
 return render_to_response('zipcode_report.html', {
     'users': users
 }, context_instance=RequestContext(request))</pre>
-</div></div>
-<div class="paragraph"><p>There are several issues with this code block:</p></div>
-<div class="ulist"><ul>
+</div>
+</div>
+<div class="paragraph">
+<p>There are several issues with this code block:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-It&#8217;s retrieving entire user records from the DB, where we could have
-retrieved only zip codes
-</p>
+<p>It&#8217;s retrieving entire user records from the DB, where we could have
+retrieved only zip codes</p>
 </li>
 <li>
-<p>
-In this process we are introducing unnecessary data to travel between
-the database and the application server
-</p>
+<p>In this process we are introducing unnecessary data to travel between
+the database and the application server</p>
 </li>
 <li>
-<p>
-It is very common in most system architecture to have database living
-in more secure environment than application server
-</p>
+<p>It is very common in most system architecture to have database living
+in more secure environment than application server</p>
 </li>
 <li>
-<p>
-It&#8217;s passing the entire user object list to the template
-</p>
+<p>It&#8217;s passing the entire user object list to the template</p>
 </li>
 <li>
-<p>
-One can assume that such transfer of data seems quite harmless. But in
+<p>One can assume that such transfer of data seems quite harmless. But in
 case of any exception around these code blocks may result into sensitive
 information written to the disk in the form of memory dump, python stack
-trace etc.
-</p>
+trace etc.</p>
 </li>
-</ul></div>
-<div class="paragraph"><p>Instead we could change the code slightly and drastically minimize
-risks:</p></div>
+</ul>
+</div>
+<div class="paragraph">
+<p>Instead we could change the code slightly and drastically minimize
+risks:</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>user_zipcodes = UserProfile.objects.filter(company__name='Acme').values_list('zip code', flat=True)
 user_zipcodes = set(user_zipcodes.sort())
 return render_to_response('zipcode_report.html', {
     'user_zipcodes': user_zipcodes
 }, context_instance=RequestContext(request))</pre>
-</div></div>
-<div class="paragraph"><p>Using the values_list filter literally reduces the SQL statement to
+</div>
+</div>
+<div class="paragraph">
+<p>Using the values_list filter literally reduces the SQL statement to
 selecting only zip code from the database. Only zip codes travel from
 data layer to application layer. Then the data is even more randomized
 by sorting and reducing to a distinct set before it&#8217;s passed from
 application layer to presentation layer. The threat of exposure can be
 eliminated at the root by minimizing retrieval. Lists of zip codes by
 themselves are pretty harmless. But combined with users' name and other
-information, we quickly get into the zone of exposing PHI and PII.</p></div>
+information, we quickly get into the zone of exposing PHI and PII.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="minimizing-data-exposure">Minimizing Data Exposure</h3>
-<div class="paragraph"><p>What are the different ways that we could unintentionally expose data?
+<div class="paragraph">
+<p>What are the different ways that we could unintentionally expose data?
 Unnecessary exposure of data takes place more often than we realize. We
-expose data in the form of:</p></div>
-<div class="ulist"><ul>
+expose data in the form of:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Application logs
-</p>
+<p>Application logs</p>
 </li>
 <li>
-<p>
-Exception stack traces
-</p>
+<p>Exception stack traces</p>
 </li>
 <li>
-<p>
-Django settings module
-</p>
+<p>Django settings module</p>
 </li>
 <li>
-<p>
-System memory dumps
-</p>
+<p>System memory dumps</p>
 </li>
 <li>
-<p>
-Open API endpoints resulting from using generic API frameworks
-</p>
+<p>Open API endpoints resulting from using generic API frameworks</p>
 </li>
 <li>
-<p>
-Using database level information in URL
-</p>
+<p>Using database level information in URL</p>
 </li>
 <li>
-<p>
-Development DB practices
-</p>
+<p>Development DB practices</p>
 </li>
 <li>
-<p>
-Unnecessary data retrieval
-</p>
+<p>Unnecessary data retrieval</p>
 </li>
-</ul></div>
+</ul>
+</div>
 <div class="sect3">
 <h4 id="application-logs">Application Logs</h4>
-<div class="paragraph"><p>Application logs are one of the most common ways to expose unnecessary
+<div class="paragraph">
+<p>Application logs are one of the most common ways to expose unnecessary
 data. Debug level logs are great and they serve us well in identifying
 bugs and erratic flow of logic. At the same time it exposes a lot of
 information if the statements are enabled on setups with sensitive data
 such as staging or production server. This is why it&#8217;s absolutely
 crucial to have appropriate log settings for each level of deployment
-e.g. development, staging and production.</p></div>
+e.g. development, staging and production.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="exception-stack-traces">Exception Stack Traces</h4>
-<div class="paragraph"><p>While it&#8217;s not possible for us to guarantee that our code will be 100%
+<div class="paragraph">
+<p>While it&#8217;s not possible for us to guarantee that our code will be 100%
 bug free, usually exception will leave stack trace footprint somewhere
 in the system. Whether it&#8217;s the web server or exception logger there&#8217;s
 always a chance of seeing a dump of all local variables found at
@@ -1472,29 +1258,26 @@ they might be saving our sensitive data in some logs buried in their
 folder structure. For example, an exception in python-rest-client might
 expose an internal API URL. The only way to prevent such issues is to
 make sure any statement that may throw an exception, is wrapped with
-proper exception handler.</p></div>
-<div class="paragraph"><p>Django stack traces are also a goldmine of sensitive settings
+proper exception handler.</p>
+</div>
+<div class="paragraph">
+<p>Django stack traces are also a goldmine of sensitive settings
 information including DB passwords, API keys etc. Security of such
-information is ensured by:</p></div>
-<div class="ulist"><ul>
+information is ensured by:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Controlling the details included in django crash logs
-</p>
+<p>Controlling the details included in django crash logs</p>
 </li>
 <li>
-<p>
-Preventing such crash logs from being emailed or leaving the server
-</p>
+<p>Preventing such crash logs from being emailed or leaving the server</p>
 </li>
 <li>
-<p>
-Django Settings Module
-</p>
+<p>Django Settings Module</p>
 </li>
 <li>
-<p>
-The settings module is probably the most vulnerable of all built-in
+<p>The settings module is probably the most vulnerable of all built-in
 django features. Settings module holds the information to access
 databases, credentials for analytics, internal API credentials, cookie
 names. Accidentally exposing parts of the settings module to the
@@ -1502,22 +1285,25 @@ presentation layer could be disastrous. Disaster could come in the form
 of the settings dict being printed out, unintentional exposure of key
 value pairs when looping. For these reasons, templates should only have
 access to a limited subset of settings variable and not the entire
-module.
-</p>
+module.</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="system-memory-dumps">System Memory Dumps</h4>
-<div class="paragraph"><p>Web applications can cause servers to crash or run out of memory (has
+<div class="paragraph">
+<p>Web applications can cause servers to crash or run out of memory (has
 happened in our case). In situations like that, the system memory dump
 is usually handed off to Joe Random form cloud infrastructure support
 for analysis. Such memory dumps may also contain sensitive information.
-Preventing such cases are quite difficult but they also happen rarely.</p></div>
+Preventing such cases are quite difficult but they also happen rarely.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="open-api-endpoints">Open API Endpoints</h4>
-<div class="paragraph"><p>API endpoints should be carefully exposed. Unless there&#8217;s robust
+<div class="paragraph">
+<p>API endpoints should be carefully exposed. Unless there&#8217;s robust
 authorization in place, POST, PUT and DELETE paths should never be
 exposed. GET should only expose as much information as needed. The
 principle of least knowledge is a good rule to follow when designing
@@ -1526,61 +1312,74 @@ explicitly defined in the code and we should not rely upon frameworks
 defaults. Any kind of endpoint listing, for example Tastypie&#8217;s API
 endpoint listing functionality should be strictly disabled. Most API
 access in our case should be internal and should only be allowed for
-logged in users.</p></div>
+logged in users.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="database-level-information-in-url">Database Level Information in URL</h4>
-<div class="paragraph"><p>Generally considered a bad practice due to the resulting non
+<div class="paragraph">
+<p>Generally considered a bad practice due to the resulting non
 human-readable URLs, using DB level information such as primary keys can
 also lead to exposure of sensitive data. Combined with an open API
 endpoint, primary keys can suddenly become a path the access all data in
 the DB. Sometimes primary keys can be used to circumvent authorization
 levels. URLs should not contain DB level primary identifiers. Natural
-keys are more appropriate in such cases.</p></div>
+keys are more appropriate in such cases.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="development-db-practices">Development DB Practices</h4>
-<div class="paragraph"><p>Having sensitive data in development DB is very common issue in web
+<div class="paragraph">
+<p>Having sensitive data in development DB is very common issue in web
 application development world. Particularly in an environment where we
 are all learning about the sensitivity of the data at the same time we
 are working with it, there increases chance of data exposure. I know for
 a fact that both our core DB and base profile DB dump have tons of
 PHI/PII in UserProfile models (including hashes of super sensitive
 information of real users). We need to scrub all of that. Loss of our
-boxes will lead to data exposure concerns.</p></div>
+boxes will lead to data exposure concerns.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="unnecessary-data-retrieval">Unnecessary Data Retrieval</h4>
-<div class="paragraph"><p>The key to minimize data exposure, is again minimal retrieval of data.
+<div class="paragraph">
+<p>The key to minimize data exposure, is again minimal retrieval of data.
 Particularly when dealing with user profile information, we should be
 very diligent about retrieving as little information as possible to get
-the job done.</p></div>
+the job done.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="ensuring-security-of-data-in-process">Ensuring Security of Data In Process</h4>
-<div class="paragraph"><p>More often than not, we are forced to retrieve or work with really
+<div class="paragraph">
+<p>More often than not, we are forced to retrieve or work with really
 sensitive data. In such cases, we can take measures to maintain the
 highest security available for the data being processed. An easy rule of
 thumb is never write such data to disk. The operating system provides
 various kinds of buffers that can be utlized to temporarily store and
 process sensitive information. If it&#8217;s absolutely necessary to store the
 data in disk, they can be stored in encrypted form and decrypted every
-time before using.</p></div>
-<div class="paragraph"><p>Security measures such as encryption/decryption are expensive computing
+time before using.</p>
+</div>
+<div class="paragraph">
+<p>Security measures such as encryption/decryption are expensive computing
 operations. So depending on the sensitivity of the data, it may not be
 possible to process them in realtime. Asynchronous worker servers are
-great in accommodating such cases.</p></div>
+great in accommodating such cases.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="conclusion">Conclusion</h4>
-<div class="paragraph"><p>Exercising data protection is about conscious usage of data. It is
+<div class="paragraph">
+<p>Exercising data protection is about conscious usage of data. It is
 achieved via practice of upholding protection for all kinds of data, not
 just the most sensitive ones. It is also dependent on the developer&#8217;s
 wisdom and wilfulness of compliance. But being aware of our
 responsibilities is winning half of the battle. As long as we are always
 willing to consider minimization of data retrieval and exposure, it will
 be relatively easy to provide a reasonable standard of data protection
-in our system.</p></div>
+in our system.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1590,7 +1389,8 @@ in our system.</p></div>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="be-respectful-of-everyone-even-those-who-arent-here-yet">Be Respectful of Everyone, Even Those Who Aren&#8217;t Here (Yet!)</h3>
-<div class="paragraph"><p>We will always make sure that our team is courteous and inclusive. It is
+<div class="paragraph">
+<p>We will always make sure that our team is courteous and inclusive. It is
 never acceptable to make comments or jokes that you would not make if a
 person of a different gender or race were sitting in the room. Whatever
 you believe or find funny in your private time is fine during off-hours,
@@ -1598,95 +1398,90 @@ but when we are working we will never tolerate any kind of exclusionary
 humor or messaging. Sometimes this is difficult to keep in mind when we
 work in a homogenous group, but it is important to remember that our
 group will not remain homogenous forever, and we should always act as if
-we have a man and woman from every country and race on the team.</p></div>
+we have a man and woman from every country and race on the team.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="be-agile">Be Agile</h3>
-<div class="paragraph"><p>We follow the Agile practices and strive to cleave to the Agile
-Manifesto.</p></div>
+<div class="paragraph">
+<p>We follow the Agile practices and strive to cleave to the Agile
+Manifesto.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="be-a-craftsman">Be a Craftsman</h3>
-<div class="paragraph"><p>In addition to following Agile practices, we strive to be the best
+<div class="paragraph">
+<p>In addition to following Agile practices, we strive to be the best
 craftsmen we can be. You should read the Software Craftsmanship
-Manifesto.</p></div>
+Manifesto.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="play-well-with-others">Play Well With Others</h3>
-<div class="paragraph"><p>Keep in mind that it is never sufficient to simply lead the way. It is
+<div class="paragraph">
+<p>Keep in mind that it is never sufficient to simply lead the way. It is
 always necessary to help the rest of the team keep up and keep on track.
-Here is a list of things you can do to play nice:</p></div>
-<div class="ulist"><ul>
+Here is a list of things you can do to play nice:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Be available via group chat every day Video chat with colleagues a lot
-</p>
+<p>Be available via group chat every day Video chat with colleagues a lot</p>
 </li>
 <li>
-<p>
-Write good documentation of features and processes in the shared docs
-environment
-</p>
+<p>Write good documentation of features and processes in the shared docs
+environment</p>
 </li>
 <li>
-<p>
-Write excellent comments in your code
-</p>
+<p>Write excellent comments in your code</p>
 </li>
 <li>
-<p>
-Follow coding patterns as described in our development guidelines so
-your code is easy for others to understand
-</p>
+<p>Follow coding patterns as described in our development guidelines so
+your code is easy for others to understand</p>
 </li>
 <li>
-<p>
-Share links to good, informative information you find
-</p>
+<p>Share links to good, informative information you find</p>
 </li>
 <li>
-<p>
-Pair program to help others learn the way
-</p>
+<p>Pair program to help others learn the way</p>
 </li>
 <li>
-<p>
-Ask for Help
-</p>
+<p>Ask for Help</p>
 </li>
 <li>
-<p>
-If you are stuck on a development problem, ask your colleagues for
+<p>If you are stuck on a development problem, ask your colleagues for
 help. Asking for help is not an admission of defeat; it&#8217;s a sign of
-strength and trust in your fellow developers.
-</p>
+strength and trust in your fellow developers.</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="read-the-world">Read the World</h3>
-<div class="paragraph"><p>We should all be reading and paying attention to what&#8217;s happening "out
+<div class="paragraph">
+<p>We should all be reading and paying attention to what&#8217;s happening "out
 there". We need to leverage the ideas and efforts of our open source
-community to make the best applications we can.</p></div>
-<div class="paragraph"><p>Here is a list of recommended reading:</p></div>
-<div class="ulist"><ul>
+community to make the best applications we can.</p>
+</div>
+<div class="paragraph">
+<p>Here is a list of recommended reading:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Hacker News <a href="http://news.ycombinator.com">http://news.ycombinator.com</a>
-</p>
+<p>Hacker News <a href="http://news.ycombinator.com">http://news.ycombinator.com</a></p>
 </li>
 <li>
-<p>
-Ars Technica <a href="http://arstechnica.com">http://arstechnica.com</a>
-</p>
+<p>Ars Technica <a href="http://arstechnica.com">http://arstechnica.com</a></p>
 </li>
 <li>
-<p>
-The Changelog <a href="http://thechangelog.com">http://thechangelog.com</a>
-</p>
+<p>The Changelog <a href="http://thechangelog.com">http://thechangelog.com</a></p>
 </li>
-</ul></div>
-<div class="paragraph"><p>more? Add them here please!</p></div>
+</ul>
+</div>
+<div class="paragraph">
+<p>more? Add them here please!</p>
+</div>
 </div>
 </div>
 </div>
@@ -1695,40 +1490,34 @@ The Changelog <a href="http://thechangelog.com">http://thechangelog.com</a>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="introduction">Introduction</h3>
-<div class="ulist"><ul>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Focus on readability and maintainability. The code&#8217;s should be easy to
-understand, or obvious, to a junior-level developer.
-</p>
+<p>Focus on readability and maintainability. The code&#8217;s should be easy to
+understand, or obvious, to a junior-level developer.</p>
 </li>
 <li>
-<p>
-Write tests. Every project should have a functional test runner, and
-be - configured to run the tests via CI.
-</p>
+<p>Write tests. Every project should have a functional test runner, and
+be - configured to run the tests via CI.</p>
 </li>
 <li>
-<p>
-Use bower for your frontend components. Check in the artifacts to
-components AND keep bower.json up to date.
-</p>
+<p>Use bower for your frontend components. Check in the artifacts to
+components AND keep bower.json up to date.</p>
 </li>
 <li>
-<p>
-Use npm for backend components, and grunt to automate the toolchain.
+<p>Use npm for backend components, and grunt to automate the toolchain.
 Check in the artifacts in node_modules and keep package.json up to date.
-Base your project on "backpain" and stay up to date with it.
-</p>
+Base your project on "backpain" and stay up to date with it.</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="coding-style">Coding Style</h3>
 <div class="sect3">
 <h4 id="jshint-settings">JSHint Settings</h4>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>options: {
     bitwise: true,
     browser: true,
@@ -1750,161 +1539,125 @@ Base your project on "backpain" and stay up to date with it.
         require: true
     }
 }</pre>
-</div></div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="libraries">Libraries</h3>
-<div class="paragraph"><p>Use the following. Don&#8217;t use other stuff without a good reason and a
-conversation.</p></div>
-<div class="ulist"><ul>
+<div class="paragraph">
+<p>Use the following. Don&#8217;t use other stuff without a good reason and a
+conversation.</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-require.js
-</p>
+<p>require.js</p>
 </li>
 <li>
-<p>
-require-handlebars (.hbs)
-</p>
+<p>require-handlebars (.hbs)</p>
 </li>
 <li>
-<p>
-JQuery
-</p>
+<p>JQuery</p>
 </li>
 <li>
-<p>
-Underscore
-</p>
+<p>Underscore</p>
 </li>
 <li>
-<p>
-BackBone.js
-</p>
+<p>BackBone.js</p>
 </li>
 <li>
-<p>
-handlebars
-</p>
+<p>handlebars</p>
 </li>
 <li>
-<p>
-Chiropracter
-</p>
+<p>Chiropracter</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="best-practices">Best Practices</h3>
 <div class="sect3">
 <h4 id="file-layout">File Layout</h4>
-<div class="ulist"><ul>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Create requireJS modules
-</p>
+<p>Create requireJS modules</p>
 </li>
 <li>
-<p>
-No capital letters in filenames.
-</p>
+<p>No capital letters in filenames.</p>
 </li>
 <li>
-<p>
-Use underscores in module names
-</p>
+<p>Use underscores in module names</p>
 </li>
 <li>
-<p>
-modules should follow the "standard" backbone layout
-</p>
+<p>modules should follow the "standard" backbone layout</p>
 </li>
 <li>
-<p>
-module_name
-</p>
-<div class="ulist"><ul>
+<p>module_name</p>
+<div class="ulist">
+<ul>
 <li>
-<p>
-views
-</p>
+<p>views</p>
 </li>
 <li>
-<p>
-add.js
-</p>
+<p>add.js</p>
 </li>
 <li>
-<p>
-edit.js
-</p>
+<p>edit.js</p>
 </li>
 <li>
-<p>
-delete.js
-</p>
+<p>delete.js</p>
 </li>
-</ul></div>
-</li>
-<li>
-<p>
-models
-</p>
-<div class="ulist"><ul>
-<li>
-<p>
-module_data.js
-</p>
-</li>
-</ul></div>
+</ul>
+</div>
 </li>
 <li>
-<p>
-templates
-</p>
-<div class="ulist"><ul>
+<p>models</p>
+<div class="ulist">
+<ul>
 <li>
-<p>
-add.hbs
-</p>
+<p>module_data.js</p>
 </li>
-<li>
-<p>
-edit.hbs
-</p>
+</ul>
+</div>
 </li>
 <li>
-<p>
-delete.hbs
-</p>
+<p>templates</p>
+<div class="ulist">
+<ul>
+<li>
+<p>add.hbs</p>
 </li>
-</ul></div>
+<li>
+<p>edit.hbs</p>
 </li>
-</ul></div>
+<li>
+<p>delete.hbs</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="require.js">Require.js</h4>
-<div class="ulist"><ul>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Keep the optimizer configured, and run it regularly. If code doesn&#8217;t
-work optimized, it doesn&#8217;t work.
-</p>
+<p>Keep the optimizer configured, and run it regularly. If code doesn&#8217;t
+work optimized, it doesn&#8217;t work.</p>
 </li>
 <li>
-<p>
-Include all dependencies at the module level, not dynamically inside
-functions and such.
-</p>
+<p>Include all dependencies at the module level, not dynamically inside
+functions and such.</p>
 </li>
 <li>
-<p>
-Require modules should define dependencies and return a module object.
-They should be idempotent and not dependent on global state.
-</p>
+<p>Require modules should define dependencies and return a module object.
+They should be idempotent and not dependent on global state.</p>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>define(function(require) {
   var BackBone = require('backbone'),
     _ = require('underscore'),
@@ -1920,29 +1673,27 @@ They should be idempotent and not dependent on global state.
   };
   return ModuleObject;
 });</pre>
-</div></div>
+</div>
+</div>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="backbone.js">BackBone.js</h4>
-<div class="ulist"><ul>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Follow backbone naming conventions
-</p>
+<p>Follow backbone naming conventions</p>
 </li>
 <li>
-<p>
-Use backbone modules
-</p>
+<p>Use backbone modules</p>
 </li>
 <li>
-<p>
-make sure to include jquery-cors for cross-domain API access support
-</p>
+<p>make sure to include jquery-cors for cross-domain API access support</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -1952,53 +1703,73 @@ make sure to include jquery-cors for cross-domain API access support
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="getting-started">Getting Started</h3>
-<div class="paragraph"><p>Determine where phantomjs is installed</p></div>
+<div class="paragraph">
+<p>Determine where phantomjs is installed</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>$ which phantomjs
 /usr/local/bin/phantomjs</pre>
-</div></div>
-<div class="paragraph"><p>Update ~/.bashrc with phantomjs details and add to the top of the file:</p></div>
+</div>
+</div>
+<div class="paragraph">
+<p>Update ~/.bashrc with phantomjs details and add to the top of the file:</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>export PHANTOMJS_BIN=/usr/local/bin/phantomjs</pre>
-</div></div>
-<div class="paragraph"><p>Update the node modules in your checkout and run make to install karma
-within your OSX environment.</p></div>
+</div>
+</div>
+<div class="paragraph">
+<p>Update the node modules in your checkout and run make to install karma
+within your OSX environment.</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>git submodule update --recursive
 make</pre>
-</div></div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="running-javascript-tests">Running Javascript Tests</h3>
-<div class="paragraph"><p>The main command to run the automated Javascript test suite is as
-follows.</p></div>
+<div class="paragraph">
+<p>The main command to run the automated Javascript test suite is as
+follows.</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>./bin/karma start</pre>
-</div></div>
-<div class="paragraph"><p>This command will run the entire Javascript test suite on all browsers
-you have installed locally (Firefox, Chrome, PhantomJS, Opera, Safari).</p></div>
-<div class="paragraph"><p>There are multiple --flags that you can pass to the test runner to
-toggle various actions.</p></div>
+</div>
+</div>
+<div class="paragraph">
+<p>This command will run the entire Javascript test suite on all browsers
+you have installed locally (Firefox, Chrome, PhantomJS, Opera, Safari).</p>
+</div>
+<div class="paragraph">
+<p>There are multiple --flags that you can pass to the test runner to
+toggle various actions.</p>
+</div>
 <div class="sect3">
 <h4 id="flags">Flags</h4>
 <div class="sect4">
 <h5 id="dev">--dev</h5>
-<div class="paragraph"><p>Start test runner in dev mode, meaning it will not perform a single test
+<div class="paragraph">
+<p>Start test runner in dev mode, meaning it will not perform a single test
 run and quit, it will instead watch for file changes and automatically
 re-run the test suite on any changes. ## --browsers Pass a comma
 seperated list of browsers you wish to run the test suite on. Options
 are: - Local Browsers - Chrome - Safari - Opera - PhantomJS - Firefox -
-SauceLabs Browsers</p></div>
-<div class="paragraph"><p>To use SauceLabs browsers, you must first have a SauceLabs Connect
+SauceLabs Browsers</p>
+</div>
+<div class="paragraph">
+<p>To use SauceLabs browsers, you must first have a SauceLabs Connect
 tunnel open to your machine. You can do this by using the SauceLabs Mac
 OSX application available in the App Store, or you can run the following
-command after you have setup a few configurations.</p></div>
+command after you have setup a few configurations.</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>cat &gt; ~/.saucelabs.json &lt;-EOF
 {
     "username": "SAUCELABS USERNAME",
@@ -2020,10 +1791,13 @@ export SAUCE_APIKEY="SAUCELABS APIKEY"
 ./karma/saucelauncher.js
 --test
 EOF</pre>
-</div></div>
-<div class="paragraph"><p>Path to the test file you wish to run, by default this is
+</div>
+</div>
+<div class="paragraph">
+<p>Path to the test file you wish to run, by default this is
 src/ui/js/spec/index.js, but you can provide a single test file to run
-only that suite.</p></div>
+only that suite.</p>
+</div>
 </div>
 </div>
 </div>
@@ -2032,24 +1806,28 @@ only that suite.</p></div>
 <div class="sect1">
 <h2 id="writing-javascript-tests">Writing Javascript Tests</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>Our javascript test structure follows the convention of creating tests
+<div class="paragraph">
+<p>Our javascript test structure follows the convention of creating tests
 for javascript files in a mirrored directory structure that starts in
 "src/ui/js/specs/". If you have a module "src/ui/js/foo/bar/baz.js" you
 would create the tests for this module in
 "src/ui/js/specs/foo/bar/baz.js" and would add them to the test suite by
 adding nested describe() blocks starting at "src/ui/js/specs/index.js"
-and adding the appropriate files to include those nested files.</p></div>
-<div class="paragraph"><p>The basic structure of a test suite loader file looks like the sample
+and adding the appropriate files to include those nested files.</p>
+</div>
+<div class="paragraph">
+<p>The basic structure of a test suite loader file looks like the sample
 below. Notice that it must return a function, and that when you require
 a sub test, it must call that file (since it as well should return a
 function). This is necessary to ensure that the describe block
 statements contained within the file are not execute at file load time,
 but instead at the place where we actually require and execute that
-file.</p></div>
+file.</p>
+</div>
 <div class="sect2">
 <h3 id="test-loader-file-template">Test Loader File Template</h3>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>define(function() {
     return function() {
         describe("foo", function() {
@@ -2061,12 +1839,13 @@ file.</p></div>
         });
     };
 });</pre>
-</div></div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="test-suite-file-template">Test Suite File Template</h3>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>define(function() {
     var expect = require('chai').expect;
     return function() {
@@ -2086,9 +1865,12 @@ file.</p></div>
         });
     };
 });</pre>
-</div></div>
-<div class="paragraph"><p>You can read about the matcher library Chai at
-[<a href="http://chaijs.com/api/bdd/])(http://chaijs.com/api/bdd/">http://chaijs.com/api/bdd/])(http://chaijs.com/api/bdd/</a>)</p></div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can read about the matcher library Chai at
+[<a href="http://chaijs.com/api/bdd/">http://chaijs.com/api/bdd/</a>])(<a href="http://chaijs.com/api/bdd/">http://chaijs.com/api/bdd/</a>)</p>
+</div>
 </div>
 </div>
 </div>
@@ -2097,289 +1879,280 @@ file.</p></div>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="naming-patterns">Naming Patterns</h3>
-<div class="paragraph"><p>EVERYTHING is named with lowercase letters, no special characters, and
-underscores for spacing (to increase readability).</p></div>
-<div class="paragraph"><p>Examples: brand_yellow, background_menu_color, my_awesome_mixin,
-box_shadow, etc.</p></div>
-<div class="paragraph"><p>Be concise in naming; be not afraid of verbosity for clarity.</p></div>
-<div class="paragraph"><p>Bad: gnav, nav_img_cont, bib_src_lnk</p></div>
-<div class="paragraph"><p>Good: global_navigation_link, navigation_image_container,
-bibliographic_source_link</p></div>
+<div class="paragraph">
+<p>EVERYTHING is named with lowercase letters, no special characters, and
+underscores for spacing (to increase readability).</p>
+</div>
+<div class="paragraph">
+<p>Examples: brand_yellow, background_menu_color, my_awesome_mixin,
+box_shadow, etc.</p>
+</div>
+<div class="paragraph">
+<p>Be concise in naming; be not afraid of verbosity for clarity.</p>
+</div>
+<div class="paragraph">
+<p>Bad: gnav, nav_img_cont, bib_src_lnk</p>
+</div>
+<div class="paragraph">
+<p>Good: global_navigation_link, navigation_image_container,
+bibliographic_source_link</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="keep-in-mind">Keep in mind:</h3>
-<div class="ulist"><ul>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Spelling counts!
-</p>
+<p>Spelling counts!</p>
 </li>
 <li>
-<p>
-Naming matters – take the time to discuss with fellow developers to
-find a precise, meaningful name for things. Clarity is KING!
-</p>
+<p>Naming matters – take the time to discuss with fellow developers to
+find a precise, meaningful name for things. Clarity is KING!</p>
 </li>
 <li>
-<p>
-Be grammatically correct – if you are naming something use the proper
-tense, case, etc. in order to convey the correct meaning.
-</p>
+<p>Be grammatically correct – if you are naming something use the proper
+tense, case, etc. in order to convey the correct meaning.</p>
 </li>
 <li>
-<p>
-Handling Constants
-</p>
+<p>Handling Constants</p>
 </li>
 <li>
-<p>
-Variables should be used for any value that is used in more than one
-place.
-</p>
+<p>Variables should be used for any value that is used in more than one
+place.</p>
 </li>
 <li>
-<p>
-In some cases, variables should be used for values that are used in
-only one place.
-</p>
+<p>In some cases, variables should be used for values that are used in
+only one place.</p>
 </li>
 <li>
-<p>
-If a variable is used in only ONE file, then the variable should be
-defined at the top of the file.
-</p>
+<p>If a variable is used in only ONE file, then the variable should be
+defined at the top of the file.</p>
 </li>
 <li>
-<p>
-If a variable is used in MORE THAN ONE file, then the variable should
-be defined in the global _variables.less file.
-</p>
+<p>If a variable is used in MORE THAN ONE file, then the variable should
+be defined in the global _variables.less file.</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="mixins">Mixins</h3>
-<div class="paragraph"><p>Mixins live in a global mixins file that is not specific to any
-individual application.</p></div>
-<div class="paragraph"><p>Mixins should be configurable, so they do not need to be project or
+<div class="paragraph">
+<p>Mixins live in a global mixins file that is not specific to any
+individual application.</p>
+</div>
+<div class="paragraph">
+<p>Mixins should be configurable, so they do not need to be project or
 app-specific. Where possible, mixins should provide sane defaults for
-configuration options.</p></div>
-<div class="paragraph"><p>Mixins should be used to create any client-specific attributes, as well
+configuration options.</p>
+</div>
+<div class="paragraph">
+<p>Mixins should be used to create any client-specific attributes, as well
 as any other complex styling (especially if those attributes are
-repeated in multiple style definitions).</p></div>
+repeated in multiple style definitions).</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="logging">Logging</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>Secure and robust code requires careful management of log statements and
+<div class="paragraph">
+<p>Secure and robust code requires careful management of log statements and
 exception handlers. In order to get the best use from these tools,
-adhere to the following conventions.</p></div>
+adhere to the following conventions.</p>
+</div>
 <div class="sect2">
 <h3 id="python-logging">Python Logging</h3>
 <div class="sect3">
 <h4 id="rules-of-thumb">Rules of Thumb</h4>
-<div class="ulist"><ul>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Use Python logging module.
-</p>
+<p>Use Python logging module.</p>
 </li>
 <li>
-<p>
-Always use a per-app logger.
-</p>
+<p>Always use a per-app logger.</p>
 </li>
 <li>
-<p>
-Use per-module loggers as necessary.
-</p>
+<p>Use per-module loggers as necessary.</p>
 </li>
 <li>
-<p>
-One logger per file, named "logger"
-</p>
+<p>One logger per file, named "logger"</p>
 </li>
 <li>
-<p>
-Leave logging statements in place
-</p>
+<p>Leave logging statements in place</p>
 </li>
 <li>
-<p>
-Use built-in string interpolation
-</p>
+<p>Use built-in string interpolation</p>
 </li>
 <li>
-<p>
-Scrub out all PII/PHI whenever possible, particular in loglevels &gt;
-debug.
-</p>
+<p>Scrub out all PII/PHI whenever possible, particular in loglevels &gt;
+debug.</p>
 </li>
 <li>
-<p>
-500 errors on the site should always generate a log message
-</p>
+<p>500 errors on the site should always generate a log message</p>
 </li>
 <li>
-<p>
-Production servers should never run with debug logging enabled.
-</p>
+<p>Production servers should never run with debug logging enabled.</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="example">Example</h4>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>import logging
 logger = logging.getLogger(__name__)
 logger.debug('initialized %s', __name__)</pre>
-</div></div>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="log-levels">Log Levels</h4>
-<div class="paragraph"><p>By default, logging directives should fall into one of the following
+<div class="paragraph">
+<p>By default, logging directives should fall into one of the following
 categories when they are not specifically called out as being a part of
-another class of logs.</p></div>
+another class of logs.</p>
+</div>
 <div class="sect4">
 <h5 id="debug">debug</h5>
-<div class="paragraph"><p>Information that is only useful while coding or debugging. Debug
+<div class="paragraph">
+<p>Information that is only useful while coding or debugging. Debug
 information should always be information dense and represent normal
-operation.</p></div>
-<div class="paragraph" id="examples"><p>Examples:</p></div>
-<div class="ulist"><ul>
+operation.</p>
+</div>
+<div id="examples" class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-progress through a state machine
-</p>
+<p>progress through a state machine</p>
 </li>
 <li>
-<p>
-progress through a linear computation
-</p>
+<p>progress through a linear computation</p>
 </li>
 <li>
-<p>
-state information relevant to debugging control flow (http request
-contents, etc)
-</p>
+<p>state information relevant to debugging control flow (http request
+contents, etc)</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect4">
 <h5 id="info">info</h5>
-<div class="paragraph"><p>Information that is useful to track ongoing operation of the system.
-Info logs should always represent normal operation.</p></div>
-<div class="paragraph" id="examples-1"><p>Examples:</p></div>
-<div class="ulist"><ul>
+<div class="paragraph">
+<p>Information that is useful to track ongoing operation of the system.
+Info logs should always represent normal operation.</p>
+</div>
+<div id="examples-1" class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-counter progress through a bulk operation
-</p>
+<p>counter progress through a bulk operation</p>
 </li>
 <li>
-<p>
-user activities
-</p>
+<p>user activities</p>
 </li>
 <li>
-<p>
-administrative activities
-</p>
+<p>administrative activities</p>
 </li>
 <li>
-<p>
-instantiation of background tasks
-</p>
+<p>instantiation of background tasks</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect4">
 <h5 id="warning">warning</h5>
-<div class="paragraph"><p>Information that is useful to track exceptional conditions. Warnings
-should always represent normal operation in response to errors.</p></div>
-<div class="paragraph" id="examples-2"><p>Examples:</p></div>
-<div class="ulist"><ul>
+<div class="paragraph">
+<p>Information that is useful to track exceptional conditions. Warnings
+should always represent normal operation in response to errors.</p>
+</div>
+<div id="examples-2" class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-handled exceptions
-</p>
+<p>handled exceptions</p>
 </li>
 <li>
-<p>
-unexpected validation failures
-</p>
+<p>unexpected validation failures</p>
 </li>
 <li>
-<p>
-unexpected (but handled) task termination
-</p>
+<p>unexpected (but handled) task termination</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect4">
 <h5 id="error">error</h5>
-<div class="paragraph"><p>Information representing recoverable error conditions. Error logs should
+<div class="paragraph">
+<p>Information representing recoverable error conditions. Error logs should
 be reserved for unhandled application exceptions that should be
 recoverable by creating a new request or a simple restart of the
 application. Calls to logger.exception() will be logged with at the
-"error" level.</p></div>
-<div class="paragraph" id="examples-3"><p>Examples:</p></div>
-<div class="ulist"><ul>
+"error" level.</p>
+</div>
+<div id="examples-3" class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-failed assertions
-</p>
+<p>failed assertions</p>
 </li>
 <li>
-<p>
-loss of application state
-</p>
+<p>loss of application state</p>
 </li>
 <li>
-<p>
-other unrecoverable errors
-</p>
+<p>other unrecoverable errors</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect4">
 <h5 id="critical">critical</h5>
-<div class="paragraph"><p>Information representing critical failure conditions. Critical logs
+<div class="paragraph">
+<p>Information representing critical failure conditions. Critical logs
 should be reserved for errors that represent an unrecoverable error
-condition, such as the i or connect to a required database resource.</p></div>
-<div class="paragraph" id="examples-4"><p>Examples:</p></div>
-<div class="ulist"><ul>
+condition, such as the i or connect to a required database resource.</p>
+</div>
+<div id="examples-4" class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-inability to bind to an ip address
-</p>
+<p>inability to bind to an ip address</p>
 </li>
 <li>
-<p>
-unavailable database resources
-</p>
+<p>unavailable database resources</p>
 </li>
 <li>
-<p>
-missing filesystem access permissions or mountpoints
-</p>
+<p>missing filesystem access permissions or mountpoints</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="access-logging">Access Logging</h4>
-<div class="paragraph"><p>User accesses should be logged using the via the access_logger in the
+<div class="paragraph">
+<p>User accesses should be logged using the via the access_logger in the
 profile. The benefit of wrapping everything with a function is we have
 centralized control of the message formatting and send messages to
-alternate locations if necessary.</p></div>
+alternate locations if necessary.</p>
+</div>
 <div class="sect4">
 <h5 id="access-logger-example-implementation">Access Logger Example Implementation</h5>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>import logging
 from services_profile.constants import ACCESS_LOG_PROFILE_UPDATED, ACCESS_LOG_CREATED
 _access_logger = logging.getLogger('access')
@@ -2389,30 +2162,36 @@ def created(user, req, details):
 
 def updated(user, req, details):
     _access_logger.info('%s: %s', ACCESS_LOG_PROFILE_UPDATED, user)</pre>
-</div></div>
+</div>
+</div>
 </div>
 <div class="sect4">
 <h5 id="access-logger-usage">Access Logger Usage</h5>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>from services_profile import access_log
 access_log.created(user, None, attributes)</pre>
-</div></div>
+</div>
+</div>
 </div>
 <div class="sect4">
 <h5 id="admin-audit-logging">Admin Audit Logging</h5>
-<div class="paragraph"><p>Administrative actions should be logged following the same pattern as
-access logs.</p></div>
+<div class="paragraph">
+<p>Administrative actions should be logged following the same pattern as
+access logs.</p>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="logging-configuration">Logging Configuration</h4>
-<div class="paragraph"><p>The logging system is configured via the "LOGGING" parameter in each
+<div class="paragraph">
+<p>The logging system is configured via the "LOGGING" parameter in each
 project&#8217;s setting.py. The default settings are meant to be conservative,
 but ideal for production performance, and should be adjusted to stay
-that way. For the profile service, they look like this:</p></div>
+that way. For the profile service, they look like this:</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
@@ -2466,13 +2245,16 @@ that way. For the profile service, they look like this:</p></div>
         'south.generic': {'level': 'WARNING'},
     }
 }</pre>
-</div></div>
-<div class="paragraph"><p>For development use, you will likely want more detailed logging.
+</div>
+</div>
+<div class="paragraph">
+<p>For development use, you will likely want more detailed logging.
 Conveniently, you can override these settings via local_settings.py if
 needed. Some examples are contained in the local_settings.py.example,
-such as these:</p></div>
+such as these:</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre># include all services_profile, djangosaml2 and access logs of DEBUG and above
 LOGGING['loggers']['services_profile'] = { 'level': 'DEBUG' }
 LOGGING['loggers']['djangosaml2'] = { 'level': 'DEBUG' }
@@ -2483,36 +2265,35 @@ LOGGING['handlers']['console']['level'] = 'CRITICAL'
 
 # send all logs DEBUG and above to the logfile
 LOGGING['handlers']['logfile']['level'] = 'DEBUG'</pre>
-</div></div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="python-exception-handling">Python Exception Handling</h3>
 <div class="sect3">
 <h4 id="rules-of-thumb-1">Rules of Thumb:</h4>
-<div class="ulist"><ul>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Never catch raw "Exception".
-</p>
+<p>Never catch raw "Exception".</p>
 </li>
 <li>
-<p>
-Never catch an exception you can&#8217;t handle – allow them to bubble up.
-</p>
+<p>Never catch an exception you can&#8217;t handle – allow them to bubble up.</p>
 </li>
 <li>
-<p>
-Log messages for exceptions you can handle.
-</p>
+<p>Log messages for exceptions you can handle.</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="custom-exceptions">Custom Exceptions</h4>
-<div class="paragraph"><p>Create custom exceptions where appropriate and use them in tests:</p></div>
+<div class="paragraph">
+<p>Create custom exceptions where appropriate and use them in tests:</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>class MyCustomException(Exception):
     pass
 
@@ -2526,32 +2307,41 @@ class MyTestCase(TestCase):
         my_class = MyClass()
         with self.assertRaises(MyCustomException):
             my_class.has_errors()</pre>
-</div></div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="javascript-logging">Javascript Logging</h3>
-<div class="paragraph"><p>Javascript logging should be as organized and effective as python
-logging.</p></div>
+<div class="paragraph">
+<p>Javascript logging should be as organized and effective as python
+logging.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="principles-of-operations">Principles of Operations</h2>
 <div class="sectionbody">
+
 </div>
 </div>
 <div class="sect1">
 <h2 id="rolling-deployments">Rolling Deployments</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>Backend updates should be able to be rolled out in stages.</p></div>
-<div class="paragraph"><p>strict control of migrations</p></div>
+<div class="paragraph">
+<p>Backend updates should be able to be rolled out in stages.</p>
+</div>
+<div class="paragraph">
+<p>strict control of migrations</p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="pii-and-phi">PII and PHI</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>Protected health information (PHI) is any information about health
+<div class="paragraph">
+<p>Protected health information (PHI) is any information about health
 status, provision of health care, or payment for health care that can be
 linked to a specific individual (source: wikipedia). It includes medical
 history, patient records, or payment history. Engineering employees at
@@ -2559,21 +2349,27 @@ WiserTogether will commonly encounter PHI in some form because our
 company uses PHI to tailor the WiserHealth products to our customers.
 PHI we use includes claims data, prescription data, and eligibility
 files sourced from various insurance companies, businesses, and
-consortia with whom we have a business relationship.</p></div>
-<div class="paragraph"><p>Personally identifiable information (PII) is a generic term used in the
+consortia with whom we have a business relationship.</p>
+</div>
+<div class="paragraph">
+<p>Personally identifiable information (PII) is a generic term used in the
 field of computer and information security to mean information which can
 be used directly or in combination with other information to uniquely
 identify, contact, locate a single individual. Because PII can be used
 identify individuals and cause significant impact to their personal
 privacy and livelihood, great care must be taken to protect PII from
-accidental or willful disclosure.</p></div>
-<div class="paragraph"><p>US and other governments place specific legal responsibilities for the
+accidental or willful disclosure.</p>
+</div>
+<div class="paragraph">
+<p>US and other governments place specific legal responsibilities for the
 protection these types of information on the companies that collect and
 use them. While PHI and PII are different in scope, the security and
-handling requirements are generally the same.</p></div>
+handling requirements are generally the same.</p>
+</div>
 <div class="sect2">
 <h3 id="hipaa">HIPAA</h3>
-<div class="paragraph"><p>The Health Insurance Portability and Accountability Act of 1996, or
+<div class="paragraph">
+<p>The Health Insurance Portability and Accountability Act of 1996, or
 "HIPAA," established a legal framework to enable employees to continue
 their healthcare benefits after termination of employment. To help
 ensure healthcare and insurance records were more portable between
@@ -2585,108 +2381,98 @@ safeguarding and sharing of an individual&#8217;s PHI, required the disclosure
 about how an individual&#8217;s PHI would be used, and specified the
 conditions which PHI could be shared without prior written
 authorization: chiefly the minimum amount of information necessary to
-support active treatment, collections or payment processing.</p></div>
-<div class="paragraph"><p>If you&#8217;ve visited the doctor in the last 5 or 6 years, you&#8217;ve no doubt
+support active treatment, collections or payment processing.</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;ve visited the doctor in the last 5 or 6 years, you&#8217;ve no doubt
 been asked by your physician to sign some form of a Privacy Notice which
 outlines your patient rights about your healthcare record and allows you
 to specify other individuals, such as a spouse or family member, who may
 receive health care information or updates on your behalf. As a
 healthcare professional who is in charge of PHI, your doctor has the
 responsibility to protect your health information and not release it to
-unauthorized individuals.</p></div>
-<div class="paragraph"><p>While the privacy provisions of HIPAA as initially enacted generally
+unauthorized individuals.</p>
+</div>
+<div class="paragraph">
+<p>While the privacy provisions of HIPAA as initially enacted generally
 applied to providers, insurance companies, and employers ("covered
 entities"), laws were extended in 2003 to include business associates of
 these entities (like WiserTogether) and exposing them to significant
 civil and criminal penalties should they fail to follow the proper
-protocols and proscribed safeguards when handling PHI.</p></div>
+protocols and proscribed safeguards when handling PHI.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="general-requirements-for-safe-handling-of-phi-and-pii">General Requirements for Safe Handling of PHI and PII</h3>
-<div class="paragraph"><p>The gist of the requirements for companies handling PHI/PII:</p></div>
-<div class="ulist"><ul>
+<div class="paragraph">
+<p>The gist of the requirements for companies handling PHI/PII:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Access to PHI/PII must be restricted to those groups of employees who
-must access it as part of their job function.
-</p>
+<p>Access to PHI/PII must be restricted to those groups of employees who
+must access it as part of their job function.</p>
 </li>
 <li>
-<p>
-The company must document established procedures for the hiring,
+<p>The company must document established procedures for the hiring,
 change in role, and termination of employees as it relates to access to
-PHI/PII,
-</p>
+PHI/PII,</p>
 </li>
 <li>
-<p>
-The company must provide training for all employees with access to
-PHI/PII on the safe handling of PHI/PII information,
-</p>
+<p>The company must provide training for all employees with access to
+PHI/PII on the safe handling of PHI/PII information,</p>
 </li>
 <li>
-<p>
-The company must prepare and document risk analysis and establish a
-risk management program for PHI/PII,
-</p>
+<p>The company must prepare and document risk analysis and establish a
+risk management program for PHI/PII,</p>
 </li>
 <li>
-<p>
-Systems storing PHI/PII must be kept under both physical and logical
+<p>Systems storing PHI/PII must be kept under both physical and logical
 access controls and monitored for unauthorized access/intrusion, theft,
-or damage,
-</p>
+or damage,</p>
 </li>
 <li>
-<p>
-When PHI/PII is being shared between two authorized parties, it must
+<p>When PHI/PII is being shared between two authorized parties, it must
 be fully encrypted and both parties must be properly authenticated prior
-to transfer taking place,
-</p>
+to transfer taking place,</p>
 </li>
 <li>
-<p>
-Companies must submit documentation, policies, procedures, access
-records, and configuration upon demand for regular audits.
-</p>
+<p>Companies must submit documentation, policies, procedures, access
+records, and configuration upon demand for regular audits.</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="phi-for-developers">PHI for Developers</h3>
-<div class="ulist"><ul>
+<div class="ulist">
+<ul>
 <li>
-<p>
-PHI/PII must always be stored in a strongly-encrpyted form, in a
-secure location,
-</p>
+<p>PHI/PII must always be stored in a strongly-encrpyted form, in a
+secure location,</p>
 </li>
 <li>
-<p>
-PHI/PII must never be stored on an employee workstation or in an
+<p>PHI/PII must never be stored on an employee workstation or in an
 environment that is not clearly designated for that purpose (including
-development and staging environments),
-</p>
+development and staging environments),</p>
 </li>
 <li>
-<p>
-All access to PHI/PII must be strictly controlled, logged with date,
+<p>All access to PHI/PII must be strictly controlled, logged with date,
 time, IP, user, and the information accessed, and these logs must be
-safeguarded from tampering,
-</p>
+safeguarded from tampering,</p>
 </li>
 <li>
-<p>
-When sharing/transferring PHI/PII, both parties involved in the
+<p>When sharing/transferring PHI/PII, both parties involved in the
 transfer must be authenticated and the transmission channel must be
-fully encrypted: USE SSL!
-</p>
+fully encrypted: USE SSL!</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="sanitized-scrubbed-anonymized-data-sets">Sanitized / Scrubbed / Anonymized Data Sets</h3>
-<div class="paragraph"><p>In some cases, it is possible to strip data sets of all pieces of
+<div class="paragraph">
+<p>In some cases, it is possible to strip data sets of all pieces of
 information which could be used to identify an individual. In these
 cases, the data are no longer subject to HIPAA privacy rules and
 resulting penalties, but should still be treated and protected as
@@ -2694,121 +2480,85 @@ confidential information. The scrubbing of datasets to remove the
 personally identifiable information is referred to as
 "de-identification," and the process is covered in the HIPAA Privacy
 rule (164.514(b)(2)(i)), often called the "Safe Harbor Rule", which
-specifies 18 fields which must be removed:</p></div>
-<div class="ulist"><ul>
+specifies 18 fields which must be removed:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Names;
-</p>
+<p>Names;</p>
 </li>
 <li>
-<p>
-All geographic subdivisions smaller than a State, including street
+<p>All geographic subdivisions smaller than a State, including street
 address, city, county, precinct, zip code, and their equivalent
 geocodes, except for the initial three digits of a zip code if,
 according to the current publicly available data from the Bureau of the
-Census:
-</p>
+Census:</p>
 </li>
 <li>
-<p>
-The geographic unit formed by combining all zip codes with the same
-three initial digits contains more than 20,000 people; and
-</p>
+<p>The geographic unit formed by combining all zip codes with the same
+three initial digits contains more than 20,000 people; and</p>
 </li>
 <li>
-<p>
-The initial three digits of a zip code for all such geographic units
-con- taining 20,000 or fewer people is changed to 000.
-</p>
+<p>The initial three digits of a zip code for all such geographic units
+con- taining 20,000 or fewer people is changed to 000.</p>
 </li>
 <li>
-<p>
-All elements of dates (except year) for dates directly related to an
+<p>All elements of dates (except year) for dates directly related to an
 individual, including birth date, admission date, discharge date, date
 of death; and all ages over 89 and all elments of dates (including year)
 indicative of such age, except that such ages and elements may be
-aggregated into a single category of age 90 or older;
-</p>
+aggregated into a single category of age 90 or older;</p>
 </li>
 <li>
-<p>
-Telephone numbers;
-</p>
+<p>Telephone numbers;</p>
 </li>
 <li>
-<p>
-Fax numbers;
-</p>
+<p>Fax numbers;</p>
 </li>
 <li>
-<p>
-Electronic mail addresses;
-</p>
+<p>Electronic mail addresses;</p>
 </li>
 <li>
-<p>
-Social security numbers;
-</p>
+<p>Social security numbers;</p>
 </li>
 <li>
-<p>
-Medical record numbers;
-</p>
+<p>Medical record numbers;</p>
 </li>
 <li>
-<p>
-Health plan beneficiary numbers;
-</p>
+<p>Health plan beneficiary numbers;</p>
 </li>
 <li>
-<p>
-Account numbers;
-</p>
+<p>Account numbers;</p>
 </li>
 <li>
-<p>
-Certificate/license numbers;
-</p>
+<p>Certificate/license numbers;</p>
 </li>
 <li>
-<p>
-Vehicle identifiers and serial numbers, including license plate
-numbers;
-</p>
+<p>Vehicle identifiers and serial numbers, including license plate
+numbers;</p>
 </li>
 <li>
-<p>
-Device identifiers and serial numbers;
-</p>
+<p>Device identifiers and serial numbers;</p>
 </li>
 <li>
-<p>
-Web Universal Resource Locators (URLs);
-</p>
+<p>Web Universal Resource Locators (URLs);</p>
 </li>
 <li>
-<p>
-Internet Protocol (IP) address numbers;
-</p>
+<p>Internet Protocol (IP) address numbers;</p>
 </li>
 <li>
-<p>
-Biometric identifiers, including finger and voice prints;
-</p>
+<p>Biometric identifiers, including finger and voice prints;</p>
 </li>
 <li>
-<p>
-Full face photographic images and any comparable images; and
-</p>
+<p>Full face photographic images and any comparable images; and</p>
 </li>
 <li>
-<p>
-Any other unique identifying number, characteristic, or code.
-</p>
+<p>Any other unique identifying number, characteristic, or code.</p>
 </li>
-</ul></div>
-<div class="paragraph"><p>Provided that we do not have knowledge that the information in the
+</ul>
+</div>
+<div class="paragraph">
+<p>Provided that we do not have knowledge that the information in the
 scrubbed dataset could be used or combined with other data to identify
 an individual. These scrubbed, truncated data sets are suitable for use
 in development environments, including company-proivded workstations
@@ -2819,138 +2569,158 @@ Wikipedia entry for PHI, April 2012. * Understanding the HIPAA Privacy
 Rule, Department of Health and Human Services. * How private is your
 health information?, or why you don&#8217;t want to your datastores to get
 owned. * M-07-16 SUBJECT:Safeguarding Against and Responding to the
-Breach of Personally Identifiable Information</p></div>
+Breach of Personally Identifiable Information</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="python-coding-standards">Python Coding Standards</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>The goal of writing code is to create a seamless integration between
+<div class="paragraph">
+<p>The goal of writing code is to create a seamless integration between
 developers' work that leads to easily understandable conventions,
 logical flows, and a highly maintainable codebase. The unique qualities
 you, as a developer, bring to the project are not expressed as coding
 idioms or fancy tricks – we do not strive to win an obfuscated or
 fancy-pants coding contest. We strive to make code that can be
 immediately understood by our colleagues whenever something needs to be
-picked up for further work at a later time and place.</p></div>
-<div class="paragraph"><p>In general, there are a few guiding styles that represent best practices
+picked up for further work at a later time and place.</p>
+</div>
+<div class="paragraph">
+<p>In general, there are a few guiding styles that represent best practices
 of writing code and you should generally adhere very closely to them.
 Where there is no immediate information about our customization of the
 style guide, refer to the published specifications referenced below. At
 worst, this will spark a conversation among the team to consider (or
 re-consider) a current practice. But generally if we have not defined an
 override for a stylistic element, then you are best served to stick with
-the common convention and industry-standard best practice.</p></div>
+the common convention and industry-standard best practice.</p>
+</div>
 <div class="sect2">
 <h3 id="know-and-love-pep-8">Know and Love PEP-8</h3>
-<div class="paragraph"><p>The most important thing for you to know as you write Python code is the
-importance of PEP-8:</p></div>
-<div class="paragraph"><p>Read the full PEP-8 document before going any further in this document.</p></div>
-<div class="paragraph"><p>In general, we cleave closely to the PEP-8 style guide in order to make
+<div class="paragraph">
+<p>The most important thing for you to know as you write Python code is the
+importance of PEP-8:</p>
+</div>
+<div class="paragraph">
+<p>Read the full PEP-8 document before going any further in this document.</p>
+</div>
+<div class="paragraph">
+<p>In general, we cleave closely to the PEP-8 style guide in order to make
 our code more easily picked up by colleagues. To make certain aspects
 more specific and clear, below a few of the most important stylistic
-elements are called out:</p></div>
+elements are called out:</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="tabs-vs.-spaces">Tabs vs. Spaces</h3>
-<div class="paragraph"><p>Spaces win. Set your editor to equate a press of the "TAB" key with 4
+<div class="paragraph">
+<p>Spaces win. Set your editor to equate a press of the "TAB" key with 4
 spaces. Code that includes tab-stop characters should be refactored to
 eliminate the tab-stop characters. (This actually goes for all code,
-including HTML, JS and CSS/SCSS.)</p></div>
+including HTML, JS and CSS/SCSS.)</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="line-length">Line Length</h3>
-<div class="paragraph"><p>A line length of 80 characters is preferred. This allows other tools for
+<div class="paragraph">
+<p>A line length of 80 characters is preferred. This allows other tools for
 code review to display code more easily, and it allows us to support the
-greatest flexibility of editors and applications for working with code.</p></div>
-<div class="paragraph"><p>For lines that do not break conveniently – when you would lose
+greatest flexibility of editors and applications for working with code.</p>
+</div>
+<div class="paragraph">
+<p>For lines that do not break conveniently – when you would lose
 readability or the capability to easily parse a line of code due to
 breaking the line – it is acceptable to go up to 120 characters in line
-length.</p></div>
-<div class="paragraph"><p>It would be very good to never exceed 120 character line length. The
+length.</p>
+</div>
+<div class="paragraph">
+<p>It would be very good to never exceed 120 character line length. The
 exception to this rule would be when there is a very negative effect in
-breaking the line.</p></div>
+breaking the line.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="naming-conventions">Naming Conventions</h3>
-<div class="paragraph"><p>It is important to adhere to the guidelines in the PEP-8 Naming
+<div class="paragraph">
+<p>It is important to adhere to the guidelines in the PEP-8 Naming
 Conventions section so that it is easily understood what kind of object
-we are looking at when we see a name.</p></div>
-<div class="paragraph"><p>SPEND A LOT OF TIME THINKING ABOUT HOW YOU NAME THINGS.</p></div>
-<div class="paragraph"><p>Possibly the most important decisions we make as developers is what to
+we are looking at when we see a name.</p>
+</div>
+<div class="paragraph">
+<p>SPEND A LOT OF TIME THINKING ABOUT HOW YOU NAME THINGS.</p>
+</div>
+<div class="paragraph">
+<p>Possibly the most important decisions we make as developers is what to
 name the things we create. This is never a decision you make alone.
 Names should always be vetted by members of the development team with an
 eye towards accuracy and clarity. Names should always accurately
 represent the thing they name. Whenever possible, names should clue you
 into any non-obvious, but important, quality of the object being named.
 The goal is to have a clarity of meaning and a consistency of usage
-across all applications and within any codebase we create.</p></div>
-<div class="paragraph"><p>It is worthwhile to call out a few of the important factors when
-deciding what to name your modules, classes, methods and variables:</p></div>
-<div class="ulist"><ul>
+across all applications and within any codebase we create.</p>
+</div>
+<div class="paragraph">
+<p>It is worthwhile to call out a few of the important factors when
+deciding what to name your modules, classes, methods and variables:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-If in doubt, be more verbose
-</p>
+<p>If in doubt, be more verbose</p>
 </li>
 <li>
-<p>
-Everyone has autocomplete (unless they have decided to turn it off),
+<p>Everyone has autocomplete (unless they have decided to turn it off),
 so there is no excuse about why a short variable will save you more time
 to type than a long variable. Spend time thinking of concise, accurate
-and clear names for objects.
-</p>
+and clear names for objects.</p>
 </li>
 <li>
-<p>
-Follow the capitalization, underscore, and other guidelines in PEP-8
-</p>
-<div class="ulist"><ul>
+<p>Follow the capitalization, underscore, and other guidelines in PEP-8</p>
+<div class="ulist">
+<ul>
 <li>
-<p>
-These help us know instantly what kind of object we&#8217;re dealing with.
-The value of this cannot be underestimated.
-</p>
+<p>These help us know instantly what kind of object we&#8217;re dealing with.
+The value of this cannot be underestimated.</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </li>
 <li>
-<p>
-Control your usage of Nouns, Verbs, Adjectives and Adverbs
-</p>
-<div class="ulist"><ul>
+<p>Control your usage of Nouns, Verbs, Adjectives and Adverbs</p>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Remember that most class names should be nouns. Most variable names
+<p>Remember that most class names should be nouns. Most variable names
 should also be nouns, although sometimes they should be noun phrases
 that include adjectives. Method and function names should generally be
 verbs or verb phrases (sometimes with adverbs). The goal is to make code
-that reads as close as possible to natural language.
-</p>
+that reads as close as possible to natural language.</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </li>
 <li>
-<p>
-Control your usage of Plurals and Singulars
-</p>
-<div class="ulist"><ul>
+<p>Control your usage of Plurals and Singulars</p>
+<div class="ulist">
+<ul>
 <li>
-<p>
-If a name is plural then we expect it to represent a collection of
+<p>If a name is plural then we expect it to represent a collection of
 objects. For most Classes and Objects we will generally use singular
 nouns. Variables that represent lists or dictionaries should generally
-be plural.
-</p>
+be plural.</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="encapsulation-and-modularity">Encapsulation and Modularity</h3>
-<div class="paragraph"><p>Always encapsulate discreet functionality into a single location. There
+<div class="paragraph">
+<p>Always encapsulate discreet functionality into a single location. There
 is never a reason to duplicate functionality in multiple locations, and
 it is always a benefit to have reusable components that represent an
 isolated piece of logic that can be freely strung together with other
@@ -2958,124 +2728,137 @@ components. Leveraging capabilities of different libraries can provide a
 variety of mechanisms to enhance encapsulation and modularity of your
 code (in Django, for example, the Form object becomes useful to
 encapsulate any logic directly related to processing user-input), so be
-on the lookout for opportunities to do so.</p></div>
-<div class="paragraph"><p>Whenever you find logic repeated in code during a code review that
+on the lookout for opportunities to do so.</p>
+</div>
+<div class="paragraph">
+<p>Whenever you find logic repeated in code during a code review that
 should be called out as a blocker in need of fixing. In extreme
 situations, there may be some justification. (One common example of this
 is the render_to_response function called at the end of most Django
 views – it is generally better for ease of understanding to write the
 entire render_to_response function call in the view itself, rather than
-abstracting that logic into a one-liner.)</p></div>
+abstracting that logic into a one-liner.)</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="project-structure">Project Structure</h3>
-<div class="paragraph"><p>Project structure should conform to python community conventions.</p></div>
+<div class="paragraph">
+<p>Project structure should conform to python community conventions.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="import-statements">Import Statements</h3>
-<div class="paragraph"><p>Imports should be specific and well-organized. Whenever possible,
+<div class="paragraph">
+<p>Imports should be specific and well-organized. Whenever possible,
 imports should be at the top of the file and only at the top of the
 file. Occasionally, it will be necessary to handle imports inside a
 function or method to resolve circular dependencies, but this should be
-considered a bad code smell and carefully considered.</p></div>
-<div class="paragraph"><p>The following order should be followed:</p></div>
-<div class="ulist"><ul>
+considered a bad code smell and carefully considered.</p>
+</div>
+<div class="paragraph">
+<p>The following order should be followed:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-System-level module imports
-</p>
+<p>System-level module imports</p>
 </li>
 <li>
-<p>
-Third-party module imports
-</p>
+<p>Third-party module imports</p>
 </li>
 <li>
-<p>
-First-party module imports
-</p>
+<p>First-party module imports</p>
 </li>
-</ul></div>
-<div class="paragraph"><p>Each block of imports should be separated by a blank line, and within
-each block the import statements should be alphabetized, like so:</p></div>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each block of imports should be separated by a blank line, and within
+each block the import statements should be alphabetized, like so:</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>import os
 import datetime
 from module1 import submodule
 from module2 import submodule
 from mywiserhealth.apps.thatapp.models import modelname
-from mywiserhealth.apps.thisapp.models import modelname</pre>
-</div></div>
-<div class="paragraph"><p>NEVER USE WILDCARD IMPORTS SUCH AS:</p></div>
+from mywiserhealth.apps.thisapp.models import modelname
+</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>NEVER USE WILDCARD IMPORTS SUCH AS:</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>from modulename import *</pre>
-</div></div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="rest-api-conventions">REST API Conventions</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>Much of the beauty of the increasingly popular REST API paradigm lies in
+<div class="paragraph">
+<p>Much of the beauty of the increasingly popular REST API paradigm lies in
 it&#8217;s simplicity and the freedom to innovate. However, particularly
 inside a single codebase, not having established conventions starts to
-add unnecessary overhead.</p></div>
+add unnecessary overhead.</p>
+</div>
 <div class="sect2">
 <h3 id="assumptions">Assumptions</h3>
-<div class="ulist"><ul>
+<div class="ulist">
+<ul>
 <li>
-<p>
-Remain close to RESTful API design patterns and best practices
-</p>
+<p>Remain close to RESTful API design patterns and best practices</p>
 </li>
 <li>
-<p>
-Prioritize elegant functionality for JS- and JSON-based clients
-(deviate from RESTful API design dictates where necessary)
-</p>
-<div class="ulist"><ul>
+<p>Prioritize elegant functionality for JS- and JSON-based clients
+(deviate from RESTful API design dictates where necessary)</p>
+<div class="ulist">
+<ul>
 <li>
-<p>
-All functionality should degrade to POST and GET for XHR support
-</p>
+<p>All functionality should degrade to POST and GET for XHR support</p>
 </li>
 <li>
-<p>
-Results should return an envelope since XHR does not handle HTTP
-headers well
-</p>
+<p>Results should return an envelope since XHR does not handle HTTP
+headers well</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </li>
 <li>
-<p>
-All results are paginated
-</p>
+<p>All results are paginated</p>
 </li>
-</ul></div>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="query-string-parameters">Query String Parameters</h3>
-<div class="paragraph"><p>The following query string parameters should remain consistent across
-APIs.</p></div>
+<div class="paragraph">
+<p>The following query string parameters should remain consistent across
+APIs.</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>?q=querystring // Query String supplied by user
 &amp;start=1 // Record ordinal (integer) to begin results return
 &amp;end=100 // Record ordinal (integer) to end results return
 &amp;page=2 // Page ordinal (integer) to return in results
 &amp;per_page=20 // Per page count (integer) for pagination
 &amp;depth=1 // Depth of related resources to flatten into results return</pre>
-</div></div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="data-envelope-formatting">Data Envelope Formatting</h3>
-<div class="paragraph"><p>Resource calls should return the following data envelopes for easy use
-in JS-based clients.</p></div>
+<div class="paragraph">
+<p>Resource calls should return the following data envelopes for easy use
+in JS-based clients.</p>
+</div>
 <div class="listingblock">
-<div class="content monospaced">
+<div class="content">
 <pre>{
     'meta': {
         'status_code': 200, // HTTP status code
@@ -3111,7 +2894,8 @@ in JS-based clients.</p></div>
         }
     }
 }</pre>
-</div></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -3122,208 +2906,227 @@ in JS-based clients.</p></div>
 <h3 id="cache-management">Cache Management</h3>
 <div class="sect3">
 <h4 id="publish-to-cdn">Publish to CDN</h4>
-<div class="paragraph"><p>All frontend assets should be published directly to a CDN.</p></div>
+<div class="paragraph">
+<p>All frontend assets should be published directly to a CDN.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="unique-urls">Unique URLs</h4>
-<div class="paragraph"><p>Frontend assets should be published to the CDN with a unique url. This
+<div class="paragraph">
+<p>Frontend assets should be published to the CDN with a unique url. This
 can easily be constructed from a version number, git sha, or a hash of
-the files contents. For instance <span class="monospaced">http://cdn.com/1/main.js</span> or
-<span class="monospaced">http://cdn.com/js/main-abc1234.js</span>.</p></div>
+the files contents. For instance <code>http://cdn.com/1/main.js</code> or
+<code>http://cdn.com/js/main-abc1234.js</code>.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="far-future-expires">Far-Future Expires</h4>
-<div class="paragraph"><p>The CDN should serve all assets with expiration date 1 year in the
+<div class="paragraph">
+<p>The CDN should serve all assets with expiration date 1 year in the
 future. This allows the browser to cache assets aggressively. Since
 every asset is published with a unique URL, cache "busting" will always
-be handled by requesting a different url entirely.</p></div>
+be handled by requesting a different url entirely.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="stateless-services">Stateless Services</h3>
-<div class="paragraph"><p>All service API&#8217;s should be stateless if possible. Don&#8217;t rely on things
-like "connections" or "sesions".</p></div>
+<div class="paragraph">
+<p>All service API&#8217;s should be stateless if possible. Don&#8217;t rely on things
+like "connections" or "sesions".</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="shared-storage">Shared Storage</h3>
-<div class="paragraph"><p>Do not rely on the local filesystem for anything but intra-request
-temporary files, which should be created with <span class="monospaced">tmpfile()</span>. Instead, use
-an object storage mechanism such as Amazon S3 or Openstack Swift.</p></div>
+<div class="paragraph">
+<p>Do not rely on the local filesystem for anything but intra-request
+temporary files, which should be created with <code>tmpfile()</code>. Instead, use
+an object storage mechanism such as Amazon S3 or Openstack Swift.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="asyncronous-processing">Asyncronous Processing</h3>
-<div class="paragraph"><p>For any operation which may take more than a small fraction of a second
+<div class="paragraph">
+<p>For any operation which may take more than a small fraction of a second
 (100ms or so), seperate it out into an asyncronous <em>sooner</em> rather than
 <em>later</em>. Web server and proxy timeouts are fickle, and will cause your
 reports to fail at the most inopportune times. Designing async in from
 the beginning eliminates this risk and ensures you don&#8217;t tie up valuable
-connection resources waiting on timeouts.</p></div>
+connection resources waiting on timeouts.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="principles-of-secure-development">Principles of Secure Development</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>A number of principles of secure development have been identified In
+<div class="paragraph">
+<p>A number of principles of secure development have been identified In
 order to achieve the goals Confidentiality, Integrity, and Availability.
-Many of these are based upon the ones maintained by OWASP.</p></div>
-<div class="paragraph"><p>The goals of a secure system are as follows:</p></div>
+Many of these are based upon the ones maintained by OWASP.</p>
+</div>
+<div class="paragraph">
+<p>The goals of a secure system are as follows:</p>
+</div>
 <div class="sect2">
 <h3 id="confidentiality">Confidentiality</h3>
-<div class="paragraph"><p>Access to information is only granted to those with right to it. 
+<div class="paragraph">
+<p>Access to information is only granted to those with right to it. 
 Integrity Information must not be tampered with or altered by
 unauthorized users. Failing that, altered information should be
 detectable.  Availability Information and systems to access it must be
 available when needed. In order to achieve these goals, developers are
 expected to adhere to the principles of secure development and other
 resources available to ensure that that their changes do not introduce
-additional defects.</p></div>
+additional defects.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="simplicity">Simplicity</h3>
-<div class="paragraph"><p>Given a choice between a simple solution and complex one, favor the
+<div class="paragraph">
+<p>Given a choice between a simple solution and complex one, favor the
 simple solution. Ease of understanding helps to ensure that
-misunderstood edge cases will slip through and cause security issues.</p></div>
+misunderstood edge cases will slip through and cause security issues.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="minimized-attack-surface">Minimized Attack Surface</h3>
-<div class="paragraph"><p>In short, don&#8217;t create more code than necessary. Candidates for a
-"minimal attack surface" review include:</p></div>
-<div class="ulist"><ul>
+<div class="paragraph">
+<p>In short, don&#8217;t create more code than necessary. Candidates for a
+"minimal attack surface" review include:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-API Entry Points
-</p>
+<p>API Entry Points</p>
 </li>
 <li>
-<p>
-Network Sockets
-</p>
+<p>Network Sockets</p>
 </li>
 <li>
-<p>
-Files
-</p>
+<p>Files</p>
 </li>
 <li>
-<p>
-Functions, Classes and Class Methods
-</p>
+<p>Functions, Classes and Class Methods</p>
 </li>
 <li>
-<p>
-System Components
-</p>
+<p>System Components</p>
 </li>
 <li>
-<p>
-Secure Defaults
-</p>
+<p>Secure Defaults</p>
 </li>
-</ul></div>
-<div class="paragraph"><p>The system should be maximally secure in its default configuration. Any
+</ul>
+</div>
+<div class="paragraph">
+<p>The system should be maximally secure in its default configuration. Any
 confidential information necessary for full operation should be provided
-out of band.</p></div>
+out of band.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="separation-of-concerns">Separation of Concerns</h3>
-<div class="paragraph"><p>Unless there is a need to share, favor solutions that keep information
+<div class="paragraph">
+<p>Unless there is a need to share, favor solutions that keep information
 modular and isolated. When the need to share arises, favor a documented
 interface over simply merging the codebases or sharing access to a data
-store.</p></div>
+store.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="least-privilege">Least Privilege</h3>
-<div class="paragraph"><p>Minimize the number of privileges necessary for a given system
+<div class="paragraph">
+<p>Minimize the number of privileges necessary for a given system
 component. At the minimum, code should never run as a system
 administrative user. If administrative permissions are necessary, they
-should be delegated on a per-permission, as-needed basis only.</p></div>
+should be delegated on a per-permission, as-needed basis only.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="fail-securely">Fail Securely</h3>
-<div class="paragraph"><p>The system must fail securely. For instance, if an exception occurs to
+<div class="paragraph">
+<p>The system must fail securely. For instance, if an exception occurs to
 might corrupt the user session, it should be throw out entirely rather
-than attempting to continue processing.</p></div>
+than attempting to continue processing.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="defense-in-depth">Defense in Depth</h3>
-<div class="paragraph"><p>Instead of relying on a single control, systems should be secure at as
+<div class="paragraph">
+<p>Instead of relying on a single control, systems should be secure at as
 many points as feasible. The more depth in the security architecture,
 the lower the chance of information compromise in the event of a failure
-or exploit.</p></div>
+or exploit.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="obscurity-is-not-security">Obscurity is not Security</h3>
-<div class="paragraph"><p>While an unknown algorithm or non-standard port number may make an
+<div class="paragraph">
+<p>While an unknown algorithm or non-standard port number may make an
 attackers job difficult, it is not a secure solution. At best, obscurity
-should be one of several layers of defense in depth.</p></div>
+should be one of several layers of defense in depth.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="fix-correctness">Fix Correctness</h3>
-<div class="paragraph"><p>Once a security defect has been identified, extra care should be given
+<div class="paragraph">
+<p>Once a security defect has been identified, extra care should be given
 to the creation and review of the patch. The bug may manifest in more
-than one location, or there may be subtle side-effects to the fix.</p></div>
+than one location, or there may be subtle side-effects to the fix.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="other-resources">Other Resources</h3>
-<div class="paragraph"><p>*
-<a href="OWASP%20Secure%20Coding%20Principles">https://www.owasp.org/index.php/Secure_Coding_Principles</a>
+<div class="paragraph">
+<p>*
+<a href="OWASP%20Secure%20Coding%20Principles"><a href="https://www.owasp.org/index.php/Secure_Coding_Principles">https://www.owasp.org/index.php/Secure_Coding_Principles</a></a>
 *
-<a href="OWASP%20Top%2010%20Vulnerabilities">https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project</a>
+<a href="OWASP%20Top%2010%20Vulnerabilities"><a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project">https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project</a></a>
 *
-<a href="Django%20Book%20-%20Security">http://www.djangobook.com/en/2.0/chapter20/</a>
+<a href="Django%20Book%20-%20Security"><a href="http://www.djangobook.com/en/2.0/chapter20/">http://www.djangobook.com/en/2.0/chapter20/</a></a>
 *
-<a href="SANS%20/%20CWE%20Top%2025%20Software%20Errors">http://www.sans.org/top25-software-errors/</a>
+<a href="SANS%20/%20CWE%20Top%2025%20Software%20Errors"><a href="http://www.sans.org/top25-software-errors/">http://www.sans.org/top25-software-errors/</a></a>
 *
-<a href="SafeCode%20Dev%20Practices">http://www.safecode.org/publications/SAFECode_Dev_Practices1108.pdf</a></p></div>
+<a href="SafeCode%20Dev%20Practices"><a href="http://www.safecode.org/publications/SAFECode_Dev_Practices1108.pdf">http://www.safecode.org/publications/SAFECode_Dev_Practices1108.pdf</a></a></p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="services-oriented-architecture">Services Oriented Architecture</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>Backend services will be de-coupled as much as possible and delivered
+<div class="paragraph">
+<p>Backend services will be de-coupled as much as possible and delivered
 via versioned REST resources. We&#8217;ll maintain integration tests at the
-API boundaries to control forwards and backwards compatibility.</p></div>
-<div class="ulist"><ul>
+API boundaries to control forwards and backwards compatibility.</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>
-stateless
-</p>
+<p>stateless</p>
 </li>
 <li>
-<p>
-clustered
-</p>
+<p>clustered</p>
 </li>
 <li>
-<p>
-zero-downtime
-</p>
+<p>zero-downtime</p>
 </li>
 <li>
-<p>
-versioned
-</p>
+<p>versioned</p>
 </li>
 <li>
-<p>
-tested
-</p>
+<p>tested</p>
 </li>
 <li>
-<p>
-documented
-</p>
+<p>documented</p>
 </li>
-</ul></div>
+</ul>
 </div>
 </div>
 </div>
-<div id="footnotes"><hr></div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-10-16 14:42:08 EDT
+Last updated 2013-10-16 15:04:21 EDT
 </div>
 </div>
 </body>
