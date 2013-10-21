@@ -160,8 +160,8 @@ p a > code:hover { color: #561309; }
 #header br + span.author:before { content: ", "; }
 #toc { border-bottom: 3px double #ebebeb; padding-bottom: 1.25em; }
 #toc > ul { margin-left: 0.25em; }
-#toc ul.sectlevel0 > li > a { font-style: italic; }
-#toc ul.sectlevel0 ul.sectlevel1 { margin-left: 0; margin-top: 0.5em; margin-bottom: 0.5em; }
+#toc ul.sectlevel0 > li > a { font-size: 120%; }
+#toc ul.sectlevel0 ul.sectlevel1 { margin-left: 20px; margin-top: 0.5em; margin-bottom: 0.5em; }
 #toc ul { list-style-type: none; }
 #toctitle { color: #7a2518; }
 @media only screen and (min-width: 1280px) { body.toc2 { padding-left: 20em; }
@@ -357,7 +357,6 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 .conum:after { content: attr(data-value); }
 .conum:not([data-value]):empty { display: none; }
 .literalblock > .content > pre, .listingblock > .content > pre { -webkit-border-radius: 0; border-radius: 0; }
-
 </style>
 <style>
 .highlight .hll { background-color: #ffffcc }
@@ -423,166 +422,76 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 .highlight .tok-il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="book toc2 toc-left">
 <div id="header">
 <h1>A Pragmatic Developers Handbook</h1>
 <span id="author" class="author">Erik LaBianca</span><br>
 <span id="email" class="email">&lt;<a href="mailto:erik.labianca@gmail.com">erik.labianca@gmail.com</a>&gt;</span><br>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
+<ul class="sectlevel0">
 <li><a href="#_introduction">Introduction</a></li>
 <li><a href="#_processes_and_workflows">Processes and Workflows</a></li>
 <li>
-<ul class="sectlevel2">
+<ul class="sectlevel1">
 <li><a href="#_github_pr_merge_squash_workflow">GitHub PR-merge-squash Workflow</a></li>
 </ul>
 </li>
-<li><a href="#_standards">Standards</a></li>
+<li><a href="#_practices">Practices</a></li>
+<li>
+<ul class="sectlevel1">
 <li><a href="#code-review">Code Review</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#code-review-checklist">Code Review Checklist</a></li>
 </ul>
 </li>
-<li><a href="#commit-messages">Commit Messages</a></li>
+<li><a href="#_principles">Principles</a></li>
 <li>
-<ul class="sectlevel2">
-<li><a href="#template">Template</a></li>
-</ul>
-</li>
-<li><a href="#cqrs-pattern">CQRS Pattern</a></li>
+<ul class="sectlevel1">
 <li><a href="#data-protection">Data Protection</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#minimization-of-data-retrieval">Minimization of Data Retrieval</a></li>
-<li><a href="#minimizing-data-exposure">Minimizing Data Exposure</a></li>
+<li><a href="#secure-development">Secure Development</a></li>
+<li><a href="#scalability">Scalability</a></li>
 </ul>
 </li>
-<li><a href="#development-culture">Development Culture</a></li>
+<li><a href="#_standards">Standards</a></li>
 <li>
-<ul class="sectlevel2">
-<li><a href="#be-respectful-of-everyone-even-those-who-arent-here-yet">Be Respectful of Everyone, Even Those Who Aren&#8217;t Here (Yet!)</a></li>
-<li><a href="#be-agile">Be Agile</a></li>
-<li><a href="#be-a-craftsman">Be a Craftsman</a></li>
-<li><a href="#play-well-with-others">Play Well With Others</a></li>
-<li><a href="#read-the-world">Read the World</a></li>
-</ul>
-</li>
-<li><a href="#javascript-standards">Javascript Standards</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#coding-style">Coding Style</a></li>
-<li><a href="#libraries">Libraries</a></li>
-<li><a href="#best-practices">Best Practices</a></li>
-</ul>
-</li>
-<li><a href="#karma-test-runner">Karma Test Runner</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#getting-started">Getting Started</a></li>
-<li><a href="#running-javascript-tests">Running Javascript Tests</a></li>
-</ul>
-</li>
-<li><a href="#writing-javascript-tests">Writing Javascript Tests</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#test-loader-file-template">Test Loader File Template</a></li>
-<li><a href="#test-suite-file-template">Test Suite File Template</a></li>
-</ul>
-</li>
-<li><a href="#less-style-guide">LESS Style Guide</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#naming-patterns">Naming Patterns</a></li>
-<li><a href="#keep-in-mind">Keep in mind:</a></li>
-<li><a href="#mixins">Mixins</a></li>
-</ul>
-</li>
-<li><a href="#logging">Logging</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#python-logging">Python Logging</a></li>
-<li><a href="#python-exception-handling">Python Exception Handling</a></li>
-<li><a href="#javascript-logging">Javascript Logging</a></li>
-</ul>
-</li>
-<li><a href="#principles-of-operations">Principles of Operations</a></li>
-<li><a href="#rolling-deployments">Rolling Deployments</a></li>
-<li><a href="#pii-and-phi">PII and PHI</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#hipaa">HIPAA</a></li>
-<li><a href="#general-requirements-for-safe-handling-of-phi-and-pii">General Requirements for Safe Handling of PHI and PII</a></li>
-<li><a href="#phi-for-developers">PHI for Developers</a></li>
-<li><a href="#sanitized-scrubbed-anonymized-data-sets">Sanitized / Scrubbed / Anonymized Data Sets</a></li>
-</ul>
-</li>
-<li><a href="#python-coding-standards">Python Coding Standards</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#know-and-love-pep-8">Know and Love PEP-8</a></li>
-<li><a href="#tabs-vs.-spaces">Tabs vs. Spaces</a></li>
-<li><a href="#line-length">Line Length</a></li>
-<li><a href="#naming-conventions">Naming Conventions</a></li>
-<li><a href="#encapsulation-and-modularity">Encapsulation and Modularity</a></li>
-<li><a href="#project-structure">Project Structure</a></li>
-<li><a href="#import-statements">Import Statements</a></li>
-</ul>
-</li>
+<ul class="sectlevel1">
+<li><a href="#commit-messages">Commit Messages</a></li>
 <li><a href="#rest-api-conventions">REST API Conventions</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#assumptions">Assumptions</a></li>
-<li><a href="#query-string-parameters">Query String Parameters</a></li>
-<li><a href="#data-envelope-formatting">Data Envelope Formatting</a></li>
 </ul>
 </li>
-<li><a href="#scalability-principles">Scalability Principles</a></li>
+<li><a href="#_language_standards">Language Standards</a></li>
 <li>
-<ul class="sectlevel2">
-<li><a href="#cache-management">Cache Management</a></li>
-<li><a href="#stateless-services">Stateless Services</a></li>
-<li><a href="#shared-storage">Shared Storage</a></li>
-<li><a href="#asyncronous-processing">Asyncronous Processing</a></li>
+<ul class="sectlevel1">
+<li><a href="#javascript-standards">Javascript Standards</a></li>
+<li><a href="#python-coding-standards">Python Coding Standards</a></li>
 </ul>
 </li>
-<li><a href="#principles-of-secure-development">Principles of Secure Development</a></li>
+<li><a href="#_patterns">Patterns</a></li>
 <li>
-<ul class="sectlevel2">
-<li><a href="#confidentiality">Confidentiality</a></li>
-<li><a href="#simplicity">Simplicity</a></li>
-<li><a href="#minimized-attack-surface">Minimized Attack Surface</a></li>
-<li><a href="#separation-of-concerns">Separation of Concerns</a></li>
-<li><a href="#least-privilege">Least Privilege</a></li>
-<li><a href="#fail-securely">Fail Securely</a></li>
-<li><a href="#defense-in-depth">Defense in Depth</a></li>
-<li><a href="#obscurity-is-not-security">Obscurity is not Security</a></li>
-<li><a href="#fix-correctness">Fix Correctness</a></li>
-<li><a href="#other-resources">Other Resources</a></li>
-</ul>
-</li>
+<ul class="sectlevel1">
 <li><a href="#services-oriented-architecture">Services Oriented Architecture</a></li>
+</ul>
+</li>
+<li><a href="#_tools">Tools</a></li>
+<li>
+<ul class="sectlevel1">
+<li><a href="#karma-test-runner">Karma Test Runner</a></li>
+<li><a href="#writing-javascript-tests">Writing Javascript Tests</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_introduction">Introduction</h2>
-<div class="sectionbody">
+<h1 id="_introduction" class="sect0">Introduction</h1>
 <div class="paragraph">
 <p>Software development is hard. Computing is evolving faster than anyone can keep up.
 In order for a team to work efficiently, they must have processes to guide their
 interactions and standards to ensure their work product is reusable.</p>
 </div>
-</div>
-</div>
+<h1 id="_processes_and_workflows" class="sect0">Processes and Workflows</h1>
 <div class="sect1">
-<h2 id="_processes_and_workflows">Processes and Workflows</h2>
+<h2 id="_github_pr_merge_squash_workflow">GitHub PR-merge-squash Workflow</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_github_pr_merge_squash_workflow">GitHub PR-merge-squash Workflow</h3>
 <div class="paragraph">
 <p>When using GitHub there are a variety of possible workflows. Each has their
 own merits, but for a large, long-running project with a number of committers
@@ -613,8 +522,8 @@ are responsible for approving the code and keeping it moving through the pipelin
 </dd>
 </dl>
 </div>
-<div class="sect3">
-<h4 id="_steps">Steps</h4>
+<div class="sect2">
+<h3 id="_steps">Steps</h3>
 <div class="olist loweralpha">
 <div class="title">Product Manager</div>
 <ol class="loweralpha" type="a">
@@ -823,13 +732,7 @@ future work upon.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_standards">Standards</h2>
-<div class="sectionbody">
-
-</div>
-</div>
+<h1 id="_practices" class="sect0">Practices</h1>
 <div class="sect1">
 <h2 id="code-review">Code Review</h2>
 <div class="sectionbody">
@@ -1032,93 +935,7 @@ has been done in the changeset?</p>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="commit-messages">Commit Messages</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>In order to ensure maintainability, code commits must include quality
-commit messages. Quality commit messages are concise, detailed,
-accurate, and consistent.</p>
-</div>
-<div class="sect2">
-<h3 id="template">Template</h3>
-<div class="listingblock">
-<div class="content">
-<pre>Name of change #234                                       |&lt;-- trunc here
-
-Patch Set 1:
-    - List of items
-    - Changed in the first patch
-
-Patch Set 2:
-    - List of items
-        - Important notes for the above item
-    - Second item in patch 2
-
-Change-Id: O8c9e--PASTE--CHANGE-ID--HERE--FOR--GERRIT--3edd
-Jira-Issue: PT-XXX</pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>You will notice that the first line is very short. Git prefers line
-lengths below 68 characters, and the first line should summarize in
-plain english what the commit represents. It may or may not relate
-directly to the ticket subject. This is the most important part of the
-message so make it clear. Including the ticket id is optional, but in
-many cases makes the commit easier to refer to.</p>
-</li>
-<li>
-<p>You will notice there is a blank line between the first line and the
-additional details. This line enables git to be smart about displaying
-change history, so please include it. I like to bullet out all the
-changes, but it&#8217;s mostly a matter of taste. You should include any
-details necessary to understand or execute this change, including
-necessary settings change, the fact that the change requires a database
-migration, etc.</p>
-</li>
-</ul>
-</div>
-<div class="sect3">
-<h4 id="gerrit-specific-notes">Gerrit Specific Notes</h4>
-<div class="ulist">
-<ul>
-<li>
-<p>You will notice I&#8217;ve separated out resubmitted changes into multiple
-patches. This is only necessary for a patch that you have to resubmit,
-but it helps the reviewer to understand what you&#8217;ve changed since the
-previous change.</p>
-</li>
-<li>
-<p>You will notice the Change-Id: line. This line is automatically
-generated via a gerrit commit hook[2]. Please download and install this
-hook. This line is now required by gerrit and allows you to easily
-resubmit a change to gerrit and have it update the existing change
-request, causing reviewers to be notified. You will notice the
-Jira-Issue: line at the bottom. This isn&#8217;t strictly necessary, but makes
-it possible to search gerrit by jira ticket ID, so if theres a jira
-ticket included in the change you may as well include it.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="cqrs-pattern">CQRS Pattern</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>See <a href="http://martinfowler.com/bliki/CQRS.html">http://martinfowler.com/bliki/CQRS.html</a></p>
-</div>
-<div class="paragraph">
-<p>This pattern is used by the dataset service. CRUD operations are
-completed against a relational store, and query operations are completed
-against a de-normalized representation stored in SOLR.</p>
-</div>
-</div>
-</div>
+<h1 id="_principles" class="sect0">Principles</h1>
 <div class="sect1">
 <h2 id="data-protection">Data Protection</h2>
 <div class="sectionbody">
@@ -1234,8 +1051,9 @@ expose data in the form of:</p>
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="application-logs">Application Logs</h4>
+</div>
+<div class="sect2">
+<h3 id="application-logs">Application Logs</h3>
 <div class="paragraph">
 <p>Application logs are one of the most common ways to expose unnecessary
 data. Debug level logs are great and they serve us well in identifying
@@ -1244,7 +1062,6 @@ information if the statements are enabled on setups with sensitive data
 such as staging or production server. This is why it&#8217;s absolutely
 crucial to have appropriate log settings for each level of deployment
 e.g. development, staging and production.</p>
-</div>
 </div>
 <div class="sect3">
 <h4 id="exception-stack-traces">Exception Stack Traces</h4>
@@ -1342,8 +1159,9 @@ information of real users). We need to scrub all of that. Loss of our
 boxes will lead to data exposure concerns.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="unnecessary-data-retrieval">Unnecessary Data Retrieval</h4>
+</div>
+<div class="sect2">
+<h3 id="unnecessary-data-retrieval">Unnecessary Data Retrieval</h3>
 <div class="paragraph">
 <p>The key to minimize data exposure, is again minimal retrieval of data.
 Particularly when dealing with user profile information, we should be
@@ -1351,8 +1169,8 @@ very diligent about retrieving as little information as possible to get
 the job done.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="ensuring-security-of-data-in-process">Ensuring Security of Data In Process</h4>
+<div class="sect2">
+<h3 id="ensuring-security-of-data-in-process">Ensuring Security of Data In Process</h3>
 <div class="paragraph">
 <p>More often than not, we are forced to retrieve or work with really
 sensitive data. In such cases, we can take measures to maintain the
@@ -1370,8 +1188,8 @@ possible to process them in realtime. Asynchronous worker servers are
 great in accommodating such cases.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="conclusion">Conclusion</h4>
+<div class="sect2">
+<h3 id="conclusion">Conclusion</h3>
 <div class="paragraph">
 <p>Exercising data protection is about conscious usage of data. It is
 achieved via practice of upholding protection for all kinds of data, not
@@ -1385,108 +1203,376 @@ in our system.</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="secure-development">Secure Development</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A number of principles of secure development have been identified In
+order to achieve the goals Confidentiality, Integrity, and Availability.
+Many of these are based upon the ones maintained by OWASP.</p>
+</div>
+<div class="paragraph">
+<p>The goals of a secure system are as follows:</p>
+</div>
+<div class="sect2">
+<h3 id="confidentiality">Confidentiality</h3>
+<div class="paragraph">
+<p>Access to information is only granted to those with right to it. 
+Integrity Information must not be tampered with or altered by
+unauthorized users. Failing that, altered information should be
+detectable.  Availability Information and systems to access it must be
+available when needed. In order to achieve these goals, developers are
+expected to adhere to the principles of secure development and other
+resources available to ensure that that their changes do not introduce
+additional defects.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="simplicity">Simplicity</h3>
+<div class="paragraph">
+<p>Given a choice between a simple solution and complex one, favor the
+simple solution. Ease of understanding helps to ensure that
+misunderstood edge cases will slip through and cause security issues.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="minimized-attack-surface">Minimized Attack Surface</h3>
+<div class="paragraph">
+<p>In short, don&#8217;t create more code than necessary. Candidates for a
+"minimal attack surface" review include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API Entry Points</p>
+</li>
+<li>
+<p>Network Sockets</p>
+</li>
+<li>
+<p>Files</p>
+</li>
+<li>
+<p>Functions, Classes and Class Methods</p>
+</li>
+<li>
+<p>System Components</p>
+</li>
+<li>
+<p>Secure Defaults</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The system should be maximally secure in its default configuration. Any
+confidential information necessary for full operation should be provided
+out of band.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="separation-of-concerns">Separation of Concerns</h3>
+<div class="paragraph">
+<p>Unless there is a need to share, favor solutions that keep information
+modular and isolated. When the need to share arises, favor a documented
+interface over simply merging the codebases or sharing access to a data
+store.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="least-privilege">Least Privilege</h3>
+<div class="paragraph">
+<p>Minimize the number of privileges necessary for a given system
+component. At the minimum, code should never run as a system
+administrative user. If administrative permissions are necessary, they
+should be delegated on a per-permission, as-needed basis only.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fail-securely">Fail Securely</h3>
+<div class="paragraph">
+<p>The system must fail securely. For instance, if an exception occurs to
+might corrupt the user session, it should be throw out entirely rather
+than attempting to continue processing.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="defense-in-depth">Defense in Depth</h3>
+<div class="paragraph">
+<p>Instead of relying on a single control, systems should be secure at as
+many points as feasible. The more depth in the security architecture,
+the lower the chance of information compromise in the event of a failure
+or exploit.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="obscurity-is-not-security">Obscurity is not Security</h3>
+<div class="paragraph">
+<p>While an unknown algorithm or non-standard port number may make an
+attackers job difficult, it is not a secure solution. At best, obscurity
+should be one of several layers of defense in depth.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fix-correctness">Fix Correctness</h3>
+<div class="paragraph">
+<p>Once a security defect has been identified, extra care should be given
+to the creation and review of the patch. The bug may manifest in more
+than one location, or there may be subtle side-effects to the fix.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-resources">Other Resources</h3>
+<div class="paragraph">
+<p>*
+<a href="OWASP%20Secure%20Coding%20Principles"><a href="https://www.owasp.org/index.php/Secure_Coding_Principles">https://www.owasp.org/index.php/Secure_Coding_Principles</a></a>
+*
+<a href="OWASP%20Top%2010%20Vulnerabilities"><a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project">https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project</a></a>
+*
+<a href="Django%20Book%20-%20Security"><a href="http://www.djangobook.com/en/2.0/chapter20/">http://www.djangobook.com/en/2.0/chapter20/</a></a>
+*
+<a href="SANS%20/%20CWE%20Top%2025%20Software%20Errors"><a href="http://www.sans.org/top25-software-errors/">http://www.sans.org/top25-software-errors/</a></a>
+*
+<a href="SafeCode%20Dev%20Practices"><a href="http://www.safecode.org/publications/SAFECode_Dev_Practices1108.pdf">http://www.safecode.org/publications/SAFECode_Dev_Practices1108.pdf</a></a></p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect1">
-<h2 id="development-culture">Development Culture</h2>
+<h2 id="scalability">Scalability</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="be-respectful-of-everyone-even-those-who-arent-here-yet">Be Respectful of Everyone, Even Those Who Aren&#8217;t Here (Yet!)</h3>
+<h3 id="cache-management">Cache Management</h3>
+<div class="sect3">
+<h4 id="publish-to-cdn">Publish to CDN</h4>
 <div class="paragraph">
-<p>We will always make sure that our team is courteous and inclusive. It is
-never acceptable to make comments or jokes that you would not make if a
-person of a different gender or race were sitting in the room. Whatever
-you believe or find funny in your private time is fine during off-hours,
-but when we are working we will never tolerate any kind of exclusionary
-humor or messaging. Sometimes this is difficult to keep in mind when we
-work in a homogenous group, but it is important to remember that our
-group will not remain homogenous forever, and we should always act as if
-we have a man and woman from every country and race on the team.</p>
+<p>All frontend assets should be published directly to a CDN.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="unique-urls">Unique URLs</h4>
+<div class="paragraph">
+<p>Frontend assets should be published to the CDN with a unique url. This
+can easily be constructed from a version number, git sha, or a hash of
+the files contents. For instance <code>http://cdn.com/1/main.js</code> or
+<code>http://cdn.com/js/main-abc1234.js</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="far-future-expires">Far-Future Expires</h4>
+<div class="paragraph">
+<p>The CDN should serve all assets with expiration date 1 year in the
+future. This allows the browser to cache assets aggressively. Since
+every asset is published with a unique URL, cache "busting" will always
+be handled by requesting a different url entirely.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="be-agile">Be Agile</h3>
+<h3 id="stateless-services">Stateless Services</h3>
 <div class="paragraph">
-<p>We follow the Agile practices and strive to cleave to the Agile
-Manifesto.</p>
+<p>All service API&#8217;s should be stateless if possible. Don&#8217;t rely on things
+like "connections" or "sesions".</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="be-a-craftsman">Be a Craftsman</h3>
+<h3 id="shared-storage">Shared Storage</h3>
 <div class="paragraph">
-<p>In addition to following Agile practices, we strive to be the best
-craftsmen we can be. You should read the Software Craftsmanship
-Manifesto.</p>
+<p>Do not rely on the local filesystem for anything but intra-request
+temporary files, which should be created with <code>tmpfile()</code>. Instead, use
+an object storage mechanism such as Amazon S3 or Openstack Swift.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="play-well-with-others">Play Well With Others</h3>
+<h3 id="asyncronous-processing">Asyncronous Processing</h3>
 <div class="paragraph">
-<p>Keep in mind that it is never sufficient to simply lead the way. It is
-always necessary to help the rest of the team keep up and keep on track.
-Here is a list of things you can do to play nice:</p>
+<p>For any operation which may take more than a small fraction of a second
+(100ms or so), seperate it out into an asyncronous <em>sooner</em> rather than
+<em>later</em>. Web server and proxy timeouts are fickle, and will cause your
+reports to fail at the most inopportune times. Designing async in from
+the beginning eliminates this risk and ensures you don&#8217;t tie up valuable
+connection resources waiting on timeouts.</p>
+</div>
+</div>
+</div>
+</div>
+<h1 id="_standards" class="sect0">Standards</h1>
+<div class="sect1">
+<h2 id="commit-messages">Commit Messages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to ensure maintainability, code commits must include quality
+commit messages. Quality commit messages are concise, detailed,
+accurate, and consistent.</p>
+</div>
+<div class="sect2">
+<h3 id="template">Template</h3>
+<div class="listingblock">
+<div class="content">
+<pre>Name of change #234                                       |&lt;-- trunc here
+
+Patch Set 1:
+    - List of items
+    - Changed in the first patch
+
+Patch Set 2:
+    - List of items
+        - Important notes for the above item
+    - Second item in patch 2
+
+Change-Id: O8c9e--PASTE--CHANGE-ID--HERE--FOR--GERRIT--3edd
+Jira-Issue: PT-XXX</pre>
+</div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Be available via group chat every day Video chat with colleagues a lot</p>
+<p>You will notice that the first line is very short. Git prefers line
+lengths below 68 characters, and the first line should summarize in
+plain english what the commit represents. It may or may not relate
+directly to the ticket subject. This is the most important part of the
+message so make it clear. Including the ticket id is optional, but in
+many cases makes the commit easier to refer to.</p>
 </li>
 <li>
-<p>Write good documentation of features and processes in the shared docs
-environment</p>
+<p>You will notice there is a blank line between the first line and the
+additional details. This line enables git to be smart about displaying
+change history, so please include it. I like to bullet out all the
+changes, but it&#8217;s mostly a matter of taste. You should include any
+details necessary to understand or execute this change, including
+necessary settings change, the fact that the change requires a database
+migration, etc.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="gerrit-specific-notes">Gerrit Specific Notes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>You will notice I&#8217;ve separated out resubmitted changes into multiple
+patches. This is only necessary for a patch that you have to resubmit,
+but it helps the reviewer to understand what you&#8217;ve changed since the
+previous change.</p>
 </li>
 <li>
-<p>Write excellent comments in your code</p>
+<p>You will notice the Change-Id: line. This line is automatically
+generated via a gerrit commit hook[2]. Please download and install this
+hook. This line is now required by gerrit and allows you to easily
+resubmit a change to gerrit and have it update the existing change
+request, causing reviewers to be notified. You will notice the
+Jira-Issue: line at the bottom. This isn&#8217;t strictly necessary, but makes
+it possible to search gerrit by jira ticket ID, so if theres a jira
+ticket included in the change you may as well include it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rest-api-conventions">REST API Conventions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Much of the beauty of the increasingly popular REST API paradigm lies in
+it&#8217;s simplicity and the freedom to innovate. However, particularly
+inside a single codebase, not having established conventions starts to
+add unnecessary overhead.</p>
+</div>
+<div class="sect2">
+<h3 id="assumptions">Assumptions</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Remain close to RESTful API design patterns and best practices</p>
 </li>
 <li>
-<p>Follow coding patterns as described in our development guidelines so
-your code is easy for others to understand</p>
+<p>Prioritize elegant functionality for JS- and JSON-based clients
+(deviate from RESTful API design dictates where necessary)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>All functionality should degrade to POST and GET for XHR support</p>
 </li>
 <li>
-<p>Share links to good, informative information you find</p>
+<p>Results should return an envelope since XHR does not handle HTTP
+headers well</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Pair program to help others learn the way</p>
-</li>
-<li>
-<p>Ask for Help</p>
-</li>
-<li>
-<p>If you are stuck on a development problem, ask your colleagues for
-help. Asking for help is not an admission of defeat; it&#8217;s a sign of
-strength and trust in your fellow developers.</p>
+<p>All results are paginated</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="read-the-world">Read the World</h3>
+<h3 id="query-string-parameters">Query String Parameters</h3>
 <div class="paragraph">
-<p>We should all be reading and paying attention to what&#8217;s happening "out
-there". We need to leverage the ideas and efforts of our open source
-community to make the best applications we can.</p>
+<p>The following query string parameters should remain consistent across
+APIs.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre>?q=querystring // Query String supplied by user
+&amp;start=1 // Record ordinal (integer) to begin results return
+&amp;end=100 // Record ordinal (integer) to end results return
+&amp;page=2 // Page ordinal (integer) to return in results
+&amp;per_page=20 // Per page count (integer) for pagination
+&amp;depth=1 // Depth of related resources to flatten into results return</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="data-envelope-formatting">Data Envelope Formatting</h3>
 <div class="paragraph">
-<p>Here is a list of recommended reading:</p>
+<p>Resource calls should return the following data envelopes for easy use
+in JS-based clients.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Hacker News <a href="http://news.ycombinator.com">http://news.ycombinator.com</a></p>
-</li>
-<li>
-<p>Ars Technica <a href="http://arstechnica.com">http://arstechnica.com</a></p>
-</li>
-<li>
-<p>The Changelog <a href="http://thechangelog.com">http://thechangelog.com</a></p>
-</li>
-</ul>
+<div class="listingblock">
+<div class="content">
+<pre>{
+    'meta': {
+        'status_code': 200, // HTTP status code
+        'start': 1,
+        'end': 2,
+        'page': 2
+        'per_page': 20,
+        'pages': 5,
+        'depth': 1,
+        'form_errors': [
+                {
+                    'name': 'Field Required',
+                    'message': 'The XXXX field is required.'
+                },
+                {
+                    name: 'Invalid Data',
+                    message: 'Format date in YYYY-MM-DD style.'
+                }
+            ],
+        'error_code': null // HTTP error code or else NULL,
+        'error_message': 'Error message'
+        }
+    },
+    data: {
+        resource_id: 1,
+        resource_uri: '/resources/2/',
+
+        ... additional metadata ...
+
+        related_resource: { // NOTE: All related resource info is represented as dictionary
+            resource_id: 2,
+            resource_uri: '/resources/2/'
+        }
+    }
+}</pre>
 </div>
-<div class="paragraph">
-<p>more? Add them here please!</p>
 </div>
 </div>
 </div>
 </div>
+<h1 id="_language_standards" class="sect0">Language Standards</h1>
 <div class="sect1">
 <h2 id="javascript-standards">Javascript Standards</h2>
 <div class="sectionbody">
@@ -1520,27 +1606,30 @@ Base your project on "backpain" and stay up to date with it.</p>
 <h4 id="jshint-settings">JSHint Settings</h4>
 <div class="listingblock">
 <div class="content">
-<pre>options: {
-    bitwise: true,
-    browser: true,
-    curly: true,
-    eqeqeq: true,
-    immed: true,
-    jquery: true,
-    latedef: true,
-    newcap: true,
-    noarg: true,
-    node: true,
-    nonew: false,
-    plusplus: true,
-    regexp: true,
-    trailing: true,
-    undef: true,
-    globals: {
-        define: true,
-        require: true
-    }
-}</pre>
+<pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-p">{</span>
+  <span class="tok-s2">&quot;indent&quot;</span><span class="tok-o">:</span> <span class="tok-mi">2</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;bitwise&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;browser&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;curly&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;eqeqeq&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;immed&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;jquery&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;latedef&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;newcap&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;noarg&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;node&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;nonew&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;onevar&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;plusplus&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;regexp&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;trailing&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;undef&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+  <span class="tok-s2">&quot;globals&quot;</span><span class="tok-o">:</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;define&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+    <span class="tok-s2">&quot;require&quot;</span><span class="tok-o">:</span> <span class="tok-kc">true</span>
+  <span class="tok-p">}</span>
+<span class="tok-p">}</span>
+</code></pre>
 </div>
 </div>
 </div>
@@ -1660,21 +1749,22 @@ functions and such.</p>
 They should be idempotent and not dependent on global state.</p>
 <div class="listingblock">
 <div class="content">
-<pre>define(function(require) {
-  var BackBone = require('backbone'),
-    _ = require('underscore'),
-    $ = require('jquery'),
-    routes = require('./routes'),
-    ModuleObject = {};
-  ModuleObject.initialize = function() {
-    "initialize this thing";
-    # do NOT do this without discussing WHY
- require(['someDependency'], function(dependency) {
- dependency.doSomething();
- }
-  };
-  return ModuleObject;
-});</pre>
+<pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-nx">define</span><span class="tok-p">(</span><span class="tok-kd">function</span> <span class="tok-p">(</span><span class="tok-nx">require</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+  <span class="tok-kd">var</span> <span class="tok-nx">BackBone</span> <span class="tok-o">=</span> <span class="tok-nx">require</span><span class="tok-p">(</span><span class="tok-s1">&#39;backbone&#39;</span><span class="tok-p">),</span>
+    <span class="tok-nx">_</span> <span class="tok-o">=</span> <span class="tok-nx">require</span><span class="tok-p">(</span><span class="tok-s1">&#39;underscore&#39;</span><span class="tok-p">),</span>
+    <span class="tok-nx">$</span> <span class="tok-o">=</span> <span class="tok-nx">require</span><span class="tok-p">(</span><span class="tok-s1">&#39;jquery&#39;</span><span class="tok-p">),</span>
+    <span class="tok-nx">routes</span> <span class="tok-o">=</span> <span class="tok-nx">require</span><span class="tok-p">(</span><span class="tok-s1">&#39;./routes&#39;</span><span class="tok-p">),</span>
+    <span class="tok-nx">ModuleObject</span> <span class="tok-o">=</span> <span class="tok-p">{};</span>
+  <span class="tok-nx">ModuleObject</span><span class="tok-p">.</span><span class="tok-nx">initialize</span> <span class="tok-o">=</span> <span class="tok-kd">function</span> <span class="tok-p">()</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;initialize this thing&quot;</span><span class="tok-p">;</span>
+    <span class="tok-c1">// do NOT do this without discussing WHY</span>
+    <span class="tok-nx">require</span><span class="tok-p">([</span><span class="tok-s1">&#39;someDependency&#39;</span><span class="tok-p">],</span> <span class="tok-kd">function</span> <span class="tok-p">(</span><span class="tok-nx">dependency</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+      <span class="tok-nx">dependency</span><span class="tok-p">.</span><span class="tok-nx">doSomething</span><span class="tok-p">();</span>
+    <span class="tok-p">});</span>
+  <span class="tok-p">};</span>
+  <span class="tok-k">return</span> <span class="tok-nx">ModuleObject</span><span class="tok-p">;</span>
+<span class="tok-p">});</span>
+</code></pre>
 </div>
 </div>
 </li>
@@ -1696,109 +1786,17 @@ They should be idempotent and not dependent on global state.</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="karma-test-runner">Karma Test Runner</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="getting-started">Getting Started</h3>
-<div class="paragraph">
-<p>Determine where phantomjs is installed</p>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre>$ which phantomjs
-/usr/local/bin/phantomjs</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Update ~/.bashrc with phantomjs details and add to the top of the file:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>export PHANTOMJS_BIN=/usr/local/bin/phantomjs</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Update the node modules in your checkout and run make to install karma
-within your OSX environment.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>git submodule update --recursive
-make</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="running-javascript-tests">Running Javascript Tests</h3>
-<div class="paragraph">
-<p>The main command to run the automated Javascript test suite is as
-follows.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>./bin/karma start</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This command will run the entire Javascript test suite on all browsers
-you have installed locally (Firefox, Chrome, PhantomJS, Opera, Safari).</p>
-</div>
-<div class="paragraph">
-<p>There are multiple --flags that you can pass to the test runner to
-toggle various actions.</p>
-</div>
-<div class="sect3">
-<h4 id="flags">Flags</h4>
-<div class="sect4">
-<h5 id="dev">--dev</h5>
-<div class="paragraph">
-<p>Start test runner in dev mode, meaning it will not perform a single test
-run and quit, it will instead watch for file changes and automatically
-re-run the test suite on any changes. ## --browsers Pass a comma
-seperated list of browsers you wish to run the test suite on. Options
-are: - Local Browsers - Chrome - Safari - Opera - PhantomJS - Firefox -
-SauceLabs Browsers</p>
-</div>
-<div class="paragraph">
-<p>To use SauceLabs browsers, you must first have a SauceLabs Connect
-tunnel open to your machine. You can do this by using the SauceLabs Mac
-OSX application available in the App Store, or you can run the following
-command after you have setup a few configurations.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>cat &gt; ~/.saucelabs.json &lt;-EOF
-{
-    "username": "SAUCELABS USERNAME",
-    "api_key": "SAUCELABS APIKEY"
-}
-EOF
-cat &gt; ~/.bashrc &lt;-EOF
-export SAUCE_USERNAME="SAUCELABS USERNAME"
-export SAUCE_APIKEY="SAUCELABS APIKEY"
-./bin/saucelauncher create-tunnel
-./karma/chrome26-windows7.js
-./karma/firefox21-windows2008.js
-./karma/ie10-windows2008.js
-./karma/ie7-windowsxp.js
-./karma/ie8-windows7.js
-./karma/ie8-windowsxp.js
-./karma/ie9-windows2008.js
-./karma/opera12-windows7.js
-./karma/saucelauncher.js
---test
-EOF</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Path to the test file you wish to run, by default this is
-src/ui/js/spec/index.js, but you can provide a single test file to run
-only that suite.</p>
+<pre>├── main.js
+├── models.js
+├── templates
+│   ├── template1.hbs
+│   └── template2.hbs
+├── views
+│   ├── view1.js
+│   └── view2.js
+└── views.js</pre>
 </div>
 </div>
 </div>
@@ -1806,163 +1804,234 @@ only that suite.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="writing-javascript-tests">Writing Javascript Tests</h2>
+<h2 id="python-coding-standards">Python Coding Standards</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Our javascript test structure follows the convention of creating tests
-for javascript files in a mirrored directory structure that starts in
-"src/ui/js/specs/". If you have a module "src/ui/js/foo/bar/baz.js" you
-would create the tests for this module in
-"src/ui/js/specs/foo/bar/baz.js" and would add them to the test suite by
-adding nested describe() blocks starting at "src/ui/js/specs/index.js"
-and adding the appropriate files to include those nested files.</p>
+<p>The goal of writing code is to create a seamless integration between
+developers' work that leads to easily understandable conventions,
+logical flows, and a highly maintainable codebase. The unique qualities
+you, as a developer, bring to the project are not expressed as coding
+idioms or fancy tricks – we do not strive to win an obfuscated or
+fancy-pants coding contest. We strive to make code that can be
+immediately understood by our colleagues whenever something needs to be
+picked up for further work at a later time and place.</p>
 </div>
 <div class="paragraph">
-<p>The basic structure of a test suite loader file looks like the sample
-below. Notice that it must return a function, and that when you require
-a sub test, it must call that file (since it as well should return a
-function). This is necessary to ensure that the describe block
-statements contained within the file are not execute at file load time,
-but instead at the place where we actually require and execute that
-file.</p>
+<p>In general, there are a few guiding styles that represent best practices
+of writing code and you should generally adhere very closely to them.
+Where there is no immediate information about our customization of the
+style guide, refer to the published specifications referenced below. At
+worst, this will spark a conversation among the team to consider (or
+re-consider) a current practice. But generally if we have not defined an
+override for a stylistic element, then you are best served to stick with
+the common convention and industry-standard best practice.</p>
 </div>
 <div class="sect2">
-<h3 id="test-loader-file-template">Test Loader File Template</h3>
-<div class="listingblock">
-<div class="content">
-<pre>define(function() {
-    return function() {
-        describe("foo", function() {
-            describe("bar", function() {
-                describe("baz", function() {
-                    require("specs/foo/bar/baz")();
-                });
-            });
-        });
-    };
-});</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="test-suite-file-template">Test Suite File Template</h3>
-<div class="listingblock">
-<div class="content">
-<pre>define(function() {
-    var expect = require('chai').expect;
-    return function() {
-        describe('BazClass', function() {
-
-            beforeStep(function() {
-                // Test setup code that should be run before every "it" test block
-            });
-
-            afterStep(function() {
-                // Test teardown code that should be run after every "it" test block
-            });
-
-            it("should meet some expectation that I have defined here.", function() {
-                 expect(1).to.equal(1);
-            });
-        });
-    };
-});</pre>
-</div>
+<h3 id="know-and-love-pep-8">Know and Love PEP-8</h3>
+<div class="paragraph">
+<p>The most important thing for you to know as you write Python code is the
+importance of PEP-8:</p>
 </div>
 <div class="paragraph">
-<p>You can read about the matcher library Chai at
-[<a href="http://chaijs.com/api/bdd/">http://chaijs.com/api/bdd/</a>])(<a href="http://chaijs.com/api/bdd/">http://chaijs.com/api/bdd/</a>)</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="less-style-guide">LESS Style Guide</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="naming-patterns">Naming Patterns</h3>
-<div class="paragraph">
-<p>EVERYTHING is named with lowercase letters, no special characters, and
-underscores for spacing (to increase readability).</p>
+<p>Read the full PEP-8 document before going any further in this document.</p>
 </div>
 <div class="paragraph">
-<p>Examples: brand_yellow, background_menu_color, my_awesome_mixin,
-box_shadow, etc.</p>
-</div>
-<div class="paragraph">
-<p>Be concise in naming; be not afraid of verbosity for clarity.</p>
-</div>
-<div class="paragraph">
-<p>Bad: gnav, nav_img_cont, bib_src_lnk</p>
-</div>
-<div class="paragraph">
-<p>Good: global_navigation_link, navigation_image_container,
-bibliographic_source_link</p>
+<p>In general, we cleave closely to the PEP-8 style guide in order to make
+our code more easily picked up by colleagues. To make certain aspects
+more specific and clear, below a few of the most important stylistic
+elements are called out:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="keep-in-mind">Keep in mind:</h3>
+<h3 id="tabs-vs.-spaces">Tabs vs. Spaces</h3>
+<div class="paragraph">
+<p>Spaces win. Set your editor to equate a press of the "TAB" key with 4
+spaces. Code that includes tab-stop characters should be refactored to
+eliminate the tab-stop characters. (This actually goes for all code,
+including HTML, JS and CSS/SCSS.)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="line-length">Line Length</h3>
+<div class="paragraph">
+<p>A line length of 80 characters is preferred. This allows other tools for
+code review to display code more easily, and it allows us to support the
+greatest flexibility of editors and applications for working with code.</p>
+</div>
+<div class="paragraph">
+<p>For lines that do not break conveniently – when you would lose
+readability or the capability to easily parse a line of code due to
+breaking the line – it is acceptable to go up to 120 characters in line
+length.</p>
+</div>
+<div class="paragraph">
+<p>It would be very good to never exceed 120 character line length. The
+exception to this rule would be when there is a very negative effect in
+breaking the line.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="naming-conventions">Naming Conventions</h3>
+<div class="paragraph">
+<p>It is important to adhere to the guidelines in the PEP-8 Naming
+Conventions section so that it is easily understood what kind of object
+we are looking at when we see a name.</p>
+</div>
+<div class="paragraph">
+<p>SPEND A LOT OF TIME THINKING ABOUT HOW YOU NAME THINGS.</p>
+</div>
+<div class="paragraph">
+<p>Possibly the most important decisions we make as developers is what to
+name the things we create. This is never a decision you make alone.
+Names should always be vetted by members of the development team with an
+eye towards accuracy and clarity. Names should always accurately
+represent the thing they name. Whenever possible, names should clue you
+into any non-obvious, but important, quality of the object being named.
+The goal is to have a clarity of meaning and a consistency of usage
+across all applications and within any codebase we create.</p>
+</div>
+<div class="paragraph">
+<p>It is worthwhile to call out a few of the important factors when
+deciding what to name your modules, classes, methods and variables:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Spelling counts!</p>
+<p>If in doubt, be more verbose</p>
 </li>
 <li>
-<p>Naming matters – take the time to discuss with fellow developers to
-find a precise, meaningful name for things. Clarity is KING!</p>
+<p>Everyone has autocomplete (unless they have decided to turn it off),
+so there is no excuse about why a short variable will save you more time
+to type than a long variable. Spend time thinking of concise, accurate
+and clear names for objects.</p>
 </li>
 <li>
-<p>Be grammatically correct – if you are naming something use the proper
-tense, case, etc. in order to convey the correct meaning.</p>
+<p>Follow the capitalization, underscore, and other guidelines in PEP-8</p>
+<div class="ulist">
+<ul>
+<li>
+<p>These help us know instantly what kind of object we&#8217;re dealing with.
+The value of this cannot be underestimated.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Handling Constants</p>
+<p>Control your usage of Nouns, Verbs, Adjectives and Adverbs</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Remember that most class names should be nouns. Most variable names
+should also be nouns, although sometimes they should be noun phrases
+that include adjectives. Method and function names should generally be
+verbs or verb phrases (sometimes with adverbs). The goal is to make code
+that reads as close as possible to natural language.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Variables should be used for any value that is used in more than one
-place.</p>
-</li>
+<p>Control your usage of Plurals and Singulars</p>
+<div class="ulist">
+<ul>
 <li>
-<p>In some cases, variables should be used for values that are used in
-only one place.</p>
+<p>If a name is plural then we expect it to represent a collection of
+objects. For most Classes and Objects we will generally use singular
+nouns. Variables that represent lists or dictionaries should generally
+be plural.</p>
 </li>
-<li>
-<p>If a variable is used in only ONE file, then the variable should be
-defined at the top of the file.</p>
-</li>
-<li>
-<p>If a variable is used in MORE THAN ONE file, then the variable should
-be defined in the global _variables.less file.</p>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="mixins">Mixins</h3>
+<h3 id="encapsulation-and-modularity">Encapsulation and Modularity</h3>
 <div class="paragraph">
-<p>Mixins live in a global mixins file that is not specific to any
-individual application.</p>
+<p>Always encapsulate discreet functionality into a single location. There
+is never a reason to duplicate functionality in multiple locations, and
+it is always a benefit to have reusable components that represent an
+isolated piece of logic that can be freely strung together with other
+components. Leveraging capabilities of different libraries can provide a
+variety of mechanisms to enhance encapsulation and modularity of your
+code (in Django, for example, the Form object becomes useful to
+encapsulate any logic directly related to processing user-input), so be
+on the lookout for opportunities to do so.</p>
 </div>
 <div class="paragraph">
-<p>Mixins should be configurable, so they do not need to be project or
-app-specific. Where possible, mixins should provide sane defaults for
-configuration options.</p>
+<p>Whenever you find logic repeated in code during a code review that
+should be called out as a blocker in need of fixing. In extreme
+situations, there may be some justification. (One common example of this
+is the render_to_response function called at the end of most Django
+views – it is generally better for ease of understanding to write the
+entire render_to_response function call in the view itself, rather than
+abstracting that logic into a one-liner.)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="project-structure">Project Structure</h3>
+<div class="paragraph">
+<p>Project structure should conform to python community conventions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="import-statements">Import Statements</h3>
+<div class="paragraph">
+<p>Imports should be specific and well-organized. Whenever possible,
+imports should be at the top of the file and only at the top of the
+file. Occasionally, it will be necessary to handle imports inside a
+function or method to resolve circular dependencies, but this should be
+considered a bad code smell and carefully considered.</p>
 </div>
 <div class="paragraph">
-<p>Mixins should be used to create any client-specific attributes, as well
-as any other complex styling (especially if those attributes are
-repeated in multiple style definitions).</p>
+<p>The following order should be followed:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>System-level module imports</p>
+</li>
+<li>
+<p>Third-party module imports</p>
+</li>
+<li>
+<p>First-party module imports</p>
+</li>
+</ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="logging">Logging</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>Secure and robust code requires careful management of log statements and
-exception handlers. In order to get the best use from these tools,
-adhere to the following conventions.</p>
+<p>Each block of imports should be separated by a blank line, and within
+each block the import statements should be alphabetized, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code class="python language-python"><span class="tok-kn">import</span> <span class="tok-nn">os</span>
+<span class="tok-kn">import</span> <span class="tok-nn">datetime</span>
+<span class="tok-kn">from</span> <span class="tok-nn">module1</span> <span class="tok-kn">import</span> <span class="tok-n">submodule</span>
+<span class="tok-kn">from</span> <span class="tok-nn">module2</span> <span class="tok-kn">import</span> <span class="tok-n">submodule</span>
+<span class="tok-kn">from</span> <span class="tok-nn">mywiserhealth.apps.thatapp.models</span> <span class="tok-kn">import</span> <span class="tok-n">modelname</span>
+<span class="tok-kn">from</span> <span class="tok-nn">mywiserhealth.apps.thisapp.models</span> <span class="tok-kn">import</span> <span class="tok-n">modelname</span>
+</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<img src="data:image/png;base64,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" alt="Warning">
+</td>
+<td class="content">
+Avoid using wildcard imports!
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>from modulename import *</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="python-logging">Python Logging</h3>
@@ -2194,59 +2263,8 @@ that way. For the profile service, they look like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': True,
-    'formatters': {
-        'verbose': {
-            'format': '%(levelname)s %(asctime)s %(process)d %(thread)d %(name)s.%(module)s:%(lineno)d %(message)s'
-        },
-    },
-    'handlers': {
-        'null': {
-            'level': 'DEBUG',
-            'class': 'django.utils.log.NullHandler',
-        },
-        'console': {
-            'level': 'ERROR',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        },
-        'logfile': {  # define and name a handler
-            'level': 'INFO',
-            'class': 'logging.FileHandler',  # set the logging class to log to a file
-            'formatter': 'verbose',  # define the formatter to associate
-            'filename': os.path.join(PROJECT_ROOT, 'var', 'log', 'profile.log')  # log file
-        },
-        'access_log': {
-            'level': 'INFO',
-            'class': 'logging.FileHandler',  # set the logging class to log to a file
-            'formatter': 'verbose',          # define the formatter to associate
-            'filename': os.path.join(PROJECT_ROOT, 'var', 'log', 'profile-access.log')  # log file
-        }
-    },
-    # when not otherwise defined, send logs to the console and the logfile and include INFO and above.
-    'root': {
-        'handlers': ['console', 'logfile'],
-        'propagate': True,
-        'level': 'INFO',
-    },
-
-    'loggers': {
-
-        # send access logs only to the access_log, only including info and above.
-        'access': {
-            'level': 'INFO',
-            'handlers': ['access_log',],
-        },
-
-        # only include django logs of warning and above
-        'django': {'level': 'WARNING'},
-
-        # only include south logs of warning and above
-        'south.generic': {'level': 'WARNING'},
-    }
-}</pre>
+<pre class="pygments highlight"><code class="python language-python"><span class="tok-n">include</span><span class="tok-p">::</span><span class="tok-n">django</span><span class="tok-o">-</span><span class="tok-n">logging</span><span class="tok-o">-</span><span class="tok-n">example</span><span class="tok-o">.</span><span class="tok-n">adoc</span>
+</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2257,16 +2275,8 @@ such as these:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># include all services_profile, djangosaml2 and access logs of DEBUG and above
-LOGGING['loggers']['services_profile'] = { 'level': 'DEBUG' }
-LOGGING['loggers']['djangosaml2'] = { 'level': 'DEBUG' }
-LOGGING['loggers']['access'] = { 'level': 'DEBUG' }
-
-# only send critical logs to the console
-LOGGING['handlers']['console']['level'] = 'CRITICAL'
-
-# send all logs DEBUG and above to the logfile
-LOGGING['handlers']['logfile']['level'] = 'DEBUG'</pre>
+<pre class="pygments highlight"><code class="python language-python"><span class="tok-n">include</span><span class="tok-p">::</span><span class="tok-n">django</span><span class="tok-o">-</span><span class="tok-n">logging</span><span class="tok-o">-</span><span class="tok-n">example</span><span class="tok-o">-</span><span class="tok-n">local</span><span class="tok-o">.</span><span class="tok-n">py</span>
+</code></pre>
 </div>
 </div>
 </div>
@@ -2322,777 +2332,7 @@ logging.</p>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="principles-of-operations">Principles of Operations</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="rolling-deployments">Rolling Deployments</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Backend updates should be able to be rolled out in stages.</p>
-</div>
-<div class="paragraph">
-<p>strict control of migrations</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="pii-and-phi">PII and PHI</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Protected health information (PHI) is any information about health
-status, provision of health care, or payment for health care that can be
-linked to a specific individual (source: wikipedia). It includes medical
-history, patient records, or payment history. Engineering employees at
-WiserTogether will commonly encounter PHI in some form because our
-company uses PHI to tailor the WiserHealth products to our customers.
-PHI we use includes claims data, prescription data, and eligibility
-files sourced from various insurance companies, businesses, and
-consortia with whom we have a business relationship.</p>
-</div>
-<div class="paragraph">
-<p>Personally identifiable information (PII) is a generic term used in the
-field of computer and information security to mean information which can
-be used directly or in combination with other information to uniquely
-identify, contact, locate a single individual. Because PII can be used
-identify individuals and cause significant impact to their personal
-privacy and livelihood, great care must be taken to protect PII from
-accidental or willful disclosure.</p>
-</div>
-<div class="paragraph">
-<p>US and other governments place specific legal responsibilities for the
-protection these types of information on the companies that collect and
-use them. While PHI and PII are different in scope, the security and
-handling requirements are generally the same.</p>
-</div>
-<div class="sect2">
-<h3 id="hipaa">HIPAA</h3>
-<div class="paragraph">
-<p>The Health Insurance Portability and Accountability Act of 1996, or
-"HIPAA," established a legal framework to enable employees to continue
-their healthcare benefits after termination of employment. To help
-ensure healthcare and insurance records were more portable between
-insurance companies and providers, a part of the HIPAA framework
-included the introduction of standardized national identifiers for the
-major players in healthcare: healthcare providers, insurance companies,
-and employers. HIPAA also established clear guidelines for the
-safeguarding and sharing of an individual&#8217;s PHI, required the disclosure
-about how an individual&#8217;s PHI would be used, and specified the
-conditions which PHI could be shared without prior written
-authorization: chiefly the minimum amount of information necessary to
-support active treatment, collections or payment processing.</p>
-</div>
-<div class="paragraph">
-<p>If you&#8217;ve visited the doctor in the last 5 or 6 years, you&#8217;ve no doubt
-been asked by your physician to sign some form of a Privacy Notice which
-outlines your patient rights about your healthcare record and allows you
-to specify other individuals, such as a spouse or family member, who may
-receive health care information or updates on your behalf. As a
-healthcare professional who is in charge of PHI, your doctor has the
-responsibility to protect your health information and not release it to
-unauthorized individuals.</p>
-</div>
-<div class="paragraph">
-<p>While the privacy provisions of HIPAA as initially enacted generally
-applied to providers, insurance companies, and employers ("covered
-entities"), laws were extended in 2003 to include business associates of
-these entities (like WiserTogether) and exposing them to significant
-civil and criminal penalties should they fail to follow the proper
-protocols and proscribed safeguards when handling PHI.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="general-requirements-for-safe-handling-of-phi-and-pii">General Requirements for Safe Handling of PHI and PII</h3>
-<div class="paragraph">
-<p>The gist of the requirements for companies handling PHI/PII:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Access to PHI/PII must be restricted to those groups of employees who
-must access it as part of their job function.</p>
-</li>
-<li>
-<p>The company must document established procedures for the hiring,
-change in role, and termination of employees as it relates to access to
-PHI/PII,</p>
-</li>
-<li>
-<p>The company must provide training for all employees with access to
-PHI/PII on the safe handling of PHI/PII information,</p>
-</li>
-<li>
-<p>The company must prepare and document risk analysis and establish a
-risk management program for PHI/PII,</p>
-</li>
-<li>
-<p>Systems storing PHI/PII must be kept under both physical and logical
-access controls and monitored for unauthorized access/intrusion, theft,
-or damage,</p>
-</li>
-<li>
-<p>When PHI/PII is being shared between two authorized parties, it must
-be fully encrypted and both parties must be properly authenticated prior
-to transfer taking place,</p>
-</li>
-<li>
-<p>Companies must submit documentation, policies, procedures, access
-records, and configuration upon demand for regular audits.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="phi-for-developers">PHI for Developers</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>PHI/PII must always be stored in a strongly-encrpyted form, in a
-secure location,</p>
-</li>
-<li>
-<p>PHI/PII must never be stored on an employee workstation or in an
-environment that is not clearly designated for that purpose (including
-development and staging environments),</p>
-</li>
-<li>
-<p>All access to PHI/PII must be strictly controlled, logged with date,
-time, IP, user, and the information accessed, and these logs must be
-safeguarded from tampering,</p>
-</li>
-<li>
-<p>When sharing/transferring PHI/PII, both parties involved in the
-transfer must be authenticated and the transmission channel must be
-fully encrypted: USE SSL!</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sanitized-scrubbed-anonymized-data-sets">Sanitized / Scrubbed / Anonymized Data Sets</h3>
-<div class="paragraph">
-<p>In some cases, it is possible to strip data sets of all pieces of
-information which could be used to identify an individual. In these
-cases, the data are no longer subject to HIPAA privacy rules and
-resulting penalties, but should still be treated and protected as
-confidential information. The scrubbing of datasets to remove the
-personally identifiable information is referred to as
-"de-identification," and the process is covered in the HIPAA Privacy
-rule (164.514(b)(2)(i)), often called the "Safe Harbor Rule", which
-specifies 18 fields which must be removed:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Names;</p>
-</li>
-<li>
-<p>All geographic subdivisions smaller than a State, including street
-address, city, county, precinct, zip code, and their equivalent
-geocodes, except for the initial three digits of a zip code if,
-according to the current publicly available data from the Bureau of the
-Census:</p>
-</li>
-<li>
-<p>The geographic unit formed by combining all zip codes with the same
-three initial digits contains more than 20,000 people; and</p>
-</li>
-<li>
-<p>The initial three digits of a zip code for all such geographic units
-con- taining 20,000 or fewer people is changed to 000.</p>
-</li>
-<li>
-<p>All elements of dates (except year) for dates directly related to an
-individual, including birth date, admission date, discharge date, date
-of death; and all ages over 89 and all elments of dates (including year)
-indicative of such age, except that such ages and elements may be
-aggregated into a single category of age 90 or older;</p>
-</li>
-<li>
-<p>Telephone numbers;</p>
-</li>
-<li>
-<p>Fax numbers;</p>
-</li>
-<li>
-<p>Electronic mail addresses;</p>
-</li>
-<li>
-<p>Social security numbers;</p>
-</li>
-<li>
-<p>Medical record numbers;</p>
-</li>
-<li>
-<p>Health plan beneficiary numbers;</p>
-</li>
-<li>
-<p>Account numbers;</p>
-</li>
-<li>
-<p>Certificate/license numbers;</p>
-</li>
-<li>
-<p>Vehicle identifiers and serial numbers, including license plate
-numbers;</p>
-</li>
-<li>
-<p>Device identifiers and serial numbers;</p>
-</li>
-<li>
-<p>Web Universal Resource Locators (URLs);</p>
-</li>
-<li>
-<p>Internet Protocol (IP) address numbers;</p>
-</li>
-<li>
-<p>Biometric identifiers, including finger and voice prints;</p>
-</li>
-<li>
-<p>Full face photographic images and any comparable images; and</p>
-</li>
-<li>
-<p>Any other unique identifying number, characteristic, or code.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Provided that we do not have knowledge that the information in the
-scrubbed dataset could be used or combined with other data to identify
-an individual. These scrubbed, truncated data sets are suitable for use
-in development environments, including company-proivded workstations
-secured to corporate standards. ## For Further Reading * Anonymization
-Remains a Strong Tool for Protecting Privacy, June 2011. * Wikipedia
-entry for HIPAA, April 2012. * Wikipedia entry for PII, April 2012. *
-Wikipedia entry for PHI, April 2012. * Understanding the HIPAA Privacy
-Rule, Department of Health and Human Services. * How private is your
-health information?, or why you don&#8217;t want to your datastores to get
-owned. * M-07-16 SUBJECT:Safeguarding Against and Responding to the
-Breach of Personally Identifiable Information</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="python-coding-standards">Python Coding Standards</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The goal of writing code is to create a seamless integration between
-developers' work that leads to easily understandable conventions,
-logical flows, and a highly maintainable codebase. The unique qualities
-you, as a developer, bring to the project are not expressed as coding
-idioms or fancy tricks – we do not strive to win an obfuscated or
-fancy-pants coding contest. We strive to make code that can be
-immediately understood by our colleagues whenever something needs to be
-picked up for further work at a later time and place.</p>
-</div>
-<div class="paragraph">
-<p>In general, there are a few guiding styles that represent best practices
-of writing code and you should generally adhere very closely to them.
-Where there is no immediate information about our customization of the
-style guide, refer to the published specifications referenced below. At
-worst, this will spark a conversation among the team to consider (or
-re-consider) a current practice. But generally if we have not defined an
-override for a stylistic element, then you are best served to stick with
-the common convention and industry-standard best practice.</p>
-</div>
-<div class="sect2">
-<h3 id="know-and-love-pep-8">Know and Love PEP-8</h3>
-<div class="paragraph">
-<p>The most important thing for you to know as you write Python code is the
-importance of PEP-8:</p>
-</div>
-<div class="paragraph">
-<p>Read the full PEP-8 document before going any further in this document.</p>
-</div>
-<div class="paragraph">
-<p>In general, we cleave closely to the PEP-8 style guide in order to make
-our code more easily picked up by colleagues. To make certain aspects
-more specific and clear, below a few of the most important stylistic
-elements are called out:</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="tabs-vs.-spaces">Tabs vs. Spaces</h3>
-<div class="paragraph">
-<p>Spaces win. Set your editor to equate a press of the "TAB" key with 4
-spaces. Code that includes tab-stop characters should be refactored to
-eliminate the tab-stop characters. (This actually goes for all code,
-including HTML, JS and CSS/SCSS.)</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="line-length">Line Length</h3>
-<div class="paragraph">
-<p>A line length of 80 characters is preferred. This allows other tools for
-code review to display code more easily, and it allows us to support the
-greatest flexibility of editors and applications for working with code.</p>
-</div>
-<div class="paragraph">
-<p>For lines that do not break conveniently – when you would lose
-readability or the capability to easily parse a line of code due to
-breaking the line – it is acceptable to go up to 120 characters in line
-length.</p>
-</div>
-<div class="paragraph">
-<p>It would be very good to never exceed 120 character line length. The
-exception to this rule would be when there is a very negative effect in
-breaking the line.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="naming-conventions">Naming Conventions</h3>
-<div class="paragraph">
-<p>It is important to adhere to the guidelines in the PEP-8 Naming
-Conventions section so that it is easily understood what kind of object
-we are looking at when we see a name.</p>
-</div>
-<div class="paragraph">
-<p>SPEND A LOT OF TIME THINKING ABOUT HOW YOU NAME THINGS.</p>
-</div>
-<div class="paragraph">
-<p>Possibly the most important decisions we make as developers is what to
-name the things we create. This is never a decision you make alone.
-Names should always be vetted by members of the development team with an
-eye towards accuracy and clarity. Names should always accurately
-represent the thing they name. Whenever possible, names should clue you
-into any non-obvious, but important, quality of the object being named.
-The goal is to have a clarity of meaning and a consistency of usage
-across all applications and within any codebase we create.</p>
-</div>
-<div class="paragraph">
-<p>It is worthwhile to call out a few of the important factors when
-deciding what to name your modules, classes, methods and variables:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>If in doubt, be more verbose</p>
-</li>
-<li>
-<p>Everyone has autocomplete (unless they have decided to turn it off),
-so there is no excuse about why a short variable will save you more time
-to type than a long variable. Spend time thinking of concise, accurate
-and clear names for objects.</p>
-</li>
-<li>
-<p>Follow the capitalization, underscore, and other guidelines in PEP-8</p>
-<div class="ulist">
-<ul>
-<li>
-<p>These help us know instantly what kind of object we&#8217;re dealing with.
-The value of this cannot be underestimated.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Control your usage of Nouns, Verbs, Adjectives and Adverbs</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Remember that most class names should be nouns. Most variable names
-should also be nouns, although sometimes they should be noun phrases
-that include adjectives. Method and function names should generally be
-verbs or verb phrases (sometimes with adverbs). The goal is to make code
-that reads as close as possible to natural language.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Control your usage of Plurals and Singulars</p>
-<div class="ulist">
-<ul>
-<li>
-<p>If a name is plural then we expect it to represent a collection of
-objects. For most Classes and Objects we will generally use singular
-nouns. Variables that represent lists or dictionaries should generally
-be plural.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="encapsulation-and-modularity">Encapsulation and Modularity</h3>
-<div class="paragraph">
-<p>Always encapsulate discreet functionality into a single location. There
-is never a reason to duplicate functionality in multiple locations, and
-it is always a benefit to have reusable components that represent an
-isolated piece of logic that can be freely strung together with other
-components. Leveraging capabilities of different libraries can provide a
-variety of mechanisms to enhance encapsulation and modularity of your
-code (in Django, for example, the Form object becomes useful to
-encapsulate any logic directly related to processing user-input), so be
-on the lookout for opportunities to do so.</p>
-</div>
-<div class="paragraph">
-<p>Whenever you find logic repeated in code during a code review that
-should be called out as a blocker in need of fixing. In extreme
-situations, there may be some justification. (One common example of this
-is the render_to_response function called at the end of most Django
-views – it is generally better for ease of understanding to write the
-entire render_to_response function call in the view itself, rather than
-abstracting that logic into a one-liner.)</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="project-structure">Project Structure</h3>
-<div class="paragraph">
-<p>Project structure should conform to python community conventions.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="import-statements">Import Statements</h3>
-<div class="paragraph">
-<p>Imports should be specific and well-organized. Whenever possible,
-imports should be at the top of the file and only at the top of the
-file. Occasionally, it will be necessary to handle imports inside a
-function or method to resolve circular dependencies, but this should be
-considered a bad code smell and carefully considered.</p>
-</div>
-<div class="paragraph">
-<p>The following order should be followed:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>System-level module imports</p>
-</li>
-<li>
-<p>Third-party module imports</p>
-</li>
-<li>
-<p>First-party module imports</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Each block of imports should be separated by a blank line, and within
-each block the import statements should be alphabetized, like so:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>import os
-import datetime
-from module1 import submodule
-from module2 import submodule
-from mywiserhealth.apps.thatapp.models import modelname
-from mywiserhealth.apps.thisapp.models import modelname
-</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>NEVER USE WILDCARD IMPORTS SUCH AS:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>from modulename import *</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="rest-api-conventions">REST API Conventions</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Much of the beauty of the increasingly popular REST API paradigm lies in
-it&#8217;s simplicity and the freedom to innovate. However, particularly
-inside a single codebase, not having established conventions starts to
-add unnecessary overhead.</p>
-</div>
-<div class="sect2">
-<h3 id="assumptions">Assumptions</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Remain close to RESTful API design patterns and best practices</p>
-</li>
-<li>
-<p>Prioritize elegant functionality for JS- and JSON-based clients
-(deviate from RESTful API design dictates where necessary)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>All functionality should degrade to POST and GET for XHR support</p>
-</li>
-<li>
-<p>Results should return an envelope since XHR does not handle HTTP
-headers well</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>All results are paginated</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="query-string-parameters">Query String Parameters</h3>
-<div class="paragraph">
-<p>The following query string parameters should remain consistent across
-APIs.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>?q=querystring // Query String supplied by user
-&amp;start=1 // Record ordinal (integer) to begin results return
-&amp;end=100 // Record ordinal (integer) to end results return
-&amp;page=2 // Page ordinal (integer) to return in results
-&amp;per_page=20 // Per page count (integer) for pagination
-&amp;depth=1 // Depth of related resources to flatten into results return</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="data-envelope-formatting">Data Envelope Formatting</h3>
-<div class="paragraph">
-<p>Resource calls should return the following data envelopes for easy use
-in JS-based clients.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    'meta': {
-        'status_code': 200, // HTTP status code
-        'start': 1,
-        'end': 2,
-        'page': 2
-        'per_page': 20,
-        'pages': 5,
-        'depth': 1,
-        'form_errors': [
-                {
-                    'name': 'Field Required',
-                    'message': 'The XXXX field is required.'
-                },
-                {
-                    name: 'Invalid Data',
-                    message: 'Format date in YYYY-MM-DD style.'
-                }
-            ],
-        'error_code': null // HTTP error code or else NULL,
-        'error_message': 'Error message'
-        }
-    },
-    data: {
-        resource_id: 1,
-        resource_uri: '/resources/2/',
-
-        ... additional metadata ...
-
-        related_resource: { // NOTE: All related resource info is represented as dictionary
-            resource_id: 2,
-            resource_uri: '/resources/2/'
-        }
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="scalability-principles">Scalability Principles</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="cache-management">Cache Management</h3>
-<div class="sect3">
-<h4 id="publish-to-cdn">Publish to CDN</h4>
-<div class="paragraph">
-<p>All frontend assets should be published directly to a CDN.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="unique-urls">Unique URLs</h4>
-<div class="paragraph">
-<p>Frontend assets should be published to the CDN with a unique url. This
-can easily be constructed from a version number, git sha, or a hash of
-the files contents. For instance <code>http://cdn.com/1/main.js</code> or
-<code>http://cdn.com/js/main-abc1234.js</code>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="far-future-expires">Far-Future Expires</h4>
-<div class="paragraph">
-<p>The CDN should serve all assets with expiration date 1 year in the
-future. This allows the browser to cache assets aggressively. Since
-every asset is published with a unique URL, cache "busting" will always
-be handled by requesting a different url entirely.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="stateless-services">Stateless Services</h3>
-<div class="paragraph">
-<p>All service API&#8217;s should be stateless if possible. Don&#8217;t rely on things
-like "connections" or "sesions".</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="shared-storage">Shared Storage</h3>
-<div class="paragraph">
-<p>Do not rely on the local filesystem for anything but intra-request
-temporary files, which should be created with <code>tmpfile()</code>. Instead, use
-an object storage mechanism such as Amazon S3 or Openstack Swift.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="asyncronous-processing">Asyncronous Processing</h3>
-<div class="paragraph">
-<p>For any operation which may take more than a small fraction of a second
-(100ms or so), seperate it out into an asyncronous <em>sooner</em> rather than
-<em>later</em>. Web server and proxy timeouts are fickle, and will cause your
-reports to fail at the most inopportune times. Designing async in from
-the beginning eliminates this risk and ensures you don&#8217;t tie up valuable
-connection resources waiting on timeouts.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="principles-of-secure-development">Principles of Secure Development</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>A number of principles of secure development have been identified In
-order to achieve the goals Confidentiality, Integrity, and Availability.
-Many of these are based upon the ones maintained by OWASP.</p>
-</div>
-<div class="paragraph">
-<p>The goals of a secure system are as follows:</p>
-</div>
-<div class="sect2">
-<h3 id="confidentiality">Confidentiality</h3>
-<div class="paragraph">
-<p>Access to information is only granted to those with right to it. 
-Integrity Information must not be tampered with or altered by
-unauthorized users. Failing that, altered information should be
-detectable.  Availability Information and systems to access it must be
-available when needed. In order to achieve these goals, developers are
-expected to adhere to the principles of secure development and other
-resources available to ensure that that their changes do not introduce
-additional defects.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="simplicity">Simplicity</h3>
-<div class="paragraph">
-<p>Given a choice between a simple solution and complex one, favor the
-simple solution. Ease of understanding helps to ensure that
-misunderstood edge cases will slip through and cause security issues.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="minimized-attack-surface">Minimized Attack Surface</h3>
-<div class="paragraph">
-<p>In short, don&#8217;t create more code than necessary. Candidates for a
-"minimal attack surface" review include:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>API Entry Points</p>
-</li>
-<li>
-<p>Network Sockets</p>
-</li>
-<li>
-<p>Files</p>
-</li>
-<li>
-<p>Functions, Classes and Class Methods</p>
-</li>
-<li>
-<p>System Components</p>
-</li>
-<li>
-<p>Secure Defaults</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The system should be maximally secure in its default configuration. Any
-confidential information necessary for full operation should be provided
-out of band.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="separation-of-concerns">Separation of Concerns</h3>
-<div class="paragraph">
-<p>Unless there is a need to share, favor solutions that keep information
-modular and isolated. When the need to share arises, favor a documented
-interface over simply merging the codebases or sharing access to a data
-store.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="least-privilege">Least Privilege</h3>
-<div class="paragraph">
-<p>Minimize the number of privileges necessary for a given system
-component. At the minimum, code should never run as a system
-administrative user. If administrative permissions are necessary, they
-should be delegated on a per-permission, as-needed basis only.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="fail-securely">Fail Securely</h3>
-<div class="paragraph">
-<p>The system must fail securely. For instance, if an exception occurs to
-might corrupt the user session, it should be throw out entirely rather
-than attempting to continue processing.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="defense-in-depth">Defense in Depth</h3>
-<div class="paragraph">
-<p>Instead of relying on a single control, systems should be secure at as
-many points as feasible. The more depth in the security architecture,
-the lower the chance of information compromise in the event of a failure
-or exploit.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="obscurity-is-not-security">Obscurity is not Security</h3>
-<div class="paragraph">
-<p>While an unknown algorithm or non-standard port number may make an
-attackers job difficult, it is not a secure solution. At best, obscurity
-should be one of several layers of defense in depth.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="fix-correctness">Fix Correctness</h3>
-<div class="paragraph">
-<p>Once a security defect has been identified, extra care should be given
-to the creation and review of the patch. The bug may manifest in more
-than one location, or there may be subtle side-effects to the fix.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="other-resources">Other Resources</h3>
-<div class="paragraph">
-<p>*
-<a href="OWASP%20Secure%20Coding%20Principles"><a href="https://www.owasp.org/index.php/Secure_Coding_Principles">https://www.owasp.org/index.php/Secure_Coding_Principles</a></a>
-*
-<a href="OWASP%20Top%2010%20Vulnerabilities"><a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project">https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project</a></a>
-*
-<a href="Django%20Book%20-%20Security"><a href="http://www.djangobook.com/en/2.0/chapter20/">http://www.djangobook.com/en/2.0/chapter20/</a></a>
-*
-<a href="SANS%20/%20CWE%20Top%2025%20Software%20Errors"><a href="http://www.sans.org/top25-software-errors/">http://www.sans.org/top25-software-errors/</a></a>
-*
-<a href="SafeCode%20Dev%20Practices"><a href="http://www.safecode.org/publications/SAFECode_Dev_Practices1108.pdf">http://www.safecode.org/publications/SAFECode_Dev_Practices1108.pdf</a></a></p>
-</div>
-</div>
-</div>
-</div>
+<h1 id="_patterns" class="sect0">Patterns</h1>
 <div class="sect1">
 <h2 id="services-oriented-architecture">Services Oriented Architecture</h2>
 <div class="sectionbody">
@@ -3101,34 +2341,217 @@ than one location, or there may be subtle side-effects to the fix.</p>
 via versioned REST resources. We&#8217;ll maintain integration tests at the
 API boundaries to control forwards and backwards compatibility.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>stateless</p>
-</li>
-<li>
-<p>clustered</p>
-</li>
-<li>
-<p>zero-downtime</p>
-</li>
-<li>
-<p>versioned</p>
-</li>
-<li>
-<p>tested</p>
-</li>
-<li>
-<p>documented</p>
-</li>
-</ul>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Contracts</dt>
+<dd>
+<p>Versioned API</p>
+</dd>
+<dt class="hdlist1">Loosely coupled</dt>
+<dd>
+<p>Only coupled via API</p>
+</dd>
+<dt class="hdlist1">Abstract</dt>
+<dd>
+<p>Only used via API</p>
+</dd>
+<dt class="hdlist1">Reusable</dt>
+<dd>
+<p>Simple designs to solve one problem</p>
+</dd>
+<dt class="hdlist1">Autonomous</dt>
+<dd>
+<p>Developers should not need to work on multiple services at the same time</p>
+</dd>
+<dt class="hdlist1">Stateless</dt>
+<dd>
+<p>No “sessions” or “connections”</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<h1 id="_tools" class="sect0">Tools</h1>
+<div class="sect1">
+<h2 id="karma-test-runner">Karma Test Runner</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="getting-started">Getting Started</h3>
+<div class="paragraph">
+<p>Determine where phantomjs is installed</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ which phantomjs
+/usr/local/bin/phantomjs</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Update ~/.bashrc with phantomjs details and add to the top of the file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>export PHANTOMJS_BIN=/usr/local/bin/phantomjs</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Update the node modules in your checkout and run make to install karma
+within your OSX environment.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>git submodule update --recursive
+make</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="running-javascript-tests">Running Javascript Tests</h3>
+<div class="paragraph">
+<p>The main command to run the automated Javascript test suite is as
+follows.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>./bin/karma start</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command will run the entire Javascript test suite on all browsers
+you have installed locally (Firefox, Chrome, PhantomJS, Opera, Safari).</p>
+</div>
+<div class="paragraph">
+<p>There are multiple --flags that you can pass to the test runner to
+toggle various actions.</p>
+</div>
+<div class="sect3">
+<h4 id="flags">Flags</h4>
+<div class="sect4">
+<h5 id="dev">--dev</h5>
+<div class="paragraph">
+<p>Start test runner in dev mode, meaning it will not perform a single test
+run and quit, it will instead watch for file changes and automatically
+re-run the test suite on any changes. ## --browsers Pass a comma
+seperated list of browsers you wish to run the test suite on. Options
+are: - Local Browsers - Chrome - Safari - Opera - PhantomJS - Firefox -
+SauceLabs Browsers</p>
+</div>
+<div class="paragraph">
+<p>To use SauceLabs browsers, you must first have a SauceLabs Connect
+tunnel open to your machine. You can do this by using the SauceLabs Mac
+OSX application available in the App Store, or you can run the following
+command after you have setup a few configurations.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cat &gt; ~/.saucelabs.json &lt;-EOF
+{
+    "username": "SAUCELABS USERNAME",
+    "api_key": "SAUCELABS APIKEY"
+}
+EOF
+cat &gt; ~/.bashrc &lt;-EOF
+export SAUCE_USERNAME="SAUCELABS USERNAME"
+export SAUCE_APIKEY="SAUCELABS APIKEY"
+./bin/saucelauncher create-tunnel
+./karma/chrome26-windows7.js
+./karma/firefox21-windows2008.js
+./karma/ie10-windows2008.js
+./karma/ie7-windowsxp.js
+./karma/ie8-windows7.js
+./karma/ie8-windowsxp.js
+./karma/ie9-windows2008.js
+./karma/opera12-windows7.js
+./karma/saucelauncher.js
+--test
+EOF</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Path to the test file you wish to run, by default this is
+src/ui/js/spec/index.js, but you can provide a single test file to run
+only that suite.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="writing-javascript-tests">Writing Javascript Tests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Our javascript test structure follows the convention of creating tests
+for javascript files in a mirrored directory structure that starts in
+"src/ui/js/specs/". If you have a module "src/ui/js/foo/bar/baz.js" you
+would create the tests for this module in
+"src/ui/js/specs/foo/bar/baz.js" and would add them to the test suite by
+adding nested describe() blocks starting at "src/ui/js/specs/index.js"
+and adding the appropriate files to include those nested files.</p>
+</div>
+<div class="paragraph">
+<p>The basic structure of a test suite loader file looks like the sample
+below. Notice that it must return a function, and that when you require
+a sub test, it must call that file (since it as well should return a
+function). This is necessary to ensure that the describe block
+statements contained within the file are not execute at file load time,
+but instead at the place where we actually require and execute that
+file.</p>
+</div>
+<div class="sect2">
+<h3 id="test-loader-file-template">Test Loader File Template</h3>
+<div class="listingblock">
+<div class="content">
+<pre>define(function() {
+    return function() {
+        describe("foo", function() {
+            describe("bar", function() {
+                describe("baz", function() {
+                    require("specs/foo/bar/baz")();
+                });
+            });
+        });
+    };
+});</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="test-suite-file-template">Test Suite File Template</h3>
+<div class="listingblock">
+<div class="content">
+<pre>define(function() {
+    var expect = require('chai').expect;
+    return function() {
+        describe('BazClass', function() {
+
+            beforeStep(function() {
+                // Test setup code that should be run before every "it" test block
+            });
+
+            afterStep(function() {
+                // Test teardown code that should be run after every "it" test block
+            });
+
+            it("should meet some expectation that I have defined here.", function() {
+                 expect(1).to.equal(1);
+            });
+        });
+    };
+});</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can read about the matcher library Chai at
+[<a href="http://chaijs.com/api/bdd/">http://chaijs.com/api/bdd/</a>])(<a href="http://chaijs.com/api/bdd/">http://chaijs.com/api/bdd/</a>)</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-10-16 15:29:27 EDT
+Last updated 2013-10-21 01:34:41 EDT
 </div>
 </div>
 </body>
