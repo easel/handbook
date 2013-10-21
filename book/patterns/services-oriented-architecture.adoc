@@ -6,10 +6,15 @@ Backend services will be de-coupled as much as possible and delivered
 via versioned REST resources. We'll maintain integration tests at the
 API boundaries to control forwards and backwards compatibility.
 
-* stateless
-* clustered
-* zero-downtime
-* versioned
-* tested
-* documented
-
+Contracts::
+    Versioned API
+Loosely coupled::
+    Only coupled via API
+Abstract::
+    Only used via API
+Reusable::
+    Simple designs to solve one problem
+Autonomous::
+    Developers should not need to work on multiple services at the same time
+Stateless::
+    No “sessions” or “connections”

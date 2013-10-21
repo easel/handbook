@@ -1,11 +1,3 @@
-[[logging]]
-Logging
--------
-
-Secure and robust code requires careful management of log statements and
-exception handlers. In order to get the best use from these tools,
-adhere to the following conventions.
-
 [[python-logging]]
 Python Logging
 ~~~~~~~~~~~~~~
@@ -170,79 +162,16 @@ project's setting.py. The default settings are meant to be conservative,
 but ideal for production performance, and should be adjusted to stay
 that way. For the profile service, they look like this:
 
--------------------------------------------------------------------------------------------------------------------
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': True,
-    'formatters': {
-        'verbose': {
-            'format': '%(levelname)s %(asctime)s %(process)d %(thread)d %(name)s.%(module)s:%(lineno)d %(message)s'
-        },
-    },
-    'handlers': {
-        'null': {
-            'level': 'DEBUG',
-            'class': 'django.utils.log.NullHandler',
-        },
-        'console': {
-            'level': 'ERROR',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        },
-        'logfile': {  # define and name a handler
-            'level': 'INFO',
-            'class': 'logging.FileHandler',  # set the logging class to log to a file
-            'formatter': 'verbose',  # define the formatter to associate
-            'filename': os.path.join(PROJECT_ROOT, 'var', 'log', 'profile.log')  # log file
-        },
-        'access_log': {
-            'level': 'INFO',
-            'class': 'logging.FileHandler',  # set the logging class to log to a file
-            'formatter': 'verbose',          # define the formatter to associate
-            'filename': os.path.join(PROJECT_ROOT, 'var', 'log', 'profile-access.log')  # log file
-        }
-    },
-    # when not otherwise defined, send logs to the console and the logfile and include INFO and above.
-    'root': {
-        'handlers': ['console', 'logfile'],
-        'propagate': True,
-        'level': 'INFO',
-    },
-     
-    'loggers': {
- 
-        # send access logs only to the access_log, only including info and above.
-        'access': {
-            'level': 'INFO',
-            'handlers': ['access_log',],
-        },
- 
-        # only include django logs of warning and above
-        'django': {'level': 'WARNING'},
- 
-        # only include south logs of warning and above
-        'south.generic': {'level': 'WARNING'},
-    }
-}
--------------------------------------------------------------------------------------------------------------------
+[source,python]
+include::django-logging-example.adoc
 
 For development use, you will likely want more detailed logging.
 Conveniently, you can override these settings via local_settings.py if
 needed. Some examples are contained in the local_settings.py.example,
 such as these:
 
-------------------------------------------------------------------------------
-# include all services_profile, djangosaml2 and access logs of DEBUG and above
-LOGGING['loggers']['services_profile'] = { 'level': 'DEBUG' }
-LOGGING['loggers']['djangosaml2'] = { 'level': 'DEBUG' }
-LOGGING['loggers']['access'] = { 'level': 'DEBUG' }
-
-# only send critical logs to the console
-LOGGING['handlers']['console']['level'] = 'CRITICAL'
-
-# send all logs DEBUG and above to the logfile
-LOGGING['handlers']['logfile']['level'] = 'DEBUG'
-------------------------------------------------------------------------------
+[source,python]
+include::django-logging-example-local.py
 
 [[python-exception-handling]]
 Python Exception Handling

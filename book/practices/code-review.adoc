@@ -1,6 +1,5 @@
 [[code-review]]
-Code Review
------------
+== Code Review
 
 Code Review is a key practice to ensuring software quality. It ensures
 that more than one person is familiar with the code and helps to unify
@@ -8,12 +7,10 @@ coding standards and conventions, ensuring that the codebase is uniform
 and maintainable.
 
 [[code-review-checklist]]
-Code Review Checklist
-~~~~~~~~~~~~~~~~~~~~~
+=== Code Review Checklist
 
 [[required]]
-Required
-^^^^^^^^
+==== Required
 
 * [Automate] Code Merges Cleanly
 * [Automate] Code passes PEP-8 and Pylint
@@ -36,8 +33,7 @@ Standards and is:
 * Using cryptography in compliance with the Cryptographic Standards
 
 [[optional]]
-Optional
-^^^^^^^^
+==== Optional
 
 * Is data from an external source (e.g., user input) cleaned and
 validated before it is used?

@@ -1,0 +1,3 @@
+= Practices
+
+include::code-review.adoc[]

@@ -1,0 +1,6 @@
+= Patterns
+
+////
+include::cqrs.adoc[]
+////
+include::services-oriented-architecture.adoc[]

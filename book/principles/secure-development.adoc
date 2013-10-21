@@ -1,6 +1,5 @@
-[[principles-of-secure-development]]
-Principles of Secure Development
---------------------------------
+[[secure-development]]
+== Secure Development
 
 A number of principles of secure development have been identified In
 order to achieve the goals Confidentiality, Integrity, and Availability.

@@ -1,14 +1,12 @@
 [[data-protection]]
-Data Protection
----------------
+== Data Protection
 
 Quality software is almost always about data. This data is important,
 and needs to be protected. Some best practices can help to ensure this
 happens.
 
 [[minimization-of-data-retrieval]]
-Minimization of Data Retrieval
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Minimization of Data Retrieval
 
 In a web development world where frameworks like django do everything
 for us, it's very very easy to ignore how much data we retrieve
@@ -60,8 +58,7 @@ themselves are pretty harmless. But combined with users' name and other
 information, we quickly get into the zone of exposing PHI and PII.
 
 [[minimizing-data-exposure]]
-Minimizing Data Exposure
-~~~~~~~~~~~~~~~~~~~~~~~~
+=== Minimizing Data Exposure
 
 What are the different ways that we could unintentionally expose data?
 Unnecessary exposure of data takes place more often than we realize. We
@@ -77,8 +74,7 @@ expose data in the form of:
 * Unnecessary data retrieval
 
 [[application-logs]]
-Application Logs
-^^^^^^^^^^^^^^^^
+=== Application Logs
 
 Application logs are one of the most common ways to expose unnecessary
 data. Debug level logs are great and they serve us well in identifying
@@ -89,8 +85,7 @@ crucial to have appropriate log settings for each level of deployment
 e.g. development, staging and production.
 
 [[exception-stack-traces]]
-Exception Stack Traces
-^^^^^^^^^^^^^^^^^^^^^^
+==== Exception Stack Traces
 
 While it's not possible for us to guarantee that our code will be 100%
 bug free, usually exception will leave stack trace footprint somewhere
@@ -123,8 +118,7 @@ access to a limited subset of settings variable and not the entire
 module.
 
 [[system-memory-dumps]]
-System Memory Dumps
-^^^^^^^^^^^^^^^^^^^
+==== System Memory Dumps
 
 Web applications can cause servers to crash or run out of memory (has
 happened in our case). In situations like that, the system memory dump
@@ -133,8 +127,7 @@ for analysis. Such memory dumps may also contain sensitive information.
 Preventing such cases are quite difficult but they also happen rarely.
 
 [[open-api-endpoints]]
-Open API Endpoints
-^^^^^^^^^^^^^^^^^^
+==== Open API Endpoints
 
 API endpoints should be carefully exposed. Unless there's robust
 authorization in place, POST, PUT and DELETE paths should never be
@@ -148,8 +141,7 @@ access in our case should be internal and should only be allowed for
 logged in users.
 
 [[database-level-information-in-url]]
-Database Level Information in URL
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==== Database Level Information in URL
 
 Generally considered a bad practice due to the resulting non
 human-readable URLs, using DB level information such as primary keys can
@@ -160,8 +152,7 @@ levels. URLs should not contain DB level primary identifiers. Natural
 keys are more appropriate in such cases.
 
 [[development-db-practices]]
-Development DB Practices
-^^^^^^^^^^^^^^^^^^^^^^^^
+==== Development DB Practices
 
 Having sensitive data in development DB is very common issue in web
 application development world. Particularly in an environment where we
@@ -173,8 +164,7 @@ information of real users). We need to scrub all of that. Loss of our
 boxes will lead to data exposure concerns.
 
 [[unnecessary-data-retrieval]]
-Unnecessary Data Retrieval
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+=== Unnecessary Data Retrieval
 
 The key to minimize data exposure, is again minimal retrieval of data.
 Particularly when dealing with user profile information, we should be
@@ -182,8 +172,7 @@ very diligent about retrieving as little information as possible to get
 the job done.
 
 [[ensuring-security-of-data-in-process]]
-Ensuring Security of Data In Process
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=== Ensuring Security of Data In Process
 
 More often than not, we are forced to retrieve or work with really
 sensitive data. In such cases, we can take measures to maintain the
@@ -200,8 +189,7 @@ possible to process them in realtime. Asynchronous worker servers are
 great in accommodating such cases.
 
 [[conclusion]]
-Conclusion
-^^^^^^^^^^
+=== Conclusion
 
 Exercising data protection is about conscious usage of data. It is
 achieved via practice of upholding protection for all kinds of data, not

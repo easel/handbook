@@ -1,4 +1,4 @@
-=== GitHub PR-merge-squash Workflow
+== GitHub PR-merge-squash Workflow
 
 When using GitHub there are a variety of possible workflows. Each has their 
 own merits, but for a large, long-running project with a number of committers
@@ -19,7 +19,7 @@ Maintainers::
 Contributor::
   Contributors are the technical staff responsible for implementing features. 
 
-==== Steps
+=== Steps
 
 .Product Manager
 a. If necessary, the project management team creates Milestones and perhaps Issues

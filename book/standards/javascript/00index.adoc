@@ -24,29 +24,10 @@ Coding Style
 JSHint Settings
 ^^^^^^^^^^^^^^^
 
----------------------
-options: {
-    bitwise: true,
-    browser: true,
-    curly: true,
-    eqeqeq: true,
-    immed: true,
-    jquery: true,
-    latedef: true,
-    newcap: true,
-    noarg: true,
-    node: true,
-    nonew: false,
-    plusplus: true,
-    regexp: true,
-    trailing: true,
-    undef: true,
-    globals: {
-        define: true,
-        require: true
-    }
-}
----------------------
+[source,javascript]
+----
+include::jshintrc.json[]
+----
 
 [[libraries]]
 Libraries
@@ -98,23 +79,8 @@ functions and such.
 * Require modules should define dependencies and return a module object.
 They should be idempotent and not dependent on global state.
 +
----------------------------------------------------
-define(function(require) {
-  var BackBone = require('backbone'),
-    _ = require('underscore'),
-    $ = require('jquery'),
-    routes = require('./routes'),
-    ModuleObject = {};
-  ModuleObject.initialize = function() {
-    "initialize this thing"; 
-    # do NOT do this without discussing WHY
- require(['someDependency'], function(dependency) {
- dependency.doSomething();
- } 
-  };
-  return ModuleObject;
-});
----------------------------------------------------
+[source,javascript]
+include::javascript-requirejs-antipattern1.js[]
 
 [[backbone.js]]
 BackBone.js
@@ -124,3 +90,6 @@ BackBone.js
 * Use backbone modules
 * make sure to include jquery-cors for cross-domain API access support
 
+----
+include::backbone-module-layout.txt[]
+----

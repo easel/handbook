@@ -149,18 +149,20 @@ The following order should be followed:
 Each block of imports should be separated by a blank line, and within
 each block the import statements should be alphabetized, like so:
 
--------------------------------------------------------
+[source,python]
+----
 import os
 import datetime
 from module1 import submodule
 from module2 import submodule
 from mywiserhealth.apps.thatapp.models import modelname
 from mywiserhealth.apps.thisapp.models import modelname
- 
--------------------------------------------------------
+----
 
-NEVER USE WILDCARD IMPORTS SUCH AS:
+WARNING: Avoid using wildcard imports!
 
-------------------------
+----
 from modulename import *
-------------------------
+----
+
+include::logging-and-exceptions.adoc[]

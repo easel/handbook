@@ -1,14 +1,12 @@
 [[commit-messages]]
-Commit Messages
----------------
+== Commit Messages
 
 In order to ensure maintainability, code commits must include quality
 commit messages. Quality commit messages are concise, detailed,
 accurate, and consistent.
 
 [[template]]
-Template
-~~~~~~~~
+=== Template
 
 -------------------------------------------------------------------------
 Name of change #234                                       |<-- trunc here
