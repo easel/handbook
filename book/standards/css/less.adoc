@@ -1,0 +1,54 @@
+[[less-style-guide]]
+LESS Style Guide
+----------------
+
+[[naming-patterns]]
+Naming Patterns
+~~~~~~~~~~~~~~~
+
+EVERYTHING is named with lowercase letters, no special characters, and
+underscores for spacing (to increase readability).
+
+Examples: brand_yellow, background_menu_color, my_awesome_mixin,
+box_shadow, etc.
+
+Be concise in naming; be not afraid of verbosity for clarity.
+
+Bad: gnav, nav_img_cont, bib_src_lnk
+
+Good: global_navigation_link, navigation_image_container,
+bibliographic_source_link
+
+[[keep-in-mind]]
+Keep in mind:
+~~~~~~~~~~~~~
+
+* Spelling counts!
+* Naming matters – take the time to discuss with fellow developers to
+find a precise, meaningful name for things. Clarity is KING!
+* Be grammatically correct – if you are naming something use the proper
+tense, case, etc. in order to convey the correct meaning.
+* Handling Constants
+* Variables should be used for any value that is used in more than one
+place.
+* In some cases, variables should be used for values that are used in
+only one place.
+* If a variable is used in only ONE file, then the variable should be
+defined at the top of the file.
+* If a variable is used in MORE THAN ONE file, then the variable should
+be defined in the global _variables.less file.
+
+[[mixins]]
+Mixins
+~~~~~~
+
+Mixins live in a global mixins file that is not specific to any
+individual application.
+
+Mixins should be configurable, so they do not need to be project or
+app-specific. Where possible, mixins should provide sane defaults for
+configuration options.
+
+Mixins should be used to create any client-specific attributes, as well
+as any other complex styling (especially if those attributes are
+repeated in multiple style definitions).

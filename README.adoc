@@ -1,0 +1,12 @@
+[[developers-handbook]]
+Developers Handbook
+-------------------
+
+This book is written using asciidoc.
+
+For the optimal rendering, you will want to use asciidoctor, from 
+http://asciidoctor.org
+
+To install AsciiDoctor, follow the instructions at http://asciidoctor.org/docs/install-toolchain/
+
+To generate the book, execute `asciidoctor -o output/book.html book/book.asc`

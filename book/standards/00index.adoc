@@ -1,0 +1,17 @@
+= Standards
+
+include::commit-messages.adoc[]
+
+////
+include::pii-phi.adoc[]
+////
+
+include::rest-apis.adoc[]
+
+= Language Standards
+
+include::css/00index.adoc[]
+
+include::javascript/00index.adoc[]
+
+include::python/00index.adoc[]

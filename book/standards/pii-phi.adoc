@@ -1,0 +1,159 @@
+[[pii-and-phi]]
+PII and PHI
+-----------
+
+Protected health information (PHI) is any information about health
+status, provision of health care, or payment for health care that can be
+linked to a specific individual (source: wikipedia). It includes medical
+history, patient records, or payment history. Engineering employees at
+WiserTogether will commonly encounter PHI in some form because our
+company uses PHI to tailor the WiserHealth products to our customers.
+PHI we use includes claims data, prescription data, and eligibility
+files sourced from various insurance companies, businesses, and
+consortia with whom we have a business relationship.
+
+Personally identifiable information (PII) is a generic term used in the
+field of computer and information security to mean information which can
+be used directly or in combination with other information to uniquely
+identify, contact, locate a single individual. Because PII can be used
+identify individuals and cause significant impact to their personal
+privacy and livelihood, great care must be taken to protect PII from
+accidental or willful disclosure.
+
+US and other governments place specific legal responsibilities for the
+protection these types of information on the companies that collect and
+use them. While PHI and PII are different in scope, the security and
+handling requirements are generally the same.
+
+[[hipaa]]
+HIPAA
+~~~~~
+
+The Health Insurance Portability and Accountability Act of 1996, or
+"HIPAA," established a legal framework to enable employees to continue
+their healthcare benefits after termination of employment. To help
+ensure healthcare and insurance records were more portable between
+insurance companies and providers, a part of the HIPAA framework
+included the introduction of standardized national identifiers for the
+major players in healthcare: healthcare providers, insurance companies,
+and employers. HIPAA also established clear guidelines for the
+safeguarding and sharing of an individual's PHI, required the disclosure
+about how an individual's PHI would be used, and specified the
+conditions which PHI could be shared without prior written
+authorization: chiefly the minimum amount of information necessary to
+support active treatment, collections or payment processing.
+
+If you've visited the doctor in the last 5 or 6 years, you've no doubt
+been asked by your physician to sign some form of a Privacy Notice which
+outlines your patient rights about your healthcare record and allows you
+to specify other individuals, such as a spouse or family member, who may
+receive health care information or updates on your behalf. As a
+healthcare professional who is in charge of PHI, your doctor has the
+responsibility to protect your health information and not release it to
+unauthorized individuals.
+
+While the privacy provisions of HIPAA as initially enacted generally
+applied to providers, insurance companies, and employers ("covered
+entities"), laws were extended in 2003 to include business associates of
+these entities (like WiserTogether) and exposing them to significant
+civil and criminal penalties should they fail to follow the proper
+protocols and proscribed safeguards when handling PHI.
+
+[[general-requirements-for-safe-handling-of-phi-and-pii]]
+General Requirements for Safe Handling of PHI and PII
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The gist of the requirements for companies handling PHI/PII:
+
+* Access to PHI/PII must be restricted to those groups of employees who
+must access it as part of their job function.
+* The company must document established procedures for the hiring,
+change in role, and termination of employees as it relates to access to
+PHI/PII,
+* The company must provide training for all employees with access to
+PHI/PII on the safe handling of PHI/PII information,
+* The company must prepare and document risk analysis and establish a
+risk management program for PHI/PII,
+* Systems storing PHI/PII must be kept under both physical and logical
+access controls and monitored for unauthorized access/intrusion, theft,
+or damage,
+* When PHI/PII is being shared between two authorized parties, it must
+be fully encrypted and both parties must be properly authenticated prior
+to transfer taking place,
+* Companies must submit documentation, policies, procedures, access
+records, and configuration upon demand for regular audits.
+
+[[phi-for-developers]]
+PHI for Developers
+~~~~~~~~~~~~~~~~~~
+
+* PHI/PII must always be stored in a strongly-encrpyted form, in a
+secure location,
+* PHI/PII must never be stored on an employee workstation or in an
+environment that is not clearly designated for that purpose (including
+development and staging environments),
+* All access to PHI/PII must be strictly controlled, logged with date,
+time, IP, user, and the information accessed, and these logs must be
+safeguarded from tampering,
+* When sharing/transferring PHI/PII, both parties involved in the
+transfer must be authenticated and the transmission channel must be
+fully encrypted: USE SSL!
+
+[[sanitized-scrubbed-anonymized-data-sets]]
+Sanitized / Scrubbed / Anonymized Data Sets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In some cases, it is possible to strip data sets of all pieces of
+information which could be used to identify an individual. In these
+cases, the data are no longer subject to HIPAA privacy rules and
+resulting penalties, but should still be treated and protected as
+confidential information. The scrubbing of datasets to remove the
+personally identifiable information is referred to as
+"de-identification," and the process is covered in the HIPAA Privacy
+rule (164.514(b)(2)(i)), often called the "Safe Harbor Rule", which
+specifies 18 fields which must be removed:
+
+* Names;
+* All geographic subdivisions smaller than a State, including street
+address, city, county, precinct, zip code, and their equivalent
+geocodes, except for the initial three digits of a zip code if,
+according to the current publicly available data from the Bureau of the
+Census:
+* The geographic unit formed by combining all zip codes with the same
+three initial digits contains more than 20,000 people; and
+* The initial three digits of a zip code for all such geographic units
+con- taining 20,000 or fewer people is changed to 000.
+* All elements of dates (except year) for dates directly related to an
+individual, including birth date, admission date, discharge date, date
+of death; and all ages over 89 and all elments of dates (including year)
+indicative of such age, except that such ages and elements may be
+aggregated into a single category of age 90 or older;
+* Telephone numbers;
+* Fax numbers;
+* Electronic mail addresses;
+* Social security numbers;
+* Medical record numbers;
+* Health plan beneficiary numbers;
+* Account numbers;
+* Certificate/license numbers;
+* Vehicle identifiers and serial numbers, including license plate
+numbers;
+* Device identifiers and serial numbers;
+* Web Universal Resource Locators (URLs);
+* Internet Protocol (IP) address numbers;
+* Biometric identifiers, including finger and voice prints;
+* Full face photographic images and any comparable images; and
+* Any other unique identifying number, characteristic, or code.
+
+Provided that we do not have knowledge that the information in the
+scrubbed dataset could be used or combined with other data to identify
+an individual. These scrubbed, truncated data sets are suitable for use
+in development environments, including company-proivded workstations
+secured to corporate standards. ## For Further Reading * Anonymization
+Remains a Strong Tool for Protecting Privacy, June 2011. * Wikipedia
+entry for HIPAA, April 2012. * Wikipedia entry for PII, April 2012. *
+Wikipedia entry for PHI, April 2012. * Understanding the HIPAA Privacy
+Rule, Department of Health and Human Services. * How private is your
+health information?, or why you don't want to your datastores to get
+owned. * M-07-16 SUBJECT:Safeguarding Against and Responding to the
+Breach of Personally Identifiable Information

@@ -1,0 +1,10 @@
+= Principles
+
+include::data-protection.adoc[]
+
+////
+include::operations.adoc[]
+////
+
+include::secure-development.adoc[]
+include::scalability.adoc[]

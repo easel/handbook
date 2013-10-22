@@ -1,0 +1,9 @@
+├── main.js
+├── models.js
+├── templates
+│   ├── template1.hbs
+│   └── template2.hbs
+├── views
+│   ├── view1.js
+│   └── view2.js
+└── views.js
