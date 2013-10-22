@@ -93,3 +93,11 @@ BackBone.js
 ----
 include::backbone-module-layout.txt[]
 ----
+
+[[Variables]]
+
+Variables should be declared at the start of a module or function.
+Seperating each one by a line/
+----
+include::variables_example1.js[]
+----
