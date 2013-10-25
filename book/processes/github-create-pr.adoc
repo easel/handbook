@@ -12,6 +12,8 @@ submit them as a functional changeset.
 
 === Steps
 
+image::processes/github-create-pr.svg[Workflow]
+
 ==== Clone the repository 
 
 You may choose to create a local fork, or you may have push rights to the upstream repository. This detail
@@ -34,20 +36,23 @@ represented by an issue, you should create one and assign it to yourself. This e
 know what you are intending to implement and prevents duplicated work and confusion. It also provides
 a convenient place to discuss your plans with other developers.
 
-==== Create a feature branch
+==== Reset your working tree
 
-Once you are know what task you are taking on, you should create a feature branch. It is very important
-to always start with a clean slate, so you should always run `get fetch upstream && git reset --hard upstream/master`
+It is very important to always start with a clean tree, so you should always run 
+`get fetch upstream && git reset --hard upstream/master`
 prior to creating your branch. These commands will wipe away any local state and ensure you are starting fresh
 with the latest functional code from the upstream master branch. 
 Keep in mind that the `upstream` designation in the command refers to the
 remote that has has the most up-to-date code. If necessary, you can use the command `git remote -v` to see
 all your remotes and to which repository they are pointing. 
 
-Once you have a clean place to start, create a new branch and switch to it using the `git checkout -b my_new_branch` 
-command. The branch name, in this case `my_new_branch` should be descriptive of the work you intend to do.
+TIP: Always reset your working tree before starting work 
 
-TIP: Always start from the same SHA hash as the upstream master
+==== Create a feature branch
+
+Once you are know what task you are taking on, you should create a feature branch and switch to it 
+using the `git checkout -b my_new_branch` command. The branch name, in this case `my_new_branch`,
+should be descriptive of the work you intend to do.
 
 ==== Implement your feature
 

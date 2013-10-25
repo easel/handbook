@@ -1,1 +1,5 @@
-digraph G { rankdir=LR; GitHub Master Branch->Local Feature Branch->New Code->GitHub Feature Branch->Create Pull Request->Receive Feedback->Add commits to feature branch}
+digraph G { 
+rankdir=LR; 
+"clone"->"reset"->"create branch"->"implement and commit"->"push branch"->"create pr"->"cycle feedback"->"merge"->"reset"
+"cycle feedback"->"implement and commit"
+}
