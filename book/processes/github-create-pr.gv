@@ -1,0 +1,1 @@
+digraph G { rankdir=LR; GitHub Master Branch->Local Feature Branch->New Code->GitHub Feature Branch->Create Pull Request->Receive Feedback->Add commits to feature branch}
