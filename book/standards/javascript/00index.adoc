@@ -29,6 +29,45 @@ JSHint Settings
 include::jshintrc.json[]
 ----
 
+[[code-guidelines]]
+Coding Guidelines
+^^^^^^^^^^^^^^^^^
+
+The code styling is represented by the following guidelines. You can see an
+explanation of each point in http://jscode.org/03c498
+
+Indentation::
+    Spaces
+Spacing::
+    2 Spaces
+Readability::
+    Normal
+Blocks::
+    Inline
+Variables Naming::
+    Normal
+Variables Case::
+    camelCase
+Functions Naming::
+	Normal 
+Functions Case::
+	camelCase
+Comma in Variable Declaration::
+	Trailing Comma
+Concatenation:: 
+	Trailing
+Quotes::
+	Single
+
+Below you can find some sample code that follows these guidelines. 
+It should have examples for most of the situations you'll encounter:
+
+[source,javascript]
+----
+include::jscodeguide.js[]
+----
+
+
 [[libraries]]
 Libraries
 ~~~~~~~~~
