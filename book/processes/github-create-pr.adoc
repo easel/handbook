@@ -39,7 +39,7 @@ a convenient place to discuss your plans with other developers.
 ==== Reset your working tree
 
 It is very important to always start with a clean tree, so you should always run 
-`get fetch upstream && git reset --hard upstream/master`
+`git fetch upstream && git reset --hard upstream/master`
 prior to creating your branch. These commands will wipe away any local state and ensure you are starting fresh
 with the latest functional code from the upstream master branch. 
 Keep in mind that the `upstream` designation in the command refers to the
