@@ -60,6 +60,15 @@ It would be very good to never exceed 120 character line length. The
 exception to this rule would be when there is a very negative effect in
 breaking the line.
 
+[[pylint]]
+PyLint Settings
+~~~~~~~~~~~~~~~
+[source,python]
+----
+include::pylintrc[]
+----
+
+
 [[naming-conventions]]
 Naming Conventions
 ~~~~~~~~~~~~~~~~~~
