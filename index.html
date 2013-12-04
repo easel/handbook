@@ -473,10 +473,13 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 </ul>
 </li>
 <li><a href="#_tools">Tools</a></li>
+<li><a href="#_tools_2">Tools</a></li>
 <li>
 <ul class="sectlevel1">
+<li><a href="#_asciidoctor">AsciiDoctor</a></li>
 <li><a href="#karma-test-runner">Karma Test Runner</a></li>
 <li><a href="#writing-javascript-tests">Writing Javascript Tests</a></li>
+<li><a href="#_using_postgres_app">Using Postgres.App</a></li>
 </ul>
 </li>
 </ul>
@@ -544,7 +547,7 @@ a convenient place to discuss your plans with other developers.</p>
 <h4 id="_reset_your_working_tree">Reset your working tree</h4>
 <div class="paragraph">
 <p>It is very important to always start with a clean tree, so you should always run
-<code>get fetch upstream &amp;&amp; git reset --hard upstream/master</code>
+<code>git fetch upstream &amp;&amp; git reset --hard upstream/master</code>
 prior to creating your branch. These commands will wipe away any local state and ensure you are starting fresh
 with the latest functional code from the upstream master branch.
 Keep in mind that the <code>upstream</code> designation in the command refers to the
@@ -1824,6 +1827,299 @@ Base your project on "backpain" and stay up to date with it.</p>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="code-guidelines">Coding Guidelines</h4>
+<div class="paragraph">
+<p>The code styling is represented by the following guidelines. You can see an
+explanation of each point in <a href="http://jscode.org/03c498">http://jscode.org/03c498</a></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Indentation</dt>
+<dd>
+<p>Spaces</p>
+</dd>
+<dt class="hdlist1">Spacing</dt>
+<dd>
+<p>2 Spaces</p>
+</dd>
+<dt class="hdlist1">Readability</dt>
+<dd>
+<p>Normal</p>
+</dd>
+<dt class="hdlist1">Blocks</dt>
+<dd>
+<p>Inline</p>
+</dd>
+<dt class="hdlist1">Variables Naming</dt>
+<dd>
+<p>Normal</p>
+</dd>
+<dt class="hdlist1">Variables Case</dt>
+<dd>
+<p>camelCase</p>
+</dd>
+<dt class="hdlist1">Functions Naming</dt>
+<dd>
+<p>Normal</p>
+</dd>
+<dt class="hdlist1">Functions Case</dt>
+<dd>
+<p>camelCase</p>
+</dd>
+<dt class="hdlist1">Comma in Variable Declaration</dt>
+<dd>
+<p>Trailing Comma</p>
+</dd>
+<dt class="hdlist1">Concatenation</dt>
+<dd>
+<p>Trailing</p>
+</dd>
+<dt class="hdlist1">Quotes</dt>
+<dd>
+<p>Single</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Below you can find some sample code that follows these guidelines.
+It should have examples for most of the situations you&#8217;ll encounter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code class="javascript language-javascript"><span class="tok-s1">&#39;use strict&#39;</span><span class="tok-p">;</span>
+
+<span class="tok-kd">var</span> <span class="tok-nx">BaseSrv</span> <span class="tok-o">=</span> <span class="tok-nx">require</span><span class="tok-p">(</span><span class="tok-s1">&#39;./BaseService&#39;</span><span class="tok-p">),</span>
+  <span class="tok-nx">Q</span> <span class="tok-o">=</span> <span class="tok-nx">require</span><span class="tok-p">(</span><span class="tok-s1">&#39;q&#39;</span><span class="tok-p">),</span>
+  <span class="tok-nx">async</span> <span class="tok-o">=</span> <span class="tok-nx">require</span><span class="tok-p">(</span><span class="tok-s1">&#39;async&#39;</span><span class="tok-p">),</span>
+  <span class="tok-nx">crypto</span> <span class="tok-o">=</span> <span class="tok-nx">require</span><span class="tok-p">(</span><span class="tok-s1">&#39;crypto&#39;</span><span class="tok-p">),</span>
+  <span class="tok-nx">fs</span> <span class="tok-o">=</span> <span class="tok-nx">require</span><span class="tok-p">(</span><span class="tok-s1">&#39;fs&#39;</span><span class="tok-p">),</span>
+  <span class="tok-nx">ejs</span> <span class="tok-o">=</span> <span class="tok-nx">require</span><span class="tok-p">(</span><span class="tok-s1">&#39;ejs&#39;</span><span class="tok-p">);</span>
+
+<span class="tok-nx">module</span><span class="tok-p">.</span><span class="tok-nx">exports</span> <span class="tok-o">=</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">db</span><span class="tok-p">,</span> <span class="tok-nx">models</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+  <span class="tok-kd">var</span> <span class="tok-nx">PackageSrv</span> <span class="tok-o">=</span> <span class="tok-nx">BaseSrv</span><span class="tok-p">.</span><span class="tok-nx">extend</span><span class="tok-p">({</span>
+
+    <span class="tok-c1">// Create a New Package</span>
+    <span class="tok-nx">create</span><span class="tok-o">:</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">data</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+      <span class="tok-kd">var</span> <span class="tok-nx">deferred</span> <span class="tok-o">=</span> <span class="tok-nx">Q</span><span class="tok-p">.</span><span class="tok-nx">defer</span><span class="tok-p">(),</span>
+        <span class="tok-nx">self</span> <span class="tok-o">=</span> <span class="tok-k">this</span><span class="tok-p">;</span>
+
+      <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-o">!</span><span class="tok-nx">data</span><span class="tok-p">.</span><span class="tok-nx">settings</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-nx">deferred</span><span class="tok-p">.</span><span class="tok-nx">reject</span><span class="tok-p">(</span><span class="tok-s1">&#39;No settings provided&#39;</span><span class="tok-p">);</span>
+      <span class="tok-p">}</span> <span class="tok-k">else</span> <span class="tok-p">{</span>
+        <span class="tok-c1">// We need data.settings to be a string, but we accept a string or an object</span>
+        <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-k">typeof</span> <span class="tok-nx">data</span><span class="tok-p">.</span><span class="tok-nx">settings</span> <span class="tok-o">===</span> <span class="tok-s1">&#39;object&#39;</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+          <span class="tok-nx">data</span><span class="tok-p">.</span><span class="tok-nx">settings</span> <span class="tok-o">=</span> <span class="tok-nx">JSON</span><span class="tok-p">.</span><span class="tok-nx">stringify</span><span class="tok-p">(</span><span class="tok-nx">data</span><span class="tok-p">.</span><span class="tok-nx">settings</span><span class="tok-p">);</span>
+        <span class="tok-p">}</span>
+
+        <span class="tok-c1">// Check if a similar package exists (with the same configs) and return it if so</span>
+        <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">find</span><span class="tok-p">({</span>
+            <span class="tok-nx">where</span><span class="tok-o">:</span> <span class="tok-p">{</span>
+              <span class="tok-nx">settings</span><span class="tok-o">:</span> <span class="tok-nx">data</span><span class="tok-p">.</span><span class="tok-nx">settings</span>
+            <span class="tok-p">}</span>
+          <span class="tok-p">}).</span>
+          <span class="tok-nx">then</span><span class="tok-p">(</span><span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">results</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+
+            <span class="tok-c1">// No similar packages found, go ahead and create a new one</span>
+            <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">results</span><span class="tok-p">.</span><span class="tok-nx">length</span> <span class="tok-o">===</span> <span class="tok-mi">0</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+              <span class="tok-nx">data</span><span class="tok-p">.</span><span class="tok-nx">slug</span> <span class="tok-o">=</span> <span class="tok-nx">self</span><span class="tok-p">.</span><span class="tok-nx">getUSlug</span><span class="tok-p">();</span>
+
+              <span class="tok-c1">// Force views to be 0</span>
+              <span class="tok-nx">data</span><span class="tok-p">.</span><span class="tok-nx">views</span> <span class="tok-o">=</span> <span class="tok-mi">0</span><span class="tok-p">;</span>
+
+              <span class="tok-nx">models</span><span class="tok-p">.</span><span class="tok-nx">Package</span><span class="tok-p">.</span><span class="tok-nx">create</span><span class="tok-p">(</span><span class="tok-nx">data</span><span class="tok-p">).</span>
+                <span class="tok-nx">success</span><span class="tok-p">(</span><span class="tok-nx">deferred</span><span class="tok-p">.</span><span class="tok-nx">resolve</span><span class="tok-p">).</span>
+                <span class="tok-nx">error</span><span class="tok-p">(</span><span class="tok-nx">deferred</span><span class="tok-p">.</span><span class="tok-nx">reject</span><span class="tok-p">);</span>
+            <span class="tok-p">}</span> <span class="tok-k">else</span> <span class="tok-p">{</span>
+              <span class="tok-c1">// We found a similar package, so let&#39;s return that</span>
+              <span class="tok-nx">deferred</span><span class="tok-p">.</span><span class="tok-nx">resolve</span><span class="tok-p">(</span><span class="tok-nx">results</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">]);</span>
+            <span class="tok-p">}</span>
+
+          <span class="tok-p">}).</span>
+          <span class="tok-nx">fail</span><span class="tok-p">(</span><span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">err</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-nx">deferred</span><span class="tok-p">.</span><span class="tok-nx">reject</span><span class="tok-p">(</span><span class="tok-nx">err</span><span class="tok-p">);</span>
+          <span class="tok-p">});</span>
+      <span class="tok-p">}</span>
+
+      <span class="tok-k">return</span> <span class="tok-nx">deferred</span><span class="tok-p">.</span><span class="tok-nx">promise</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+  <span class="tok-p">});</span>
+
+  <span class="tok-nx">PackageSrv</span><span class="tok-p">.</span><span class="tok-nx">Model</span> <span class="tok-o">=</span> <span class="tok-nx">models</span><span class="tok-p">.</span><span class="tok-nx">Package</span><span class="tok-p">;</span>
+
+  <span class="tok-k">return</span> <span class="tok-k">new</span> <span class="tok-nx">PackageSrv</span><span class="tok-p">(</span><span class="tok-nx">db</span><span class="tok-p">);</span>
+<span class="tok-p">};</span>
+
+<span class="tok-nx">module</span><span class="tok-p">.</span><span class="tok-nx">exports</span> <span class="tok-o">=</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">PackageSrv</span><span class="tok-p">,</span> <span class="tok-nx">SettSrv</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+
+  <span class="tok-k">return</span> <span class="tok-p">(</span><span class="tok-nx">require</span><span class="tok-p">(</span><span class="tok-s1">&#39;./../classes/Controller.js&#39;</span><span class="tok-p">)).</span><span class="tok-nx">extend</span><span class="tok-p">({</span>
+      <span class="tok-nx">service</span><span class="tok-o">:</span> <span class="tok-nx">PackageSrv</span>
+    <span class="tok-p">},</span>
+    <span class="tok-p">{</span>
+      <span class="tok-c1">// Get a package by id</span>
+      <span class="tok-nx">get</span><span class="tok-o">:</span> <span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+        <span class="tok-kd">var</span> <span class="tok-nx">self</span> <span class="tok-o">=</span> <span class="tok-k">this</span><span class="tok-p">,</span>
+          <span class="tok-nx">globalPckg</span> <span class="tok-o">=</span> <span class="tok-p">{};</span>
+
+        <span class="tok-nx">PackageSrv</span><span class="tok-p">.</span><span class="tok-nx">findId</span><span class="tok-p">(</span><span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">req</span><span class="tok-p">.</span><span class="tok-nx">params</span><span class="tok-p">.</span><span class="tok-nx">id</span><span class="tok-p">).</span>
+          <span class="tok-nx">then</span><span class="tok-p">(</span><span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">thePackage</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-c1">// Update views when fetching</span>
+            <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">thePackage</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-nx">thePackage</span><span class="tok-p">.</span><span class="tok-nx">id</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+              <span class="tok-nx">globalPckg</span> <span class="tok-o">=</span> <span class="tok-nx">thePackage</span><span class="tok-p">;</span>
+              <span class="tok-o">++</span><span class="tok-nx">globalPckg</span><span class="tok-p">.</span><span class="tok-nx">views</span><span class="tok-p">;</span>
+
+              <span class="tok-c1">// Update in the database</span>
+              <span class="tok-nx">PackageSrv</span><span class="tok-p">.</span><span class="tok-nx">update</span><span class="tok-p">(</span><span class="tok-nx">globalPckg</span><span class="tok-p">.</span><span class="tok-nx">id</span><span class="tok-p">,</span> <span class="tok-nx">globalPckg</span><span class="tok-p">).</span>
+                <span class="tok-nx">then</span><span class="tok-p">(</span><span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+                  <span class="tok-c1">// Convert the settings before sending them over</span>
+                  <span class="tok-k">return</span> <span class="tok-nx">SettSrv</span><span class="tok-p">.</span><span class="tok-nx">convertSettings</span><span class="tok-p">(</span><span class="tok-nx">globalPckg</span><span class="tok-p">.</span><span class="tok-nx">settings</span><span class="tok-p">);</span>
+                <span class="tok-p">}).</span>
+                <span class="tok-nx">then</span><span class="tok-p">(</span><span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">newSettings</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+                  <span class="tok-nx">globalPckg</span><span class="tok-p">.</span><span class="tok-nx">settings</span> <span class="tok-o">=</span> <span class="tok-nx">newSettings</span><span class="tok-p">;</span>
+
+                  <span class="tok-c1">// Get the sample code</span>
+                  <span class="tok-k">return</span> <span class="tok-nx">PackageSrv</span><span class="tok-p">.</span><span class="tok-nx">getCode</span><span class="tok-p">(</span><span class="tok-nx">newSettings</span><span class="tok-p">);</span>
+                <span class="tok-p">}).</span>
+                <span class="tok-nx">then</span><span class="tok-p">(</span> <span class="tok-kd">function</span><span class="tok-p">(</span> <span class="tok-nx">sampleCode</span> <span class="tok-p">)</span> <span class="tok-p">{</span>
+                  <span class="tok-c1">// We need to copy globalPckg because otherwise this non-existing attribute (in the model) is not passed on</span>
+                  <span class="tok-kd">var</span> <span class="tok-nx">tmpPackage</span> <span class="tok-o">=</span> <span class="tok-nx">JSON</span><span class="tok-p">.</span><span class="tok-nx">parse</span><span class="tok-p">(</span><span class="tok-nx">JSON</span><span class="tok-p">.</span><span class="tok-nx">stringify</span><span class="tok-p">(</span><span class="tok-nx">globalPckg</span><span class="tok-p">));</span>
+
+                  <span class="tok-nx">tmpPackage</span><span class="tok-p">.</span><span class="tok-nx">sampleCode</span> <span class="tok-o">=</span> <span class="tok-nx">sampleCode</span><span class="tok-p">;</span>
+
+                  <span class="tok-nx">self</span><span class="tok-p">.</span><span class="tok-nx">send</span><span class="tok-p">(</span><span class="tok-nx">tmpPackage</span><span class="tok-p">);</span>
+                <span class="tok-p">}).</span>
+                <span class="tok-nx">fail</span><span class="tok-p">(</span><span class="tok-nx">self</span><span class="tok-p">.</span><span class="tok-nx">proxy</span><span class="tok-p">(</span><span class="tok-s1">&#39;handleException&#39;</span><span class="tok-p">));</span>
+            <span class="tok-p">}</span> <span class="tok-k">else</span> <span class="tok-p">{</span>
+              <span class="tok-nx">self</span><span class="tok-p">.</span><span class="tok-nx">send</span><span class="tok-p">(</span><span class="tok-mi">404</span><span class="tok-p">,</span> <span class="tok-s1">&#39;Package not found.&#39;</span><span class="tok-p">);</span>
+            <span class="tok-p">}</span>
+          <span class="tok-p">}).</span>
+          <span class="tok-nx">fail</span><span class="tok-p">(</span><span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">proxy</span><span class="tok-p">(</span><span class="tok-s1">&#39;handleException&#39;</span><span class="tok-p">));</span>
+      <span class="tok-p">},</span>
+
+      <span class="tok-c1">// Create a package</span>
+      <span class="tok-nx">post</span><span class="tok-o">:</span> <span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+        <span class="tok-kd">var</span> <span class="tok-nx">data</span> <span class="tok-o">=</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">req</span><span class="tok-p">.</span><span class="tok-nx">body</span><span class="tok-p">;</span>
+
+        <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">data</span><span class="tok-p">.</span><span class="tok-nx">id</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+          <span class="tok-k">return</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">put</span><span class="tok-p">();</span>
+        <span class="tok-p">}</span>
+
+        <span class="tok-nx">PackageSrv</span><span class="tok-p">.</span><span class="tok-nx">create</span><span class="tok-p">(</span> <span class="tok-nx">data</span> <span class="tok-p">).</span>
+          <span class="tok-nx">then</span><span class="tok-p">(</span><span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">proxy</span><span class="tok-p">(</span><span class="tok-s1">&#39;send&#39;</span><span class="tok-p">)).</span>
+          <span class="tok-nx">fail</span><span class="tok-p">(</span><span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">proxy</span><span class="tok-p">(</span><span class="tok-s1">&#39;handleException&#39;</span><span class="tok-p">));</span>
+      <span class="tok-p">},</span>
+
+      <span class="tok-c1">// Delete a package</span>
+      <span class="tok-nx">destroy</span><span class="tok-o">:</span> <span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+        <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">send</span><span class="tok-p">(</span><span class="tok-mi">403</span><span class="tok-p">,</span> <span class="tok-s1">&#39;Deletions are not allowed&#39;</span><span class="tok-p">);</span>
+      <span class="tok-p">}</span>
+    <span class="tok-p">});</span>
+<span class="tok-p">};</span>
+
+<span class="tok-nx">module</span><span class="tok-p">.</span><span class="tok-nx">exports</span> <span class="tok-o">=</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">sequelize</span><span class="tok-p">,</span> <span class="tok-nx">DataTypes</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+  <span class="tok-k">return</span> <span class="tok-nx">sequelize</span><span class="tok-p">.</span><span class="tok-nx">define</span><span class="tok-p">(</span><span class="tok-s1">&#39;Package&#39;</span><span class="tok-p">,</span> <span class="tok-p">{</span>
+    <span class="tok-nx">id</span><span class="tok-o">:</span> <span class="tok-p">{</span>
+      <span class="tok-nx">type</span><span class="tok-o">:</span> <span class="tok-nx">DataTypes</span><span class="tok-p">.</span><span class="tok-nx">INTEGER</span><span class="tok-p">,</span>
+      <span class="tok-nx">primaryKey</span><span class="tok-o">:</span> <span class="tok-kc">true</span><span class="tok-p">,</span>
+      <span class="tok-nx">autoIncrement</span><span class="tok-o">:</span> <span class="tok-kc">true</span>
+    <span class="tok-p">},</span>
+    <span class="tok-nx">slug</span><span class="tok-o">:</span> <span class="tok-p">{</span>
+      <span class="tok-nx">type</span><span class="tok-o">:</span> <span class="tok-nx">DataTypes</span><span class="tok-p">.</span><span class="tok-nx">STRING</span><span class="tok-p">,</span>
+      <span class="tok-nx">allowNull</span><span class="tok-o">:</span> <span class="tok-kc">false</span><span class="tok-p">,</span>
+      <span class="tok-nx">unique</span><span class="tok-o">:</span> <span class="tok-kc">true</span>
+    <span class="tok-p">},</span>
+    <span class="tok-nx">settings</span><span class="tok-o">:</span> <span class="tok-p">{</span>
+      <span class="tok-nx">type</span><span class="tok-o">:</span> <span class="tok-nx">DataTypes</span><span class="tok-p">.</span><span class="tok-nx">TEXT</span><span class="tok-p">,</span>
+      <span class="tok-nx">allowNull</span><span class="tok-o">:</span> <span class="tok-kc">false</span>
+    <span class="tok-p">},</span>
+    <span class="tok-nx">views</span><span class="tok-o">:</span> <span class="tok-p">{</span>
+      <span class="tok-nx">type</span><span class="tok-o">:</span> <span class="tok-nx">DataTypes</span><span class="tok-p">.</span><span class="tok-nx">INTEGER</span><span class="tok-p">,</span>
+      <span class="tok-nx">allowNull</span><span class="tok-o">:</span> <span class="tok-kc">false</span>
+    <span class="tok-p">}</span>
+  <span class="tok-p">},</span>
+  <span class="tok-p">{</span>
+    <span class="tok-nx">paranoid</span><span class="tok-o">:</span> <span class="tok-kc">true</span>
+  <span class="tok-p">});</span>
+<span class="tok-p">};</span>
+
+<span class="tok-nx">define</span><span class="tok-p">([</span>
+    <span class="tok-s1">&#39;app&#39;</span><span class="tok-p">,</span>
+    <span class="tok-s1">&#39;jquery&#39;</span>
+  <span class="tok-p">],</span>
+  <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">app</span><span class="tok-p">,</span> <span class="tok-nx">$</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-s1">&#39;use strict&#39;</span><span class="tok-p">;</span>
+
+    <span class="tok-nx">app</span><span class="tok-p">.</span><span class="tok-nx">controller</span><span class="tok-p">(</span><span class="tok-s1">&#39;Menu&#39;</span><span class="tok-p">,</span> <span class="tok-p">[</span>
+      <span class="tok-s1">&#39;$scope&#39;</span><span class="tok-p">,</span>
+      <span class="tok-s1">&#39;$rootScope&#39;</span><span class="tok-p">,</span>
+      <span class="tok-s1">&#39;$location&#39;</span><span class="tok-p">,</span>
+      <span class="tok-s1">&#39;$anchorScroll&#39;</span><span class="tok-p">,</span>
+      <span class="tok-s1">&#39;$routeParams&#39;</span><span class="tok-p">,</span>
+      <span class="tok-s1">&#39;$timeout&#39;</span><span class="tok-p">,</span>
+      <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">$scope</span><span class="tok-p">,</span> <span class="tok-nx">$rootScope</span><span class="tok-p">,</span> <span class="tok-nx">$location</span><span class="tok-p">,</span> <span class="tok-nx">$routeParams</span><span class="tok-p">,</span> <span class="tok-nx">$timeout</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-c1">// Init $scope properties</span>
+        <span class="tok-c1">// $scope action methods</span>
+        <span class="tok-nx">$scope</span><span class="tok-p">.</span><span class="tok-nx">actions</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+          <span class="tok-c1">// Apparently AngularJS freaks out about anchors, so we need to create this</span>
+          <span class="tok-nx">goTo</span><span class="tok-o">:</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">id</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-kd">var</span> <span class="tok-nx">doScroll</span><span class="tok-p">;</span>
+
+            <span class="tok-nx">doScroll</span> <span class="tok-o">=</span> <span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+              <span class="tok-kd">var</span> <span class="tok-nx">$element</span> <span class="tok-o">=</span> <span class="tok-nx">$</span><span class="tok-p">(</span><span class="tok-s1">&#39;#&#39;</span> <span class="tok-o">+</span> <span class="tok-nx">id</span><span class="tok-p">);</span>
+
+              <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">$element</span><span class="tok-p">.</span><span class="tok-nx">length</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+                <span class="tok-nx">$location</span><span class="tok-p">.</span><span class="tok-nx">search</span><span class="tok-p">({</span>
+                  <span class="tok-nx">goTo</span><span class="tok-o">:</span> <span class="tok-nx">id</span>
+                <span class="tok-p">});</span>
+
+                <span class="tok-c1">// If we&#39;re trying to get to generate, we need to show the form first (and it&#39;ll scroll automatically)</span>
+                <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">id</span> <span class="tok-o">===</span> <span class="tok-s1">&#39;generate&#39;</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+                  <span class="tok-nx">setTimeout</span><span class="tok-p">(</span><span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+                    <span class="tok-nx">$</span><span class="tok-p">(</span><span class="tok-s1">&#39;.start-button&#39;</span><span class="tok-p">).</span><span class="tok-nx">trigger</span><span class="tok-p">(</span><span class="tok-s1">&#39;click&#39;</span><span class="tok-p">);</span>
+                  <span class="tok-p">},</span> <span class="tok-mi">10</span><span class="tok-p">);</span>
+                <span class="tok-p">}</span> <span class="tok-k">else</span> <span class="tok-p">{</span>
+                  <span class="tok-nx">$</span><span class="tok-p">(</span><span class="tok-s1">&#39;html, body&#39;</span><span class="tok-p">).</span><span class="tok-nx">animate</span><span class="tok-p">({</span>
+                    <span class="tok-nx">scrollTop</span><span class="tok-o">:</span> <span class="tok-p">(</span><span class="tok-nx">$element</span><span class="tok-p">.</span><span class="tok-nx">offset</span><span class="tok-p">().</span><span class="tok-nx">top</span> <span class="tok-o">-</span> <span class="tok-mi">50</span><span class="tok-p">)</span>
+                  <span class="tok-p">},</span> <span class="tok-mi">500</span><span class="tok-p">);</span>
+                <span class="tok-p">}</span>
+              <span class="tok-p">}</span>
+            <span class="tok-p">};</span>
+
+            <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">$location</span><span class="tok-p">.</span><span class="tok-nx">path</span><span class="tok-p">()</span> <span class="tok-o">!==</span> <span class="tok-s1">&#39;/&#39;</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+              <span class="tok-nx">$location</span><span class="tok-p">.</span><span class="tok-nx">path</span><span class="tok-p">(</span><span class="tok-s1">&#39;/&#39;</span><span class="tok-p">).</span><span class="tok-nx">search</span><span class="tok-p">({</span>
+                <span class="tok-nx">goTo</span><span class="tok-o">:</span> <span class="tok-nx">id</span>
+              <span class="tok-p">});</span>
+            <span class="tok-p">}</span> <span class="tok-k">else</span> <span class="tok-p">{</span>
+              <span class="tok-nx">doScroll</span><span class="tok-p">();</span>
+            <span class="tok-p">}</span>
+          <span class="tok-p">}</span>
+        <span class="tok-p">};</span>
+
+        <span class="tok-nx">$rootScope</span><span class="tok-p">.</span><span class="tok-nx">$on</span><span class="tok-p">(</span><span class="tok-s1">&#39;$routeChangeSuccess&#39;</span><span class="tok-p">,</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">angularEvent</span><span class="tok-p">,</span> <span class="tok-nx">newRoute</span><span class="tok-p">,</span> <span class="tok-nx">oldRoute</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+          <span class="tok-c1">// On the first load, $routeParams has nothing, but $location.search() does</span>
+          <span class="tok-kd">var</span> <span class="tok-nx">goTo</span><span class="tok-p">;</span>
+
+          <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">$routeParams</span><span class="tok-p">.</span><span class="tok-nx">goTo</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-nx">goTo</span> <span class="tok-o">=</span> <span class="tok-nx">$routeParams</span><span class="tok-p">.</span><span class="tok-nx">goTo</span><span class="tok-p">;</span>
+          <span class="tok-p">}</span> <span class="tok-k">else</span> <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">$location</span><span class="tok-p">.</span><span class="tok-nx">search</span><span class="tok-p">()</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-nx">$location</span><span class="tok-p">.</span><span class="tok-nx">search</span><span class="tok-p">().</span><span class="tok-nx">goTo</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-nx">goTo</span> <span class="tok-o">=</span> <span class="tok-nx">$location</span><span class="tok-p">.</span><span class="tok-nx">search</span><span class="tok-p">().</span><span class="tok-nx">goTo</span><span class="tok-p">;</span>
+          <span class="tok-p">}</span> <span class="tok-k">else</span> <span class="tok-p">{</span>
+            <span class="tok-nx">goTo</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;&#39;</span><span class="tok-p">;</span>
+          <span class="tok-p">}</span>
+
+          <span class="tok-c1">// Only trigger this on the homepage</span>
+          <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">goTo</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-nx">newRoute</span><span class="tok-p">.</span><span class="tok-nx">loadedTemplateUrl</span><span class="tok-p">.</span><span class="tok-nx">indexOf</span><span class="tok-p">(</span><span class="tok-s1">&#39;home.html&#39;</span><span class="tok-p">)</span> <span class="tok-o">!==</span> <span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-nx">$scope</span><span class="tok-p">.</span><span class="tok-nx">actions</span><span class="tok-p">.</span><span class="tok-nx">goTo</span><span class="tok-p">(</span><span class="tok-nx">goTo</span><span class="tok-p">,</span> <span class="tok-kc">true</span><span class="tok-p">);</span>
+          <span class="tok-p">}</span>
+        <span class="tok-p">});</span>
+      <span class="tok-p">}</span>
+    <span class="tok-p">]);</span>
+  <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+</code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="libraries">Libraries</h3>
@@ -2059,6 +2355,101 @@ length.</p>
 <p>It would be very good to never exceed 120 character line length. The
 exception to this rule would be when there is a very negative effect in
 breaking the line.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pylint">PyLint Settings</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code class="python language-python"><span class="tok-p">[</span><span class="tok-n">MASTER</span><span class="tok-p">]</span>
+<span class="tok-n">profile</span><span class="tok-o">=</span><span class="tok-n">no</span>
+<span class="tok-n">persistent</span><span class="tok-o">=</span><span class="tok-n">yes</span>
+<span class="tok-n">ignore</span><span class="tok-o">=</span><span class="tok-n">migrations</span><span class="tok-p">,</span><span class="tok-n">survey_io_v2</span><span class="tok-o">.</span><span class="tok-n">py</span><span class="tok-p">,</span><span class="tok-n">shell_plus</span><span class="tok-o">.</span><span class="tok-n">py</span>
+<span class="tok-n">cache</span><span class="tok-o">-</span><span class="tok-n">size</span><span class="tok-o">=</span><span class="tok-mi">500</span>
+
+<span class="tok-p">[</span><span class="tok-n">MESSAGES</span> <span class="tok-n">CONTROL</span><span class="tok-p">]</span>
+<span class="tok-c"># C0111 Missing docstring</span>
+<span class="tok-c"># I0011 Warning locally suppressed using disable-msg</span>
+<span class="tok-c"># I0012 Warning locally suppressed using disable-msg</span>
+<span class="tok-c"># W0704 Except doesn&#39;t do anything Used when an except clause does nothing but &quot;pass&quot; and there is no &quot;else&quot; clause</span>
+<span class="tok-c"># W0142 Used * or * magic* Used when a function or method is called using *args or **kwargs to dispatch arguments.</span>
+<span class="tok-c"># W0212 Access to a protected member %s of a client class</span>
+<span class="tok-c"># W0232 Class has no __init__ method Used when a class has no __init__ method, neither its parent classes.</span>
+<span class="tok-c"># W0613 Unused argument %r Used when a function or method argument is not used.</span>
+<span class="tok-c"># W0702 No exception&#39;s type specified Used when an except clause doesn&#39;t specify exceptions type to catch.</span>
+<span class="tok-c"># R0201 Method could be a function</span>
+<span class="tok-n">disable</span><span class="tok-o">=</span><span class="tok-n">C0111</span><span class="tok-p">,</span><span class="tok-n">I0011</span><span class="tok-p">,</span><span class="tok-n">I0012</span><span class="tok-p">,</span><span class="tok-n">W0704</span><span class="tok-p">,</span><span class="tok-n">W0142</span><span class="tok-p">,</span><span class="tok-n">W0212</span><span class="tok-p">,</span><span class="tok-n">W0232</span><span class="tok-p">,</span><span class="tok-n">W0613</span><span class="tok-p">,</span><span class="tok-n">W0702</span><span class="tok-p">,</span><span class="tok-n">R0201</span><span class="tok-p">,</span><span class="tok-n">E1101</span><span class="tok-p">,</span><span class="tok-n">C0103</span><span class="tok-p">,</span><span class="tok-n">W0141</span><span class="tok-p">,</span><span class="tok-n">R0904</span><span class="tok-p">,</span><span class="tok-n">R0901</span>
+
+<span class="tok-p">[</span><span class="tok-n">REPORTS</span><span class="tok-p">]</span>
+<span class="tok-n">output</span><span class="tok-o">-</span><span class="tok-n">format</span><span class="tok-o">=</span><span class="tok-n">colorized</span>
+<span class="tok-n">include</span><span class="tok-o">-</span><span class="tok-n">ids</span><span class="tok-o">=</span><span class="tok-n">yes</span>
+
+<span class="tok-c"># disable extra statistics</span>
+<span class="tok-n">reports</span><span class="tok-o">=</span><span class="tok-n">no</span>
+
+
+<span class="tok-p">[</span><span class="tok-n">BASIC</span><span class="tok-p">]</span>
+<span class="tok-n">no</span><span class="tok-o">-</span><span class="tok-n">docstring</span><span class="tok-o">-</span><span class="tok-n">rgx</span><span class="tok-o">=</span><span class="tok-n">__</span><span class="tok-o">.*</span><span class="tok-n">__</span><span class="tok-o">|</span><span class="tok-n">_</span><span class="tok-o">.*</span>
+<span class="tok-n">class</span><span class="tok-o">-</span><span class="tok-n">rgx</span><span class="tok-o">=</span><span class="tok-p">[</span><span class="tok-n">A</span><span class="tok-o">-</span><span class="tok-n">Z_</span><span class="tok-p">][</span><span class="tok-n">a</span><span class="tok-o">-</span><span class="tok-n">zA</span><span class="tok-o">-</span><span class="tok-n">Z0</span><span class="tok-o">-</span><span class="tok-mi">9</span><span class="tok-n">_</span><span class="tok-p">]</span><span class="tok-o">+</span><span class="tok-err">$</span>
+<span class="tok-n">function</span><span class="tok-o">-</span><span class="tok-n">rgx</span><span class="tok-o">=</span><span class="tok-p">[</span><span class="tok-n">a</span><span class="tok-o">-</span><span class="tok-n">zA_</span><span class="tok-p">][</span><span class="tok-n">a</span><span class="tok-o">-</span><span class="tok-n">zA</span><span class="tok-o">-</span><span class="tok-n">Z0</span><span class="tok-o">-</span><span class="tok-mi">9</span><span class="tok-n">_</span><span class="tok-p">]{</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">70</span><span class="tok-p">}</span><span class="tok-err">$</span>
+<span class="tok-n">method</span><span class="tok-o">-</span><span class="tok-n">rgx</span><span class="tok-o">=</span><span class="tok-p">[</span><span class="tok-n">a</span><span class="tok-o">-</span><span class="tok-n">z_</span><span class="tok-p">][</span><span class="tok-n">a</span><span class="tok-o">-</span><span class="tok-n">zA</span><span class="tok-o">-</span><span class="tok-n">Z0</span><span class="tok-o">-</span><span class="tok-mi">9</span><span class="tok-n">_</span><span class="tok-p">]{</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-mi">70</span><span class="tok-p">}</span><span class="tok-err">$</span>
+<span class="tok-n">const</span><span class="tok-o">-</span><span class="tok-n">rgx</span><span class="tok-o">=</span><span class="tok-p">(([</span><span class="tok-n">A</span><span class="tok-o">-</span><span class="tok-n">Z_</span><span class="tok-p">][</span><span class="tok-n">A</span><span class="tok-o">-</span><span class="tok-n">Z0</span><span class="tok-o">-</span><span class="tok-mi">9</span><span class="tok-n">_</span><span class="tok-p">]</span><span class="tok-o">*</span><span class="tok-p">)</span><span class="tok-o">|</span><span class="tok-p">([</span><span class="tok-n">a</span><span class="tok-o">-</span><span class="tok-n">z_</span><span class="tok-p">][</span><span class="tok-n">a</span><span class="tok-o">-</span><span class="tok-n">z0</span><span class="tok-o">-</span><span class="tok-mi">9</span><span class="tok-n">_</span><span class="tok-p">]</span><span class="tok-o">*</span><span class="tok-p">)</span><span class="tok-o">|</span><span class="tok-p">(</span><span class="tok-n">__</span><span class="tok-o">.*</span><span class="tok-n">__</span><span class="tok-p">)</span><span class="tok-o">|</span><span class="tok-n">register</span><span class="tok-o">|</span><span class="tok-n">urlpatterns</span><span class="tok-p">)</span><span class="tok-err">$</span>
+<span class="tok-n">good</span><span class="tok-o">-</span><span class="tok-n">names</span><span class="tok-o">=</span><span class="tok-n">_</span><span class="tok-p">,</span><span class="tok-n">i</span><span class="tok-p">,</span><span class="tok-n">j</span><span class="tok-p">,</span><span class="tok-n">k</span><span class="tok-p">,</span><span class="tok-n">e</span><span class="tok-p">,</span><span class="tok-n">pk</span><span class="tok-p">,</span><span class="tok-n">setUp</span><span class="tok-p">,</span><span class="tok-n">tearDown</span>
+
+<span class="tok-p">[</span><span class="tok-n">TYPECHECK</span><span class="tok-p">]</span>
+
+<span class="tok-c"># Tells whether missing members accessed in mixin class should be ignored. A</span>
+<span class="tok-c"># mixin class is detected if its name ends with &quot;mixin&quot; (case insensitive).</span>
+<span class="tok-n">ignore</span><span class="tok-o">-</span><span class="tok-n">mixin</span><span class="tok-o">-</span><span class="tok-n">members</span><span class="tok-o">=</span><span class="tok-n">yes</span>
+
+<span class="tok-c"># List of classes names for which member attributes should not be checked</span>
+<span class="tok-c"># (useful for classes with attributes dynamically set).</span>
+<span class="tok-n">ignored</span><span class="tok-o">-</span><span class="tok-n">classes</span><span class="tok-o">=</span><span class="tok-n">SQLObject</span>
+
+<span class="tok-c"># When zope mode is activated, add a predefined set of Zope acquired attributes</span>
+<span class="tok-c"># to generated-members.</span>
+<span class="tok-n">zope</span><span class="tok-o">=</span><span class="tok-n">no</span>
+
+<span class="tok-c"># List of members which are set dynamically and missed by pylint inference</span>
+<span class="tok-c"># system, and so shouldn&#39;t trigger E0201 when accessed.</span>
+<span class="tok-n">generated</span><span class="tok-o">-</span><span class="tok-n">members</span><span class="tok-o">=</span><span class="tok-n">objects</span><span class="tok-p">,</span><span class="tok-n">DoesNotExist</span><span class="tok-p">,</span><span class="tok-nb">id</span><span class="tok-p">,</span><span class="tok-n">pk</span><span class="tok-p">,</span><span class="tok-n">_meta</span><span class="tok-p">,</span><span class="tok-n">base_fields</span><span class="tok-p">,</span><span class="tok-n">context</span><span class="tok-p">,</span>
+
+<span class="tok-c"># List of method names used to declare (i.e. assign) instance attributes</span>
+<span class="tok-n">defining</span><span class="tok-o">-</span><span class="tok-n">attr</span><span class="tok-o">-</span><span class="tok-n">methods</span><span class="tok-o">=</span><span class="tok-n">__init__</span><span class="tok-p">,</span><span class="tok-n">__new__</span><span class="tok-p">,</span><span class="tok-n">setUp</span>
+
+
+<span class="tok-p">[</span><span class="tok-n">VARIABLES</span><span class="tok-p">]</span>
+<span class="tok-n">init</span><span class="tok-o">-</span><span class="tok-n">import</span><span class="tok-o">=</span><span class="tok-n">no</span>
+<span class="tok-n">dummy</span><span class="tok-o">-</span><span class="tok-n">variables</span><span class="tok-o">-</span><span class="tok-n">rgx</span><span class="tok-o">=</span><span class="tok-n">_</span><span class="tok-o">|</span><span class="tok-n">dummy</span><span class="tok-o">|</span><span class="tok-n">logger</span>
+
+<span class="tok-p">[</span><span class="tok-n">SIMILARITIES</span><span class="tok-p">]</span>
+<span class="tok-nb">min</span><span class="tok-o">-</span><span class="tok-n">similarity</span><span class="tok-o">-</span><span class="tok-n">lines</span><span class="tok-o">=</span><span class="tok-mi">6</span>
+<span class="tok-n">ignore</span><span class="tok-o">-</span><span class="tok-n">comments</span><span class="tok-o">=</span><span class="tok-n">yes</span>
+<span class="tok-n">ignore</span><span class="tok-o">-</span><span class="tok-n">docstrings</span><span class="tok-o">=</span><span class="tok-n">yes</span>
+
+
+<span class="tok-p">[</span><span class="tok-n">MISCELLANEOUS</span><span class="tok-p">]</span>
+<span class="tok-n">notes</span><span class="tok-o">=</span><span class="tok-n">FIXME</span><span class="tok-p">,</span><span class="tok-n">XXX</span><span class="tok-p">,</span><span class="tok-n">TODO</span><span class="tok-p">,</span><span class="tok-n">HACK</span>
+
+
+<span class="tok-p">[</span><span class="tok-n">FORMAT</span><span class="tok-p">]</span>
+<span class="tok-nb">max</span><span class="tok-o">-</span><span class="tok-n">line</span><span class="tok-o">-</span><span class="tok-n">length</span><span class="tok-o">=</span><span class="tok-mi">120</span>
+<span class="tok-nb">max</span><span class="tok-o">-</span><span class="tok-n">module</span><span class="tok-o">-</span><span class="tok-n">lines</span><span class="tok-o">=</span><span class="tok-mi">1000</span>
+<span class="tok-n">indent</span><span class="tok-o">-</span><span class="tok-n">string</span><span class="tok-o">=</span><span class="tok-s">&#39;    &#39;</span>
+
+
+<span class="tok-p">[</span><span class="tok-n">DESIGN</span><span class="tok-p">]</span>
+<span class="tok-nb">max</span><span class="tok-o">-</span><span class="tok-n">args</span><span class="tok-o">=</span><span class="tok-mi">10</span>
+<span class="tok-nb">max</span><span class="tok-o">-</span><span class="tok-nb">locals</span><span class="tok-o">=</span><span class="tok-mi">15</span>
+<span class="tok-nb">max</span><span class="tok-o">-</span><span class="tok-n">returns</span><span class="tok-o">=</span><span class="tok-mi">6</span>
+<span class="tok-nb">max</span><span class="tok-o">-</span><span class="tok-n">branchs</span><span class="tok-o">=</span><span class="tok-mi">12</span>
+<span class="tok-nb">max</span><span class="tok-o">-</span><span class="tok-n">statements</span><span class="tok-o">=</span><span class="tok-mi">50</span>
+<span class="tok-nb">max</span><span class="tok-o">-</span><span class="tok-n">parents</span><span class="tok-o">=</span><span class="tok-mi">7</span>
+<span class="tok-nb">max</span><span class="tok-o">-</span><span class="tok-n">attributes</span><span class="tok-o">=</span><span class="tok-mi">7</span>
+<span class="tok-nb">min</span><span class="tok-o">-</span><span class="tok-n">public</span><span class="tok-o">-</span><span class="tok-n">methods</span><span class="tok-o">=</span><span class="tok-mi">0</span>
+<span class="tok-nb">max</span><span class="tok-o">-</span><span class="tok-n">public</span><span class="tok-o">-</span><span class="tok-n">methods</span><span class="tok-o">=</span><span class="tok-mi">50</span>
+</code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -2563,6 +2954,20 @@ API boundaries to control forwards and backwards compatibility.</p>
 </div>
 </div>
 <h1 id="_tools" class="sect0">Tools</h1>
+
+<h1 id="_tools_2" class="sect0">Tools</h1>
+<div class="sect1">
+<h2 id="_asciidoctor">AsciiDoctor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Typically, just install run <code>gem install asciidoctor pygments.rb</code>. Depending on your environment
+you may need to create a rbenv or run the command with sudo.</p>
+</div>
+<div class="paragraph">
+<p>Check out the docs at <a href="http://asciidoctor.org/">http://asciidoctor.org/</a></p>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="karma-test-runner">Karma Test Runner</h2>
 <div class="sectionbody">
@@ -2739,10 +3144,28 @@ file.</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_using_postgres_app">Using Postgres.App</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Start with the documentation, at <a href="http://postgresapp.com/documentation">http://postgresapp.com/documentation</a></p>
+</div>
+<div class="paragraph">
+<p>INFO: if pg_config does not work, add <em>/Applications/Postgres.app/Contents/MacOS/bin</em> to your PATH environment
+variable).</p>
+</div>
+<div class="paragraph">
+<p>INFO: If you get an error about missing libssl.so,  see <a href="https://github.com/PostgresApp/PostgresApp/issues/109">https://github.com/PostgresApp/PostgresApp/issues/109</a>
+and add <code>export DYLD_LIBRARY_PATH=/Applications/Postgres.app/Contents/MacOS/lib:$DYLD_LIBRARY_PATH</code> to
+your $HOME/.profile
+~</p>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-10-25 03:13:11 EDT
+Last updated 2013-12-03 22:45:46 EST
 </div>
 </div>
 </body>
