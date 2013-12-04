@@ -1,0 +1,10 @@
+== Using Postgres.App
+
+Start with the documentation, at http://postgresapp.com/documentation
+
+INFO: if pg_config does not work, add '/Applications/Postgres.app/Contents/MacOS/bin' to your PATH environment
+variable). 
+
+INFO: If you get an error about missing libssl.so,  see https://github.com/PostgresApp/PostgresApp/issues/109
+and add `export DYLD_LIBRARY_PATH=/Applications/Postgres.app/Contents/MacOS/lib:$DYLD_LIBRARY_PATH` to
+your $HOME/.profile
