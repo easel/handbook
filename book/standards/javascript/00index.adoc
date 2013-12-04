@@ -94,10 +94,17 @@ BackBone.js
 include::backbone-module-layout.txt[]
 ----
 
-[[Variables]]
+[[Loops]]
 
-Variables should be declared at the start of a module or function.
-Seperating each one by a line/
+When using loops the preferred method is to use _.each
 ----
-include::variables_example1.js[]
+include::loops-best-practice.js[]
+----
+
+[[Multiple async tasks]]
+
+To handle multiple async tasks such as multiple model saves or
+multiple model fetch it is best done with $.when.apply(null, deferreds).then
+----
+include::async.js[]
 ----
