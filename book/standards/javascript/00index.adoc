@@ -48,12 +48,10 @@ Variables Naming::
     Normal
 Top Level Variables Naming::
     Normal
-Top Level Class Variables:: (which require "new" to be used)
+Top Level Variables::
     TitleCase
-Top Level Variables::  (which do not require "new" to be used)
-    camelCase
 Local and pass-through Variables::
-    lowercaseall or lower_case
+    camelCase
 Functions Naming::
     Normal
 Functions Case::

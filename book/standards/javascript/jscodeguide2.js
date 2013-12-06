@@ -29,6 +29,7 @@ define(function (require) {
       });
     },
     slideRight: function (model,options,templatename,templateid) {
+      // Do something here...
     }
   });
 });
