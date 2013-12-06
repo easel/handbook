@@ -46,9 +46,9 @@ Blocks::
     Inline
 Variables Naming::
     Normal
-Top Level Variables Naming::
+Module Level Variables Naming::
     Normal
-Top Level Variables::
+Module Level Variables::
     TitleCase
 Local and pass-through Variables::
     camelCase
