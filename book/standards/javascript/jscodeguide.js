@@ -9,7 +9,7 @@ var BaseSrv = require('./BaseService'),
 
 module.exports = function(db, models) {
   var PackageSrv = BaseSrv.extend({
-    
+
     // Create a New Package
     create: function(data) {
       var deferred = Q.defer(),
@@ -94,7 +94,7 @@ module.exports = function(PackageSrv, SettSrv) {
                 then( function( sampleCode ) {
                   // We need to copy globalPckg because otherwise this non-existing attribute (in the model) is not passed on
                   var tmpPackage = JSON.parse(JSON.stringify(globalPckg));
-                  
+
                   tmpPackage.sampleCode = sampleCode;
 
                   self.send(tmpPackage);
@@ -159,7 +159,7 @@ define([
   ],
   function(app, $) {
     'use strict';
-    
+
     app.controller('Menu', [
       '$scope',
       '$rootScope',

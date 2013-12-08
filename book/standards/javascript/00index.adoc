@@ -46,25 +46,34 @@ Blocks::
     Inline
 Variables Naming::
     Normal
-Variables Case::
+Module Level Variables Naming::
+    Normal
+Module Level Variables::
+    TitleCase
+Local and pass-through Variables::
     camelCase
 Functions Naming::
-	Normal 
+    Normal
 Functions Case::
-	camelCase
+    camelCase
 Comma in Variable Declaration::
-	Trailing Comma
-Concatenation:: 
-	Trailing
+    Trailing Comma
+Concatenation::
+    Trailing
 Quotes::
-	Single
+    Single
 
-Below you can find some sample code that follows these guidelines. 
+Below you can find some sample code that follows these guidelines.
 It should have examples for most of the situations you'll encounter:
 
 [source,javascript]
 ----
 include::jscodeguide.js[]
+----
+
+[source,javascript]
+----
+include::jscodeguide2.js[]
 ----
 
 
@@ -131,4 +140,26 @@ BackBone.js
 
 ----
 include::backbone-module-layout.txt[]
+----
+
+[[Loops]]
+
+When using loops the preferred method is to use _.each
+----
+include::loops-best-practice.js[]
+----
+
+[[Multiple async tasks]]
+
+To handle multiple async tasks such as multiple model saves or
+multiple model fetch it is best done with $.when.apply(null, deferreds).then
+----
+include::async.js[]
+----
+
+[[Formatting]]
+
+This is recommended jsformat settings when using Sublime Text 2
+----
+include::jsformat_recommend.js[]
 ----
