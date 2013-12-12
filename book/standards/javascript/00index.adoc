@@ -7,7 +7,7 @@ Introduction
 ~~~~~~~~~~~~
 
 * Focus on readability and maintainability. The code's should be easy to
-understand, or obvious, to a junior-level developer.
+understand, include some documentation, or obvious, to a junior-level developer.
 * Write tests. Every project should have a functional test runner, and
 be - configured to run the tests via CI.
 * Use bower for your frontend components. Check in the artifacts to
