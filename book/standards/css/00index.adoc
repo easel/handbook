@@ -1,0 +1,83 @@
+== CSS & Less Guide
+
+The new site for Wiser Health is going to contain many services and applications built by many teams; we will need a set of fundamental goals and constraints to ensure long term success. Our five topics will be:
+
+. How do we handle core and/or external CSS frameworks versus custom work?
+. How do we manage cross-browser compatibility?
+. What is the relationship between our markup and our styling?
+. What are the considerations for modularity, hierarchies, and best practices?
+. How do we design to be device-agnostic?
+
+The quantifiable benchmarks are:
+
+. The CSS or LESS will be manageable, instead of being too large, cumbersome, or undocumented.
+. There will be few if any instances of redundant work or cross-contamination.
+. Uniformity of styling will be such that authorship is anonymous and irrelevant.
+. Developers can enter or leave the project at any time with minimal on-boarding or knowledge sharing.
+. The visual presentation of the site maintains a consistent and cohesive design aesthetic.
+
+=== CSS & LESS Rules and Principles
+
+==== I. Frameworks Versus Custom Styling
+
+Our core framework will be Twitter Bootstrap (currently in v.3.0.2). As we may be using newer versions of Boostrap, the component itself will go untouched. Any work that is developed must be done to build upon or complement Boostrap, or any other framework. For example, Bootstrap's grid system is defined in grids.less and mixins.less. We can create a new breakpoint that can add to the current list of breakpoints, without having to completely rewrite grids.less.
+
+There will be one main.less file that each page calls. Inside main.less, we will import the parts of Bootstrap as needed, along with any other custom styling. Custom styling will live in a static directory independent from external components.
+
+==== II. Cross-Browser Compatibility and Fallbacks
+
+We will design for a fictionally ideal browser that is completely standards-compliant. Obviously, this cannot work in practice. *_Any other styling used as a fallback must be placed in a separate file._* Such a file can be named something like ie_navbar.less to contrast with the ideal navbar.less file. We are doing this because there will come a day when we no longer have to support any number of older browsers, and it must be easy to remove styling for unsupported browsers. Redundant work today, easy of transitition tomorrow.
+
+*_We will not be using IE conditional comments at top of any file_*, as they pollute the <HTML> declaration. IE conditional comments are allowable to include JS files, or at the <BODY> declaration.
+
+==== III. HTML Markup and Styling
+
+Structured Outline:: Using a combination of appropriate and semantic HTML5 tags and heading hierarchies, *_the page must maintain structured outline._* There will be no untitled sections, and the outlining structure must make semantic sense. See http://html5doctor.com/outlines/ or http://coding.smashingmagazine.com/2011/08/16/html5-and-the-document-outlining-algorithm/ for reference.
+
+Respect ARIA Roles:: Pages will have landmark roles (banner, contentinfo, search, main) and we ought to develop CSS around those roles. Additionally, define CSS around widget and document roles where applicable. See http://www.w3.org/TR/wai-aria/roles.
+
+==== IV. Best Practices: Modularity, Hierarchies, Naming Conventions, Etc.
+
+Modularity Based shared components and layout pieces:: Since the compiler will combine all the CSS into one file, we have an opportunity to make as many stylesheets as we need, each serving a singular purpose. There will be three kinds of CSS files.
+  . Global resets and variables such as a normalize, typography and/or utilities
+  . component parts like the styling for buttons, forms, or tables
+  . Page or application features like a navigation menu, data table, or footers
+
+Include description in every file:: The risk of moving to pre-process CSS changes such that instead of worrying about giant bloated files, we now have to worry about too many files, of which we may lose track. *_All LESS files must contain a summary of purpose at the top._*
+
+Naming Conventions:: Even though LESS allows for deep nesting, we will *_avoid nesting too deep_*, as it taxes resources and creates cumbersome styling. Take advantage of uniquely occurring (once per page) #IDs to keep nesting as shallow as possible. Currently we will say that nesting should not go past 5 layers.
+
+* If a feature on a page exists only once, then identify that feature with an #id {} and nest all properties of elements of that feature within.
+* If the feature requires classes, prefix the class names with the id name or nest them under the id.
+** For example, if there is sidebar for blog links, all elements for that sidebar will be under #blog_links_sidebar {} which can contain nested classes such as .primary_link {}. In such a manner, the class .primary_link {} will not interfere with anything else on the page that may coincidentally share the same class name. On the hand if we don't want to nest this class and have out of #blog_links_sidebar {} then the class must be named .blog_links_sidebar_primary_link {}.
+
+Sizing:: With the exception of global resets for font sizing and defining breakpoints, *_do not define anything using pixels._* Use EMs or REMs, depending on context or relevancy. Be wary of REMS as even though they are very useful, the do not have full browser support.
+
+==== V. Device-Agnostic and Responsive Design
+
+The styling for all pages and applications will assume that we do not have control over the browser, viewport, or device being used. Breakpoints must be defined such that there is coherent presentation and behavior regardless of screen size or available user interaction (e.g. touch screens versus mouse control).
+
+=== Benchmarks for Success
+
+==== I. Managable, Well-Documented CSS and Styling
+
+How do I change the font size of the menu items in the global navigation? How do I add styling for error messages on the membership form? These questions should be solvable without excessive hunting or asking for help from previous developers.
+
+Our living KSS style guide will reflect what the site looks like.
+
+==== II. Concurrent Work without Overlapping
+
+Work submitted from one project will not interfere with work from another project, now or in the future (This is where proper naming conventions becomes highly relevant). If there is commonly shared component across multiple pages or applications, there, only one CSS file is generating that visual presentation.
+
+==== III. Anonymous and Uniform Authorship
+
+The mark of good coding or scripting is nobody determine who wrote it. To achieve this, all developers entering into the various projects of WiserHealth will have agreed on best practices, and all peer reviews will take measures to enforce such practices. We do not ownership of parts of the code. We do not want information silos.
+
+==== IV. Flexible Entry and Exit for Developers
+
+We will be using contractors depending on projects, and WiserTogether will have developers coming in and out of projects, or leaving or being hired. New people should not have spend weeks familiarizing themselves with the CSS and LESS frameworks, and people leaving should have to devote too much time explaining or training replacements.
+
+==== V. Consistent Visual Design Implementation and Aesthetic
+
+What separates a passable site from a professionally done site is attention to detail. The typography cannot look a certain way on one page and be slightly off on another page. Transitions and interactions will behave the same way, every time. In other words the true measure of success is achieving a singular, identifiable "look and feel."
+
