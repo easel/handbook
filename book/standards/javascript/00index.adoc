@@ -163,3 +163,58 @@ This is recommended jsformat settings when using Sublime Text 2
 ----
 include::jsformat_recommend.js[]
 ----
+
+[[Backbone Patterns]]
+
+Here is a list of good patterns and pratices while developing and
+building Backbone applications.
+
+File structure:
+
+In most projects in wiser it is recommended to follow this type of structure:
+
+/...
+    <project name>
+        /collections
+        /handlebars
+        /models
+        /templates
+        /views
+        app.js
+        router.js
+        views.js
+
+Views:
+
+The /views folder should be seperated by module name in larger projects
+
+e.g.
+
+/views
+    /header
+    /nav
+    /module1
+    /module2
+    base.js
+    mixins.js
+
+Following best practices it is better to not do any rendering code within the
+view class unless there is good reason.
+
+----
+include::views.js[]
+----
+
+For view cleanup because this is not handled automatically by backbone you should
+make sure that view.remove() gets called before you render or navigate to a different
+page.  This will allow objects/bindings/events to cleanup before you render the new
+view  Please see below for example of how to do this.  This code would be used in
+the router for example by all views which will render the view.
+
+Also render should only be called by this structure ALWAYS:
+
+ $("#page-layout").html(view.render().el);  // there is numerous reasons for this.
+
+----
+include::router.js[]
+----
