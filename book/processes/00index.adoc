@@ -3,3 +3,4 @@
 include::code-merging.adoc[]
 include::github-create-pr.adoc[]
 include::github-pr-merge-squash.adoc[]
+include::quality-engineering.adoc[]
