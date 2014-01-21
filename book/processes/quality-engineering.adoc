@@ -1,0 +1,68 @@
+== Interacting with Quality Engineering
+
+In order to work effectively within the product development life cycle, you need to understand how/when quality engineering influences code development.
+
+There are specific touch points where QE team expects to have testable code that has completed unit testing and any automated test coverage. In return, you can expect the QE team to be available to provide feedback, answer questions on requirements, run the code on multiple browsers, and in general act as a typical user of the product.
+
+In order to work effectively with the QE team, you must consider them as a partner - someone who can be the voice of the customer and help identify issues that most impact the end user. A successful partnership leads to improvement in the quality and impact of your code.
+
+=== Steps
+
+////
+image::processes/github-create-pr.svg[Workflow]
+////
+
+==== Capturing User Requirements
+
+Before you start working on a feature/functionality, QE is involved in providing input for requirements capture. Typically, the questions that are raised include:
+
+* Did the product owners specify all possible interactions ?
+* Did the design coveral all user scenarios ?
+* Do the requirements list data interchange formats ?
+* Is there a clickable mockup or detailed screen descriptions ?
+
+==== Partnering in Code Development
+
+While you are designing your code and undertaking test driven development, the QE team is there to act as a valuable partner to:
+
+* Bounce ideas about what the requirements actually mean
+* Check a PR request for Unit Test Coverage
+* Generate dummy data in order to drive TDD
+* Evaluate that logging/error messages are providing appropriate information
+* Poking at half baked code to check if stuff works on multiple browsers
+
+TIP: Think of QE as a resource you can use to deliver high quality code
+
+==== Verifying functionality
+
+For each Pull Request that gets built by Continuous Integration server, QE is tasked with verifying the functionality specified by the requirements associated with that feature. 
+
+This is code that has NOT yet been merged. It is being tested against known stable versions of API end points and stable sub-projects. Any issues found to be related to the core functinoality can be fixed within the project code base itself. A new pull request can then be generated and verified before merging. 
+
+For issues that are found related to errors in the dependent API/sub-projects, a workaround can be implemented and code can be merged. 
+
+Among the feedback that QE provides at this stage:
+
+* Verify correctness in functionality
+* Integration testing with stable versions of sub-projects or dependent API
+* Validate that code does not cause any regressions
+* Check for any new errors/warnings
+* Ensure user interaction is acceptable on multiple browsers
+* Flag any user workflows that are not covered by the implementation
+* Flag any missing requirements - things that were missed during design
+
+TIP: Be prepared for QE to re-open issues that fail verification at this stage.
+
+==== Regression of Release Candidate
+
+Once a significant set of changes have been impelented (as part of several PR merges to master branch) the release management team decides to tag a candidate for deployment. This release candidate is subjected to complete regression test suite and a list of known bugs is compliled. The root cause analysis of these bugs leads to new development tasks which are prioritized and worked on. 
+
+Impact of a bug is influenced by the "outrage" it causes a typical user of the integrated application, and prioritization might be influenced by how much code refactoring is required to fix the issue. Net-net, regression bugs are what the user will see, and a release candidate can be held up from deployment depending on the outcome of integration testing.
+
+TIP: A bug found at PR stage costs less in development and project managment time/effort than one caught during regression.
+
+==== Post Product Launch
+
+Once a release candidate has passed regression testing, it gets deployed to production and QE team undertakes post-deployment testing. This step can result in new bugs and development tasks since we are now working on production data and with actual users.
+
+QE team monitors user feedback via the support channels and recreates and debugs any new issue that is reported from the field. If it is found to be a new problem that is not within the list of known bugs, these customer found bugs are filed, prioritized and worked on by development team.
