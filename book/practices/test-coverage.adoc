@@ -1,0 +1,17 @@
+[[test-coverage]]
+== Test Coverage (Python)
+
+Covering your code with test is important step to increase code quality. High test coverage can simplify code refactoring and ensure absence of simple bugs. You can get code coverage in you local environment with using `coverage`.
+
+Start tracking code coverage with `coverage run`:
+
+    coverage run ./manage.py test
+
+Generate report with `coverage report` or `coverage html`(preferred): 
+
+    coverage html --omit="*/lib/*" 
+    xdg-open htmlcov/index.html 
+
+`omit` will disable coverage tracking for files that match this pattern(in this case, all third-party modules).
+
+    
