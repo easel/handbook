@@ -1,3 +1,4 @@
 = Practices
 
 include::code-review.adoc[]
+include::test-coverage.adoc[]
