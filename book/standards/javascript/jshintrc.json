@@ -8,6 +8,7 @@
   "jquery": true,
   "latedef": true,
   "newcap": true,
+  "camelcase": false,
   "noarg": true,
   "node": true,
   "nonew": true,
