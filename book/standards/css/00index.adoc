@@ -97,11 +97,33 @@ Naming Conventions:: Even though LESS allows for deep nesting, we will *_avoid n
 * If the feature requires classes, prefix the class names with the id name or nest them under the id.
 ** For example, if there is sidebar for blog links, all elements for that sidebar will be under #blog_links_sidebar {} which can contain nested classes such as .primary_link {}. In such a manner, the class .primary_link {} will not interfere with anything else on the page that may coincidentally share the same class name. On the hand if we don't want to nest this class and have out of #blog_links_sidebar {} then the class must be named .blog_links_sidebar_primary_link {}.
 
-Sizing:: With the exception of global resets for font sizing and defining breakpoints, *_do not define anything using pixels._* Use EMs or REMs, depending on context or relevancy. Be wary of REMS as even though they are very useful, the do not have full browser support.
+Sizing:: With the exception of global resets for font sizing, legacy browser support, and defining breakpoints, *_do not define anything using pixels._* Use EMs or REMs, depending on context or relevancy.
 
 ==== V. Device-Agnostic and Responsive Design
 
 The styling for all pages and applications will assume that we do not have control over the browser, viewport, or device being used. Breakpoints must be defined such that there is coherent presentation and behavior regardless of screen size or available user interaction (e.g. touch screens versus mouse control).
+
+*Responsiveness is going to use breakpoints that go from smallest to largest,* not largest to smallest. The definitions are as follows:
+
+* Browser widths *below 768 pixels*: currently out of scope
+
+* Browser widths at *768 to 991 pixels*
+  ** Covers screen resolutions of 768 and 960 (tablet space)
+  ** Content width fixed at 768: 12 columns of 64 pixels
+
+* Browser widths at *992 to 1199 pixels*
+  ** Covers screen resolutions of 1014 and 1152 (landscape tablets and small monitors)
+  ** Content width fixed at 960 pixels: 12 columns of 80 pixels
+
+* Browser widths at *1200 to 1329 pixels*
+  ** Covers screen resolution of 1280 (standard desktop monitors)
+  ** Content width fixed at 1152 pixels: 12 columns of 96 pixels
+
+* Browser widths at *1300 pixels and higher*
+  ** Covers screen resolutions of 1366, 1440, and up (standard laptop screens, Macbook screens, and large monitors)
+  ** Content width fixed at 1296 pixels: 12 columns of 108 pixels
+
+Consequently, the width of the content of the site will never exceed 1296 pixels.
 
 === Benchmarks for Success
 
