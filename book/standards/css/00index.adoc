@@ -28,11 +28,57 @@ There will be one main.less file that each page calls. Inside main.less, we will
 
 We will design for a fictionally ideal browser that is completely standards-compliant. Obviously, this cannot work in practice. *_Any other styling used as a fallback must be placed in a separate file._* Such a file can be named something like ie_navbar.less to contrast with the ideal navbar.less file. We are doing this because there will come a day when we no longer have to support any number of older browsers, and it must be easy to remove styling for unsupported browsers. Redundant work today, easy of transitition tomorrow.
 
-*_We will not be using IE conditional comments at top of any file_*, as they pollute the <HTML> declaration. IE conditional comments are allowable to include JS files, or at the <BODY> declaration.
+*_We will not be using IE conditional comments at top of any file_*, as they pollute the <HTML> declaration. IE conditional comments are allowable to include JS files, or at the <BODY> declaration. The current implementation of conditional commenting is:
+
+----
+<!-- We will treat IE 7 and 8 as one entity -->
+<!--[if IE 7]><body class="ie ie7 ie7_8"><![endif]-->
+<!--[if IE 8]><body class="ie ie8 ie7_8"><![endif]-->
+<!-- We will treat IE 9 as a close approximation of standards compliancy -->
+<!--[if IE 9]><body class="ie ie9"><![endif]-->
+<!-- Because IE10 does not recognize conditional comments anyway. -->
+<!--[if (gt IE 9)|!(IE)]><!--><body class=""><!--<![endif]-->
+----
+
+CSS to capture only IE7
+
+----
+.ie7 {}
+----
+
+CSS to capture only IE8
+
+----
+.ie8 {}
+----
+
+CSS to capture only IE9
+
+----
+.ie9 {}
+----
+
+CSS to capture both IE7 and IE8 (The majority of fallback CSS should come from this class)
+
+----
+.ie7_8 {}
+----
+
+CSS to capture IE7, IE8, and IE9
+----
+.ie {}
+----
 
 ==== III. HTML Markup and Styling
 
 Structured Outline:: Using a combination of appropriate and semantic HTML5 tags and heading hierarchies, *_the page must maintain structured outline._* There will be no untitled sections, and the outlining structure must make semantic sense. See http://html5doctor.com/outlines/ or http://coding.smashingmagazine.com/2011/08/16/html5-and-the-document-outlining-algorithm/ for reference.
+  * The essential test for structured outline is available via http://gsnedders.html5.org/outliner/ It will show a visual representation of the page's sectioned content and the names of each part. Sections that have been improperly defined will be listed as _"Untitled Section."_
+  * The steps to correct improper sectioning are prioritized as:
+    ** Reduce the amount of HTML nesting and hierarchy
+    ** Reduce the amount of CSS nesting and hierarchy, and define attributes based on classes and names
+    ** Determine whether a block element is for actual sectioning or just for visual presentation and alignment. Convert sectioning elements to DIVs, or vice versa.
+    ** create header elements that are set to display:none; in CSS
+  * The metric for properly structured HTML is a much leaner amount of templating needed to generate page features. Likewise, the amount of CSS needed to style the features will be significantly reduced as well.
 
 Respect ARIA Roles:: Pages will have landmark roles (banner, contentinfo, search, main) and we ought to develop CSS around those roles. Additionally, define CSS around widget and document roles where applicable. See http://www.w3.org/TR/wai-aria/roles.
 
