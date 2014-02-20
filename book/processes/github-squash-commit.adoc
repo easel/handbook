@@ -12,7 +12,7 @@ git checkout master
 
 git pull origin master
 
-image::processes/commit1.png[Commit1]
+image::commit1.png[Commit1]
 
 You may need to update the archery sub-module folder.
 
@@ -31,23 +31,23 @@ git checkout <feature-branch>
 
 git rebase -i master
 
-image::processes/commit2.png[Commit2]
+image::commit2.png[Commit2]
 
 It is recommended to do your first commit as the commit message you want
 to use. In our example we use fixup to discard the commit message but squash
 the changes into the previous commit.  Hence the reason why the first commit
 message should be the sensible one you want to use
 
-image::processes/commit3.png[Commit3]
+image::commit3.png[Commit3]
 
 You should exit the editor and execute the rebase by doing :wq (in windows)
 
 You should see a screen like this if everything is successful.
 
-image::processes/commit4.png[Commit4]
+image::commit4.png[Commit4]
 
 Finally you can double check the branch history has squashed or fixed all commits
 into one by visualisaing the branch history you should see just one commit line
 like this:
 
-image::processes/branch_history.png[BranchHistory]
+image::branch_history.png[BranchHistory]
