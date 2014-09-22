@@ -78,6 +78,28 @@ to the github ui, find your branch, and click the "compare and create pull reque
 and make sure you have not included anything by accident, and then write a detailed commit message describing the changes
 implemented by your branch.
 
+Pull Requests should be separated by concerns - meaning, if you are implementing fetures towards a specific milestone, only 
+commits related to that milestone should be included in your pull request.
+
+Pull request commit messages should include a sane and descriptive first line message not longer than 70 characters, optionally 
+followed by a short description of the commit and a list of all issues worked on with their associated issue #.
+
+----
+ Condition page layout and styling # <1>
+
+ Implemented page structure and styling accoring to # <2>
+ condition page guide provided
+
+- Link Condition pages in search box - #215 # <3>
+- Condition page images not showing on travis deploy - #213
+- Karma tests #194
+- css bug found in condition page #7
+- Chart does not appear when opened from search - #225
+----
+<1> Sane and descriptive commit first line, in Github, this is the title of the pull request
+<2> Optional, short description of this commit
+<3> List of issues addressed in this pull request
+
 TIP: Try to keep your pull requests short and sweet
 
 ==== Receive feedback
